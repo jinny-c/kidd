@@ -1,0 +1,75 @@
+.keypad{
+	position: relative;
+    overflow: hidden;
+    bottom:0;
+    color: #000000;
+    font-size: 20px;
+}
+.keypad:before {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    left: 0;
+    top: 0;
+    border: 1px solid #666;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+}
+.key{
+	position: relative;
+    float: left;
+    /*padding: 20px 10px;*/
+    width: 33.33333333%;
+    box-sizing: border-box;
+    text-align: center;
+    /*line-height: 3em;*/
+}
+.key:before {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+/*.key:nth-child(3n):before {
+    border-right-width: 0;
+}*/
+
+.keypad .digit {
+    height: 55px;
+    line-height: 55px;
+    font-size: 150%;
+    color: #666;
+    /*background: #e5e5e5;*/
+}
+.keypad .point {
+    height: 55px;
+    line-height: 30px;
+    font-size: 250%;
+    color: #666;
+    background: #e5e5e5;
+}
+.keypad .remove {
+    height: 55px;
+    font-size: 0%;
+    background:#e5e5e5 url(../../imgs/del2.png) no-repeat 0 0;
+    background-position: center;
+    
+}
+
+.keypad .active{
+	background:#ccc;
+}

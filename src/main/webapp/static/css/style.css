@@ -1,0 +1,103 @@
+.weui-agree {
+    display: block;
+    padding: .5em 15px;
+    font-size: 13px;
+}
+.weui-agree__checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+    font-size: 0;
+    /*border: 1px solid #D1D1D1;*/
+    background-color: #ccc;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    vertical-align: 0;
+    top: 2px;
+}
+.weui-agree__checkbox:checked {
+   background-color: #0d7aff;
+}
+
+.weui-agree__checkbox:checked:before {
+    font-family: "weui";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-align: center;
+    speak: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: inherit;
+    content: "\EA08";
+    color: #fff;
+    font-size: 13px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -48%) scale(0.73);
+    transform: translate(-50%, -48%) scale(0.73);
+}
+
+.weui-agree__text {
+    color: #999999;
+}
+
+.weui-agree a {
+    color: #586C94;
+}
+
+body {
+    background-color: #f8f8f8;
+}
+
+.blue_btn{
+    background-color: #0d7aff;
+}
+/*按钮置灰*/
+.deactive {
+    background: #ccc !important;
+}
+
+/*错误提示*/
+.weui_toptips.weui_warn {
+    background-color: #E64340;
+}
+.weui_toptips {
+    display: none;
+    position: fixed;
+    -webkit-transform: translateZ(0);
+    width: 100%;
+    top: 0;
+    line-height: 2.3;
+    font-size: 14px;
+    text-align: center;
+    color: #FFF;
+    z-index: 50000;
+}
+
+/*上传图片*/
+.weui_uploader_file{
+    margin-right: 0px;
+    width: 84px;
+}
+
+.add-picture{
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+}
+
+.plus{
+    background:url(../imgs/plus.png) no-repeat 0 0;
+    background-size: 65px 65px;
+}
+
+.txt_photodesc{
+    line-height: 40px;
+    text-align: center;
+}
+

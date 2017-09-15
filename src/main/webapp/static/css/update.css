@@ -1,0 +1,251 @@
+body{
+    background-color: #fff;
+    background-size:100%;
+    overflow-x: hidden;
+}
+.pay_code,.ylpay_code{
+}
+
+.gallery-cell:after{
+    content:"滑动切换支付方式";
+    color: #fff;
+    animation:first_show 5s;
+    font-weight:bold;
+    display: inherit;
+    text-align: center;
+    padding:2%;
+}
+@keyframes first_show{
+    from {color:#666;}
+    to {color:#fff;}
+}
+.gallery-cell:hover::after{
+    animation:show 5s;
+}
+
+@keyframes show{
+    from {color:#666;}
+    to {color:#fff;}
+}
+
+.save{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 6%;
+    right: 6%;
+
+}
+.pay_way{
+    text-align: center;
+}
+.pay_way img{
+    vertical-align: middle;
+}
+
+.wx_icon{
+    margin-right: 15%;
+    max-width: 32%;
+}
+.zfb_icon{
+   
+}
+
+.yl_icon{
+    margin-right: 20%
+}
+
+.yl_app{
+    color: #159aff;
+    text-align: center;
+    display: block;
+    /* text-decoration: underline; */
+    font-size: 13px;
+}
+}
+
+.yl_update{
+    margin-right: 15%;
+}
+
+.bank_change{
+    /*margin-top: 1.17647059em;*/
+    background-color: #FFFFFF;
+    line-height: 1.41176471;
+    font-size: 14px;
+    overflow: hidden;
+    position: relative;
+}
+.bank_card{
+    padding: 10px 10%;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.bank_update{
+    color: #159aff;
+}
+
+.head_panel{
+    display: block;
+    width: 75%;
+    border-radius: 2%;
+    margin: 2em auto 1em;
+    padding: 1em 0;
+    -webkit-box-shadow:0 0 10px rgba(69, 183, 255, .5);  
+    -moz-box-shadow:0 0 10px rgba(69, 183, 255, .5);  
+    box-shadow:0 0 10px rgba(69, 183, 255, .5); 
+    text-align: center;
+   /* background:url(../../static/imgs/bg2.png) no-repeat 0 0;
+    background-size:100%;
+    background-position: left top;*/
+     background-color: #fff;
+}
+.head_bg{
+    width: 81%;
+    display: inherit;
+    position: absolute;
+    left: 10%; 
+}
+.head_img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.ds{
+    background: url(../../static/imgs/ds.png) no-repeat 0 0;
+    background-size: 8%;
+    background-position: left;
+    padding-left: 1em;
+}
+
+.user_info{
+    display: inline-block;
+    text-align: left;
+    vertical-align:middle;
+    margin-left: 1em;
+    line-height: 1.8em;
+}
+
+.weui_btn_primary{
+    background-color: #299dff;
+}
+.weui_btn_primary:not(.weui_btn_disabled):active {
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #299dff;
+}
+
+.footer{
+    background: url(../../static/imgs/icon.png) no-repeat 0 0;
+    background-size: 80%;
+    background-position: center bottom;
+    height: 20%;
+}
+
+.empty{
+    background: url(../../static/imgs/del.png) no-repeat 0 0;
+    background-size: 80%;
+    background-position: center center;
+}
+
+.pay_amount{
+    margin: 10px 0px;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 20px;
+    font-size: 200%;
+    text-align: right;
+    background: #fff;
+    color:orange;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.no_padding{
+    padding: 0px;
+}
+
+.bank_btn{
+    margin: 15px auto;
+    width: 90%;
+    height: 85px;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    color: #666;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size:1.2em;
+    padding-top: 20px;
+    padding-left: 80px;
+}
+.bank_btn .bank_name{
+    font-weight: bold;
+    margin-right: 5px;
+}
+.bank_btn .card_no{
+    font-size: 13px;
+    word-spacing: 26px;
+    padding: 2.5em;
+    letter-spacing: 2px;
+}
+
+.blue{
+    background: #1795c7 !important;
+}
+.add-picture{
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+}
+
+.plus{
+    background:url(../../static/imgs/plus.png) no-repeat 0 0;
+    background-size: 65px 65px;
+}
+
+.txt_photodesc{
+    line-height: 40px;
+    text-align: center;
+}
+.limt_detail{
+    font-size: 0.8em;
+    color: #ccc;
+    word-spacing:1.2em;
+    padding-left: 1.8em;
+}
+
+.limt_tips {
+    display: block;
+    position: fixed;
+    -webkit-transform: translateZ(0);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+    color: #FFF;
+    z-index: 5000;
+    word-wrap: break-word;
+    word-break: break-all;
+    background-color: #555050;
+}
+
+.selected>.weui-form-preview__bd{
+    display: block !important;
+}
+
+.search_show{
+    display: none;
+    margin-top: 0;
+}
+
+.weui_search_bar {
+    background-color: #fff;
+    line-height: 44px;
+}

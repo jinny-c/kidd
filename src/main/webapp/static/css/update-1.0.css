@@ -1,0 +1,152 @@
+body{
+    background-color: #fff;
+    background:#fff url(../../static/imgs/bg.png) no-repeat 0 0;
+    background-size:100%;
+}
+.pay_code{
+    display: block;
+    background-color: #fff;
+    width: 85%;
+    border-radius: 2%;
+    margin: 3em auto 0em;
+    padding: 0.5em 0;
+    line-height: 2em;
+    -webkit-box-shadow:0 0 10px rgba(69, 183, 255, .5);  
+    -moz-box-shadow:0 0 10px rgba(69, 183, 255, .5);  
+    box-shadow:0 0 10px rgba(69, 183, 255, .5); 
+    text-align: center;
+}
+.head_panel{
+    display: block;
+    width: 75%;
+    border-radius: 2%;
+    margin: 1em auto 1em;
+    padding: 1em 0;
+    -webkit-box-shadow:0 0 10px rgba(243, 108, 61, .5);
+    -moz-box-shadow:0 0 10px rgba(243, 108, 61, .5);
+    box-shadow:0 0 10px rgba(243, 108, 61, .5);
+    text-align: center;
+   /* background:url(../../static/imgs/head_bg.png) no-repeat 0 0;
+    background-size:100%;
+    background-position: left top;*/
+     background-color: #fff;
+}
+.head_bg{
+    width: 81%;
+    display: inherit;
+    position: absolute;
+    left: 10%; 
+}
+.head_img{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user_info{
+    display: inline-block;
+    text-align: left;
+    vertical-align:middle;
+    margin-left: 1em;
+    line-height: 1.8em;
+}
+
+.weui_btn_primary{
+    background-color: #299dff;
+}
+.weui_btn_primary:not(.weui_btn_disabled):active {
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #299dff;
+}
+
+.pay_amount{
+    margin: 10px 0px;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 20px;
+    font-size: 200%;
+    text-align: right;
+    background: #fff;
+    color:orange;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.no_padding{
+    padding: 0px;
+}
+
+.bank_btn{
+    margin: 15px auto;
+    width: 90%;
+    height: 85px;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    color: #666;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size:1.2em;
+    padding-top: 20px;
+    padding-left: 80px;
+}
+.bank_btn .bank_name{
+    font-weight: bold;
+    margin-right: 5px;
+}
+.bank_btn .card_no{
+    font-size: 13px;
+    word-spacing: 26px;
+    padding: 2.5em;
+    letter-spacing: 2px;
+}
+
+.blue{
+    background: #1795c7 !important;
+}
+.add-picture{
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+}
+
+.txt_photodesc{
+    line-height: 40px;
+    text-align: center;
+}
+.limt_detail{
+    font-size: 0.8em;
+    color: #ccc;
+    word-spacing:1.2em;
+    padding-left: 1.8em;
+}
+
+.limt_tips {
+    display: block;
+    position: fixed;
+    -webkit-transform: translateZ(0);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+    color: #FFF;
+    z-index: 5000;
+    word-wrap: break-word;
+    word-break: break-all;
+    background-color: #555050;
+}
+
+.selected>.weui-form-preview__bd{
+    display: block !important;
+}
+
+.search_show{
+    display: none;
+    margin-top: 0;
+}
+
+.weui_search_bar {
+    background-color: #fff;
+    line-height: 44px;
+}
