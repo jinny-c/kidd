@@ -16,13 +16,14 @@ import com.kidd.base.exception.KiddControllerException;
  */
 @Controller
 @RequestMapping("/wap/user")
-public class KiddUserController extends KiddBaseController{
+public class KiddWapUserController extends KiddBaseController{
 	/* Slf4j */
-	private static Logger log = LoggerFactory.getLogger(KiddUserController.class);
+	private static Logger log = LoggerFactory.getLogger(KiddWapUserController.class);
 
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() throws KiddControllerException{
 		log.info("index enter");
+		
 		return "/wap/userInfo";
 	}
 
