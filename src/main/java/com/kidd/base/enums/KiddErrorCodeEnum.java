@@ -4,6 +4,7 @@ package com.kidd.base.enums;
 public enum KiddErrorCodeEnum {
 
     ERROR_CODE_KW001("KW001", "获取信息失败，当前会话失效！"),
+    ERROR_CODE_KW900("KW900", "请求异常，请上后再试！"), //转发 请求异常
     ERROR_CODE_KW999("KW999", "系统繁忙，请稍后再试！"), //系统异常
 
     ;

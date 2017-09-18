@@ -28,9 +28,9 @@
 		</mvc:argument-resolvers>
 		<!-- AnnotationDrivenBeanDefinitionParser默认加载StringHttpMessageConverter、MappingJacksonHttpMessageConverter等， 
 			RequestMappingHandlerAdapter.messageConverters -->
-		<!-- <mvc:message-converters>
-			<bean class="com.jidd.basic.redefine.JiddObjHttpMsgConvert" />
-		</mvc:message-converters> -->
+		<mvc:message-converters>
+			<bean class="com.kidd.base.redefine.KiddObjHttpMsgConvert" />
+		</mvc:message-converters>
 	</mvc:annotation-driven>
     
      <!-- configure SimpleMappingExceptionResolver -->
@@ -76,5 +76,8 @@
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
  	<!-- thymeleaf 模板引擎  end-->
+ 
+ 	<!-- 定时刷新  -->
+ 	<bean class="com.kidd.base.cache.SpringContextListener"/>
  
 </beans>

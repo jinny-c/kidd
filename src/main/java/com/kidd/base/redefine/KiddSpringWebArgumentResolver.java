@@ -64,6 +64,8 @@ public class KiddSpringWebArgumentResolver implements
 	public Object resolveArgument(MethodParameter parameter,
 			ModelAndViewContainer mavContainer, NativeWebRequest request,
 			WebDataBinderFactory binderFactory) throws Exception {
+		logger.info("KiddSpringWebArgumentResolver.resolveArgument start");
+		
 		if (!kiddSecureProcessor.isSecure(parameter)) {
 			return WebArgumentResolver.UNRESOLVED;
 		}
@@ -111,11 +113,7 @@ public class KiddSpringWebArgumentResolver implements
 		WebDataBinder binder = binderFactory.createBinder(request, null,
 				shortName);
 		Object arg = null;
-		/*
-		 * MicroHttpHeader header = jiddSecureProcessor.getHeader(); UserKeyBean
-		 * userKey = jiddSecureProcessor.getUserKey( header.getVersion(),
-		 * header.getTerminalUserID()); logger.debug(userKey);
-		 */
+		
 		// 2016-09-20 处理父类中需要解密的属性字段
 		for (; clazz != KiddBaseReqDto.class; clazz = clazz.getSuperclass()) {
 			// 参数赋值

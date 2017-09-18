@@ -3,7 +3,7 @@ package com.kidd.wap.controller.dto;
 import java.io.Serializable;
 
 import com.kidd.base.KiddBaseReqDto;
-import com.kidd.base.annotation.KiddEncrAnno;
+import com.kidd.base.annotation.KiddDecrAnno;
 import com.kidd.base.annotation.KiddNotBlank;
 import com.kidd.base.annotation.KiddSecureAnno;
 import com.kidd.base.common.KiddErrorCodes;
@@ -20,7 +20,7 @@ public class GetValidateCodeReq  extends KiddBaseReqDto implements Serializable 
 	@KiddNotBlank(code = KiddErrorCodes.E_KIDD_NULL, message = "渠道不能为空！")
 	private String channel;
 
-	@KiddEncrAnno
+	@KiddDecrAnno
 	private String mobile;
 
 	public String getMobile() {

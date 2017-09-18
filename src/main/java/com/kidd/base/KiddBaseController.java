@@ -3,6 +3,7 @@ package com.kidd.base;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,7 +12,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
+import com.kidd.base.enums.KiddErrorCodeEnum;
+import com.kidd.base.exception.KiddControllerException;
+import com.kidd.base.httpclient.HttpHeader;
 import com.kidd.base.httpclient.RequestResponseContext;
+import com.kidd.base.modelview.KiddModelAndView;
+import com.kidd.base.modelview.RespErr;
+import com.kidd.base.modelview.RespSucc;
+import com.kidd.base.serialize.KiddSerialTypeEnum;
 import com.kidd.base.utils.KiddStringUtils;
 
 /**
@@ -27,14 +35,23 @@ public class KiddBaseController {
 	private static Logger log = LoggerFactory
 			.getLogger(KiddBaseController.class);
 
-
+    /**
+     * 获取HTTP关信息
+     *
+     * @history
+     * @throws ControllerException 没有进行初始化过滤（InitFilter）调用此方法将抛异常
+     */
+	protected HttpHeader getHttpHeader() throws KiddControllerException{
+		Object header = RequestResponseContext.getRequest().getAttribute(HttpHeader.class.getName());
+		return (HttpHeader) header;
+	}
 	
-	protected String toHtml(String viewName) {
+	protected String toWapHtml(String viewName) {
 		return KiddStringUtils.join("wap/", viewName);
 	}
 	
-	protected String toUserHtml(String viewName) {
-		return KiddStringUtils.join("user/", viewName);
+	protected String toViewHtml(String viewName) {
+		return KiddStringUtils.join("view/", viewName);
 	}
 	
 	public String convertJson(Object object) {
@@ -45,6 +62,43 @@ public class KiddBaseController {
 		return KiddStringUtils.join("redirect:", url);
 	}
 	
+	
+	protected KiddModelAndView<RespSucc> toSucc() {
+		return KiddModelAndView.succ(getSerialType());
+	}
+	protected KiddModelAndView<RespErr> toErr(String code, String msg) {
+		return KiddModelAndView.err(getSerialType(), code, msg);
+	}
+
+	protected <T> KiddModelAndView<T> toData(T data) {
+		return new KiddModelAndView<T>(getSerialType(), data);
+	}
+	
+	protected KiddModelAndView<RespSucc> toRequestForward(String url)
+			throws KiddControllerException {
+		try {
+			log.info("toRequestForward start");
+			RequestResponseContext
+					.getRequest()
+					.getRequestDispatcher(url)
+					.forward(RequestResponseContext.getRequest(),
+							RequestResponseContext.getResponse());
+		} catch (ServletException e) {
+			e.printStackTrace();
+			throw new KiddControllerException(
+					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorCode(),
+					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorMsg());
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new KiddControllerException(
+					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorCode(),
+					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorMsg());
+		}
+		log.info("toRequestForward success");
+		return toSucc();
+	}
+	
+	
 	protected HttpServletRequest getRequest() {
 		return RequestResponseContext.getRequest();
 	}
@@ -53,6 +107,20 @@ public class KiddBaseController {
 		return RequestResponseContext.getRequest().getSession();
 	}
 
+	private KiddSerialTypeEnum getSerialType() {
+		HttpHeader httpHeader = null;
+		try {
+			httpHeader = getHttpHeader();
+		} catch (KiddControllerException e) {
+			log.error("KiddControllerException:",e);
+		}
+		
+		if (httpHeader != null ) {
+			return httpHeader.getDataType();
+		}
+		return KiddSerialTypeEnum.SERILAL_TYPE_FASTJSON;
+	}
+	
 	/**
 	 * 输出响应信息
 	 * 
