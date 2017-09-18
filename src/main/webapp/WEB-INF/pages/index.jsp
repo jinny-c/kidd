@@ -26,6 +26,9 @@
 			<ul>
 				<li><a href="wap/user/index.htm">index</a></li>
 			</ul>
+			<ul>
+				<li><a href="wap/user/getVerificationCode_getCode.htm?channel=hope&mobile=13612341234">getCode</a></li>
+			</ul>
 		</div>
 	</div>
 </body>
