@@ -24,7 +24,7 @@ function getVerficCode() {
 		method : 'POST',
 		data : {
 			"mobile" : "13612341234",
-			"channel" : "c"
+			"channel" : "channel"
 		},
 		dataType : type,
 		//dataType : 'json',

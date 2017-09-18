@@ -2,7 +2,7 @@ package com.kidd.base.params.valid;
 
 import java.io.Serializable;
 
-//@Component
+
 public class KiddValidResp implements Serializable {
 	private static final long serialVersionUID = 1L;
 

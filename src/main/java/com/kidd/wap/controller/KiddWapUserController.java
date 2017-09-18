@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kidd.base.KiddBaseController;
 import com.kidd.base.annotation.KiddSecureAnno;
+import com.kidd.base.asnyc.IAsyncTaskExecutor;
+import com.kidd.base.asnyc.SimpleAsyncTaskExecutor;
 import com.kidd.base.cache.KiddCacheManager;
 import com.kidd.base.exception.KiddControllerException;
+import com.kidd.base.exception.KiddGlobalValidException;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
 
@@ -37,6 +41,9 @@ public class KiddWapUserController extends KiddBaseController{
     
 	@Autowired
 	private KiddCacheManager cacheManager;
+	
+	/** 异步线程 **/
+	private IAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor();
     
 
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
@@ -46,9 +53,12 @@ public class KiddWapUserController extends KiddBaseController{
 		return toWapHtml("userInfo");
 	}
 	@RequestMapping(value = "/info", method = {RequestMethod.GET, RequestMethod.POST})
-	public String info() throws KiddControllerException{
+	public String info(Model model) throws KiddControllerException{
 		log.info("info enter");
 		
+		asyncSendVerifiCode("info code");
+		
+		model.addAttribute("message", "hello word!");
 		return toWapHtml("info");
 	}
 
@@ -87,4 +97,25 @@ public class KiddWapUserController extends KiddBaseController{
 		}
 	}
 	
+	/**
+	 * 异步线程
+	 *
+	 */
+	private void asyncSendVerifiCode(final String code) {
+		try {
+			asyncTaskExecutor.exeWithoutResult(new IAsyncTaskExecutor.AsyncTaskCallBack<Object>() {
+				@Override
+				public Object invork() throws KiddGlobalValidException {
+					try {
+						log.info("asynchronous start,code={}",code);
+					} catch (Exception e) {
+						log.error("asynchronous exception", e);
+					}
+					return null;
+				}
+			});
+		} catch (Exception e) {
+			log.error("do asynchronous exception",e);
+		}
+	}
 }
