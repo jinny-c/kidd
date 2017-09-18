@@ -19,7 +19,7 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
 import com.alibaba.fastjson.JSONObject;
 import com.kidd.base.annotation.proc.KiddSecureProcessor;
 import com.kidd.base.exception.KiddGlobalValidException;
-import com.kidd.base.httpclient.RequestResponseContext;
+import com.kidd.base.http.RequestResponseContext;
 import com.kidd.base.modelview.KiddModelAndView;
 import com.kidd.base.serialize.KiddObjectTypeUtils;
 import com.kidd.base.serialize.KiddSerialTypeEnum;

@@ -1,4 +1,4 @@
-package com.kidd.base.httpclient;
+package com.kidd.base.http;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

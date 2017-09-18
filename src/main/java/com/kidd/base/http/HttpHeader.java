@@ -1,4 +1,4 @@
-package com.kidd.base.httpclient;
+package com.kidd.base.http;
 
 
 import java.io.Serializable;
