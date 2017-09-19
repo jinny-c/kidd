@@ -3,7 +3,7 @@ package com.kidd.base.modelview;
 import java.io.Serializable;
 
 public class RespErr implements Serializable {
-	private static final long serialVersionUID = 9133171980121457564L;
+	private static final long serialVersionUID = 1L;
 	private String responseCode;
 	private String errMessage;
 
@@ -12,7 +12,7 @@ public class RespErr implements Serializable {
 	 * @param errMessage
 	 */
 	public RespErr(String responseCode, String errMessage) {
-		super();
+		//super();
 		this.responseCode = responseCode;
 		this.errMessage = errMessage;
 	}

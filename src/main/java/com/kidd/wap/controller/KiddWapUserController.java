@@ -19,8 +19,10 @@ import com.kidd.base.asnyc.SimpleAsyncTaskExecutor;
 import com.kidd.base.cache.KiddCacheManager;
 import com.kidd.base.exception.KiddControllerException;
 import com.kidd.base.exception.KiddGlobalValidException;
+import com.kidd.base.utils.KiddTraceLogUtil;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
+import com.kidd.wap.controller.dto.UserLoginReq;
 
 
 /**
@@ -52,14 +54,29 @@ public class KiddWapUserController extends KiddBaseController{
 		
 		return toWapHtml("userInfo");
 	}
-	@RequestMapping(value = "/info", method = {RequestMethod.GET, RequestMethod.POST})
-	public String info(Model model) throws KiddControllerException{
-		log.info("info enter");
+	@RequestMapping(value = "/toInfo", method = {RequestMethod.GET, RequestMethod.POST})
+	public String toInfo(Model model) throws KiddControllerException{
+		log.info("toInfo enter");
 		
 		asyncSendVerifiCode("info code");
 		
 		model.addAttribute("message", "hello word!");
 		return toWapHtml("info");
+	}
+	@RequestMapping(value = "/toLogin", method = {RequestMethod.GET, RequestMethod.POST})
+	public String toLogin() throws KiddControllerException{
+		log.info("toLogin enter");
+		
+		return toWapHtml("login");
+	}
+	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+	public String login(@KiddSecureAnno UserLoginReq req) throws KiddControllerException{
+		log.info("login enter,req={}", req);
+		if(req.isLoginBy00()){
+			req.paramsValid();
+		}
+		
+		return toWapHtml("userInfo");
 	}
 
 	@RequestMapping(value = "/getVerificationCode_{flag}", method = {RequestMethod.GET, RequestMethod.POST})
@@ -68,7 +85,7 @@ public class KiddWapUserController extends KiddBaseController{
 		try {
 			log.info("getVerifiCode,req={},flag={}", req, flag);
 			if (!"wap".equals(flag)) {
-				return toErr("error", "message");
+				//return toErr("error", "message");
 			}
 			SecureRandom random = new SecureRandom();
 			StringBuilder randomCode = new StringBuilder();
@@ -82,13 +99,13 @@ public class KiddWapUserController extends KiddBaseController{
 			resp.setChannel(req.getChannel());
 			resp.setImageCode(randomCode.toString());
 			
-			String wap = cacheManager.getCacheConfig("0_wap");
-			log.info("getCacheConfig,val={},", wap);
+			//String wap = cacheManager.getCacheConfig("0_wap");
+			//log.info("getCacheConfig,val={},", wap);
 			
 			cacheManager.setCacheConfig(req.getMobile(), randomCode.toString());
 			
-			String view = cacheManager.getCacheConfig("view");
-			log.info("getCacheConfig,val={},", view);
+			//String view = cacheManager.getCacheConfig("view");
+			//log.info("getCacheConfig,val={},", view);
 			
 			return toData(resp);
 		} catch (Exception e) {
@@ -101,13 +118,16 @@ public class KiddWapUserController extends KiddBaseController{
 	 * 异步线程
 	 *
 	 */
-	private void asyncSendVerifiCode(final String code) {
+	private void asyncSendVerifiCode(final String verifyCode) {
 		try {
+			final String traceId= KiddTraceLogUtil.getTraceId();
+			log.info("asyncSendVerifiCode start");
 			asyncTaskExecutor.exeWithoutResult(new IAsyncTaskExecutor.AsyncTaskCallBack<Object>() {
 				@Override
 				public Object invork() throws KiddGlobalValidException {
+					KiddTraceLogUtil.beginTrace(traceId);
 					try {
-						log.info("asynchronous start,code={}",code);
+						log.info("asynchronous start,code={}",verifyCode);
 					} catch (Exception e) {
 						log.error("asynchronous exception", e);
 					}

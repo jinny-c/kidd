@@ -13,13 +13,18 @@ import com.kidd.base.utils.KiddStringUtils;
 import com.kidd.base.utils.ToStringUtils;
 
 @KiddSecureAnno
-public class GetValidateCodeReq  extends KiddBaseReqDto implements Serializable {
+public class GetValidateCodeReq extends KiddBaseReqDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@KiddNotBlank(code = KiddErrorCodes.E_KIDD_NULL, message = "渠道不能为空！")
+	@KiddNotBlank(code = KiddErrorCodes.E_KIDD_NULL, message = "[渠道]为空！")
 	private String channel;
+	@KiddNotBlank(code = KiddErrorCodes.E_KIDD_NULL, message = "[客户端渠道]为空！")
+	private String clientChannel;
 
+	// 类型
+	private String actionFlag;
+	
 	@KiddDecrAnno
 	private String mobile;
 
@@ -39,10 +44,27 @@ public class GetValidateCodeReq  extends KiddBaseReqDto implements Serializable 
 		this.channel = channel;
 	}
 
+	public String getClientChannel() {
+		return clientChannel;
+	}
+
+	public void setClientChannel(String clientChannel) {
+		this.clientChannel = clientChannel;
+	}
+
+	public String getActionFlag() {
+		return actionFlag;
+	}
+
+	public void setActionFlag(String actionFlag) {
+		this.actionFlag = actionFlag;
+	}
+
 	@Override
 	public String toString() {
 		ToStringUtils builder = new ToStringUtils(this);
-		builder.add("channel", channel).add("mobile", mobile);
+		builder.add("channel", channel).add("clientChannel", clientChannel)
+				.add("actionFlag", actionFlag).add("mobile", mobile);
 		return builder.toString();
 	}
 

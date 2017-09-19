@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class RespSucc implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int responseCode = 0;
+	private String responseCode = "0000";
 
-	public int getResponseCode() {
+	public String getResponseCode() {
 		return responseCode;
 	}
 
-	public void setResponseCode(int responseCode) {
+	public void setResponseCode(String responseCode) {
 		this.responseCode = responseCode;
 	}
 }

@@ -102,7 +102,13 @@ function buildHtml_list(list){
 				<li><a href="wap/user/index.htm">index</a></li>
 			</ul>
 			<ul>
-				<li><a href="wap/user/info.htm">info</a></li>
+				<li><a href="wap/user/toInfo.htm">toInfo</a></li>
+			</ul>
+			<ul>
+				<li><a href="wap/user/toLogin.htm">toLogin</a></li>
+			</ul>
+			<ul>
+				<li><a href="wap/user/login.htm">login</a></li>
 			</ul>
 		</div>
 	</div>
