@@ -34,10 +34,10 @@ public class KiddResponseUtils {
 	 */
 	public static void writeToResponse(HttpServletResponse response, String msg)
 			throws IOException {
-		byte[] data = msg.getBytes("UTF-8");
+		byte[] data = msg.getBytes(KiddConstants.CHARSET_DEF);
 //		response.setHeader(KiddHttpConstants.NAME_HP_DATALENGTH, data.length + "");
 //		response.setHeader(KiddHttpConstants.NAME_HP_CONTENTTYPE, KiddHttpConstants.HP_CONTENT_TYPE_TEXT);
-		response.setContentType("text/plain; charset=UTF-8");
+		response.setContentType(KiddConstants.CONTENT_TYPE_TEXT);
 		ServletOutputStream outputStream = response.getOutputStream();
 		try {
 			outputStream.write(data);

@@ -15,4 +15,13 @@ public class KiddConstants {
 	public final static String OAUTH2_CODE = "code";
 	public final static String PUB_NO_ID = "pubId";
 
+	/**
+	 * 通讯编码，默认:UTF-8
+	 */
+	static final String CHARSET_DEF = "UTF-8";
+	/**
+	 * HTTP ContentType 取值 - 文本
+	 */
+	static final String CONTENT_TYPE_TEXT = "text/plain; charset=UTF-8";
+	
 }
