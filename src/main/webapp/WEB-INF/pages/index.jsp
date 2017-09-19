@@ -111,6 +111,15 @@ function buildHtml_list(list){
 				<li><a href="wap/user/login.htm">login</a></li>
 			</ul>
 		</div>
+		<div class="preview_item">
+			<br />
+			<ul>
+				<li><a href="view/user/index.do">index</a></li>
+			</ul>
+			<ul>
+				<li><a href="view/user/toInfo.do">toInfo</a></li>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>

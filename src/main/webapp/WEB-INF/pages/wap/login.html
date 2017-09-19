@@ -178,7 +178,7 @@
 	}
 	function removeDisbled(){
 		//判断电话号码，解禁获取验证码按钮
-		if(flag && _seconds <=0){
+		if( _seconds <=0){
 	    	$("#getCode").removeAttr("disabled");
 	    	$("#getCode").removeClass('deactive');
 		}
@@ -250,18 +250,26 @@
 		_interval._remaining(_target);
 		
 		 $.ajax({	
-		 	url:  _ctx+'/wap/user/getVerificationCode_verifyCode.htm?mobile=mobile&action=login',
-		 	method: 'GET',
+		 	url:  _ctx+'/wap/user/getVerificationCode_verifyCode.htm',
+		 	method: 'POST',
 		 	dataType: 'text',
+		 	data : {
+				"mobile" : "13612341234",
+				"channel" : "channel",
+				"clientChannel" : "clientChannel"
+			},
 		 	success: function(data){
-		 		if(data == '01'){
-		 			showEorrTips("验证码暂时无法发送，请稍后再试");
-		 		} else if (data == 'U052') {
-	                   showEorrTips("未查到相关用户");
-	                   //_clearInterval();
-	               } else if(data != '00'){
-		 			showEorrTips(decodeURIComponent(data));
-		 		}
+				var dataObj=eval("("+data+")");
+				if(dataObj){
+					if('0000'!=dataObj.responseCode){
+						if(dataObj.errMessage){
+							showEorrTips(dataObj.errMessage);
+						}
+					}
+				}else{
+					showEorrTips("验证码暂时无法发送，请稍后再试");
+				}
+		 		
 		 	}
 		 });
 	}
@@ -269,7 +277,7 @@
 	 function randInmageCode(){
 		 $.ajax({
 			 	url:  _ctx+'/wap/user/getVerificationCode_imageCode.htm',
-			 	method: 'POST',
+			 	method: 'GET',
 			 	dataType: 'json',
 				data : {
 					"mobile" : "13612341234",

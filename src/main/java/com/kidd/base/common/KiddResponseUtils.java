@@ -30,7 +30,6 @@ public class KiddResponseUtils {
 	/**
 	 * 返回错误信息
 	 *
-	 * @version 1.0 2016年09月19日
 	 * @history
 	 */
 	public static void writeToResponse(HttpServletResponse response, String msg)

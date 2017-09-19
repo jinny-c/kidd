@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kidd.base.cache.service.IKiddRefreshService;
+import com.kidd.base.utils.KiddTraceLogUtil;
 
 /**
  * 管理无卡支付微信公众平台的API调用凭证 【区别网页授权凭证】
@@ -31,6 +32,7 @@ public class KiddRefreshTimer {
 		scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
 			@Override
 			public void run() {
+				KiddTraceLogUtil.beginTrace(); // 日志跟踪开始
 				log.info("refreshToken任务执行开始");
 				try {
 					refreshToken();
@@ -38,6 +40,7 @@ public class KiddRefreshTimer {
 					log.error("refreshToken任务执行失败", e);
 				}
 				log.info("refreshToken任务执行成功");
+				KiddTraceLogUtil.endTrace(); // 日志跟踪结束
 			}
 		}, 0, PERIOD, TimeUnit.MINUTES); //延迟0分钟，每隔PERIOD分钟检查TOKEN
 	}
