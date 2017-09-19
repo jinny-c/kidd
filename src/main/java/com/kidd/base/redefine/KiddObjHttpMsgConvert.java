@@ -16,7 +16,6 @@ import org.springframework.http.converter.AbstractHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 
-import com.alibaba.fastjson.JSONObject;
 import com.kidd.base.annotation.proc.KiddSecureProcessor;
 import com.kidd.base.exception.KiddGlobalValidException;
 import com.kidd.base.http.RequestResponseContext;

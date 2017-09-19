@@ -39,15 +39,15 @@
 </head>
 <body>
 	<div class="weui-navbar">
-		<div class="weui-navbar__item" id="channel_a">手机号登录</div>
-		<div class="weui-navbar__item" id="channel_b">用户名登录</div>
+		<div class="weui-navbar__item" id="channel_a">A类型登录</div>
+		<div class="weui-navbar__item" id="channel_b">B类型登录</div>
 	</div>
 	<div class="weui-tab__panel">
 		<br />
 		<div id="channel_a_img" class="page__bd page__bd_spacing">
 			<div class="weui-footer">
 				<div class="icon-box">
-					<img src="../../static/images/user.png"></img>
+					<img src="../static/images/user.png"></img>
 				</div>
 			</div>
 		</div>
@@ -250,7 +250,7 @@
 		_interval._remaining(_target);
 		
 		 $.ajax({	
-		 	url:  _ctx+'/wap/user/getVerificationCode_verifyCode.htm?mobile=mobile&action=login',
+		 	url:  _ctx+'/user/getMobileVerifiCode.htm?mobile=mobile&action=login',
 		 	method: 'GET',
 		 	dataType: 'text',
 		 	success: function(data){
@@ -268,20 +268,14 @@
 	/*生成4位随机数*/
 	 function randInmageCode(){
 		 $.ajax({
-			 	url:  _ctx+'/wap/user/getVerificationCode_imageCode.htm',
-			 	method: 'POST',
-			 	dataType: 'json',
-				data : {
-					"mobile" : "13612341234",
-					"channel" : "channel",
-					"clientChannel" : "clientChannel"
-				},
+			 	url:  _ctx+'/user/getVerifiCode.htm',
+			 	method: 'GET',
+			 	dataType: 'text',
 			 	success: function(data){
-			 		if(data.errMessage){
-			 			showEorrTips("获取图形验证码失败，请稍后再试："+data.errMessage);
-			 		}else{
-			 			initCanvas(data.imageCode,$("#mycanvas"),randInmageCode);
+			 		if(data == '01'){
+			 			showEorrTips("获取图形验证码失败，请稍后再试");
 			 		}
+			 		initCanvas(data,$("#mycanvas"),randInmageCode);
 			 	}
 			 });
 	 }			

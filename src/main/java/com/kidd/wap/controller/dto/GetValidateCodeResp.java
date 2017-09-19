@@ -2,12 +2,13 @@ package com.kidd.wap.controller.dto;
 
 import java.io.Serializable;
 
+import com.kidd.base.KiddBaseRespDto;
 import com.kidd.base.annotation.KiddEncrAnno;
 import com.kidd.base.annotation.KiddSecureAnno;
 import com.kidd.base.utils.ToStringUtils;
 
 @KiddSecureAnno
-public class GetValidateCodeResp  implements Serializable {
+public class GetValidateCodeResp extends KiddBaseRespDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
