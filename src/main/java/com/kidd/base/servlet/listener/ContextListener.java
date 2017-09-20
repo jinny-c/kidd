@@ -1,4 +1,4 @@
-package com.kidd.base.listener;
+package com.kidd.base.servlet.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

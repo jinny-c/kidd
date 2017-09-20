@@ -16,10 +16,10 @@ import com.kidd.base.enums.KiddErrorCodeEnum;
 import com.kidd.base.exception.KiddControllerException;
 import com.kidd.base.http.HttpHeader;
 import com.kidd.base.http.RequestResponseContext;
-import com.kidd.base.modelview.KiddModelAndView;
-import com.kidd.base.modelview.RespErr;
-import com.kidd.base.modelview.RespSucc;
 import com.kidd.base.serialize.KiddSerialTypeEnum;
+import com.kidd.base.spring.modelview.KiddModelAndView;
+import com.kidd.base.spring.modelview.RespErr;
+import com.kidd.base.spring.modelview.RespSucc;
 import com.kidd.base.utils.KiddStringUtils;
 
 /**

@@ -1,4 +1,4 @@
-package com.kidd.base.serialize;
+package com.kidd.base.utils;
 
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;

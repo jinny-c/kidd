@@ -24,8 +24,8 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
 import com.kidd.base.enums.KiddSymbolEnum;
-import com.kidd.base.serialize.KiddObjectTypeUtils;
 import com.kidd.base.serialize.KiddSerialTypeEnum;
+import com.kidd.base.utils.KiddObjectTypeUtils;
 import com.kidd.base.utils.KiddStringUtils;
 
 public class KiddHttpExecutor {

@@ -1,4 +1,4 @@
-package com.kidd.base.fiter;
+package com.kidd.base.servlet.fiter;
 
 import java.io.IOException;
 

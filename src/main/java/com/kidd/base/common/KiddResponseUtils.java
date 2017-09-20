@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kidd.base.http.HttpHeader;
-import com.kidd.base.modelview.KiddModelAndView;
-import com.kidd.base.modelview.RespErr;
 import com.kidd.base.serialize.KiddSerialTypeEnum;
+import com.kidd.base.spring.modelview.KiddModelAndView;
+import com.kidd.base.spring.modelview.RespErr;
 
 /**
  * 维护响应信息

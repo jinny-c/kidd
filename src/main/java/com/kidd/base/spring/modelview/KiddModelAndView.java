@@ -1,4 +1,4 @@
-package com.kidd.base.modelview;
+package com.kidd.base.spring.modelview;
 
 import java.io.Serializable;
 
