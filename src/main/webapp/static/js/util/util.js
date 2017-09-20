@@ -1,18 +1,29 @@
 function validateMobile(mobile) {
 	//获取手机号码 去除空格
-	var m = mobile.value.replace(/\s+/g,""); 
+	if(!mobile){
+		showEorrTips('请输入手机号');
+		return false;
+	}
+	var m = mobile.replace(/\s+/g,"");
 	if(m.length != 11){
-		showEorrTips('请输入完整注册手机号');
-		return;
+		showEorrTips('请输入完整手机号');
+		return false;
 	}else if(!(/^1[3|4|5|7|8]\d{9}$/.test(m))){
 		showEorrTips('请输入正确的手机号');
-		return;
+		return false;
 	}
 	return true;
 }
-function validateMobile(mobile,flag) {
+function validateMobile(mobileObj,flag) {
 	//获取手机号码 去除空格
-	var m = mobile.value.replace(/\s+/g,""); 
+	var mo = mobile.value;
+	if(!mo){
+		if(flag){
+			showEorrTips('请输入手机号');
+		}
+		return false;
+	}
+	var m = mo.replace(/\s+/g,"");
 	if(m.length != 11){
 		if(flag){
 			showEorrTips('请输入完整注册手机号');
@@ -61,7 +72,11 @@ function formatMobile(mobile) {
 
 //用户名称验证
 function validateName(name){
-	if(!/^[a-zA-Z0-9]+$/.test(name.value)){
+	if(!name){
+		showEorrTips('请输入用户名！');
+		return false;
+	}
+	if(!/^[a-zA-Z0-9]+$/.test(name)){
 		showEorrTips('只能由字母、数字组成！');
 		return false;
 	}

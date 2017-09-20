@@ -128,16 +128,19 @@
 		}, 3000);
 	}
 	var _ctx = [[${application.ctx}]];
+	var channel = 'mChannel';
+	var isLock = false;
+	
 	//初始化
 	function init(){
-		var isLock = false;
-		var channel = 'A';
+		isLock = false;
+		channel = 'mChannel';
 	  	$('#b_channel').hide();
 	  	$('#a_channel').show();
 	  	$('#channel_a_img').show();
 	    $('#channel_a').addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
 	    $('#channel_a').addClass('weui-font-color').siblings('.weui-font-color').removeClass('weui-font-color');
-	    setPageTitle('类型A用户');
+	    setPageTitle('类型m用户');
 	  	clearAll();
 	  	randInmageCode();
 	}
@@ -151,14 +154,14 @@
 				$('#b_channel').hide();
 				$('#a_channel').show();
 				$('#channel_a_img').show();
-				channel = 'A';
-				setPageTitle('A类型用户');
+				channel = 'mChannel';
+				setPageTitle('m类型用户');
 		    }else{
 				$('#a_channel').hide();
 				$('#channel_a_img').hide();
 				$('#b_channel').show();
-				channel = 'B';
-				setPageTitle('B类型用户');
+				channel = 'uChannel';
+				setPageTitle('u类型用户');
 		     }
 		});
 	});
@@ -193,41 +196,66 @@
 		var userName = $("#userName").val();
 		var password = $("#password").val();
 		var imageCode = $("#imageCode").val();
-		var m = $("#mobile").val().replace(/\s+/g,"");
+		var mobile = $("#mobile").val().replace(/\s+/g,"");
 		var verifyCode = $("#vali_code").val();
-		if('A'==channel){//A用户
-			}else{//B用户
+		
+		var loginType = "00";
+		
+		if('mChannel'==channel){//m用户
+			loginType = "01";
+			if(!validateMobile(mobile) ){
+				return;
 			}
+			if(!verifyCode){
+				showEorrTips("请填写验证码");
+				return;
+	        }
+		}else{//u用户
+			loginType = "00";
+			if(!validateName(userName) ){
+				return;
+			}
+			if(!password){
+				showEorrTips('请输入密码');
+				return;
+			}
+			if(!imageCode){
+				showEorrTips("请输入图形验证码");
+				return;
+	        }
+		}
 		$('#reg_btn').addClass('deactive');
 	       if(isLock){
 	      		return;
 	      	}
 	      	isLock = true;
 	      	$.ajax({	
-			url:  _ctx+'/user/userLogin.htm',
+			url:  _ctx+'/wap/user/login.htm',
 			method: 'POST',
 			data : {
-					"mobile" : m,
+					"mobile" : mobile,
 					"verifyCode" :verifyCode,
 					"action" :'login',
 					"userName" :userName,//用户名
 	   	            "password" :password,
 		            "imageCode":imageCode,
-		            "channel":channel
+		            "loginType":loginType,
+		            "channel":channel,
+		            "clientChannel":channel
 	  				},
 			dataType: 'json',
 			success: function(data){
 				if(data){
-					var code = data.resCode;
-					var msg = data.resMsg;
-					if('00'==code){
+					var code = data.responseCode;
+					var msg = data.errMessage;
+					if('0000'==code){
 						//验证成功
-						window.location.href =  _ctx+'/user/toSuccess.htm?flag=01';
+						window.location.href =  _ctx+'/wap/user/toSuccess.htm?flag=01';
 					}else{
 						showEorrTips(msg);
 						isLock = false;
 						$('#reg_btn').removeClass('deactive');
-						if('FASTBILL'==channel){//秒秒通用户
+						if('uChannel'==channel){//秒秒通用户
 							randInmageCode();
 						}
 					}

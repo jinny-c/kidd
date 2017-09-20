@@ -53,8 +53,7 @@ public class KiddSpringExceptionResolver extends SimpleMappingExceptionResolver 
 		} else {
 			log.error("捕获Exception", ex);
 		}
-		log.error("TraceID:{}, 返回客户端的错误提示：{}", KiddTraceLogUtil.getTraceId(),
-				errorMsg);
+		log.error("return client result={}",respMsg);
 		
 		if (isAjaxReq(request)) {
 			try {

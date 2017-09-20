@@ -2,6 +2,8 @@ package com.kidd.wap.controller;
 
 import java.security.SecureRandom;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,13 @@ import com.kidd.base.common.KiddBaseController;
 import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.exception.KiddGlobalValidException;
+import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.factory.annotation.KiddSecureAnno;
 import com.kidd.base.factory.asnyc.IAsyncTaskExecutor;
 import com.kidd.base.factory.asnyc.SimpleAsyncTaskExecutor;
 import com.kidd.base.factory.cache.KiddCacheManager;
+import com.kidd.base.http.RequestResponseContext;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
 import com.kidd.wap.controller.dto.UserLoginReq;
@@ -71,14 +75,38 @@ public class KiddWapUserController extends KiddBaseController{
 		
 		return toWapHtml("login");
 	}
+	@RequestMapping(value = "/toSuccess", method = {RequestMethod.GET, RequestMethod.POST})
+	public String toSuccess(Model model) throws KiddControllerException{
+		HttpServletRequest request = RequestResponseContext.getRequest();
+		String flag = request.getParameter("flag");
+		log.info("toSuccess enter,flag={}", flag);
+		model.addAttribute("flag", flag);
+		return toWapHtml("res_success");
+	}
 	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
-	public String login(@KiddSecureAnno UserLoginReq req) throws KiddControllerException{
+	@ResponseBody
+	public Object login(@KiddSecureAnno UserLoginReq req) throws KiddControllerException{
 		log.info("login enter,req={}", req);
-		if(req.isLoginBy00()){
-			req.paramsValid();
+		
+		String code = cacheManager.getCacheConfig(req.getMobile());
+		
+		if(KiddStringUtils.isBlank(code)){
+			throw new KiddControllerException(KiddErrorCodes.E_KIDD_NULL, "未查到验证码，请重新获取！");
 		}
 		
-		return toWapHtml("userInfo");
+		if(req.isLoginBy00()){
+			//用户名
+			if(!code.equals(req.getImageCode())){
+				return toErr(KiddErrorCodes.E_KIDD_ERROR, "图形验证码不匹配，请重新输入");
+			}
+		}
+		if(req.isLoginBy01()){
+			//手机号
+			if(!code.equals(req.getVerifyCode())){
+				return toErr(KiddErrorCodes.E_KIDD_ERROR, "手机验证码不匹配，请重新输入");
+			}
+		}
+		return toSucc();
 	}
 
 	@RequestMapping(value = "/getVerificationCode_{wildcard}", method = {RequestMethod.GET, RequestMethod.POST})
@@ -87,7 +115,7 @@ public class KiddWapUserController extends KiddBaseController{
 		try {
 			log.info("getVerifiCode,req={},wildcard={}", req, wildcard);
 			if (!KiddWapWildcardEnum.isExsit(wildcard)) {
-				return toErr(KiddErrorCodes.E_KIDD_ERROR, "没有定义该请求！");
+				return toErr(KiddErrorCodes.E_KIDD_ERROR, "没有定义的请求！");
 			}
 			SecureRandom random = new SecureRandom();
 			StringBuilder randomCode = new StringBuilder();

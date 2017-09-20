@@ -24,7 +24,8 @@ function getVerficCode() {
 		method : 'POST',
 		data : {
 			"mobile" : "13612341234",
-			"channel" : "channel"
+			"channel" : "channel",
+			"clientChannel" : "clientChannel"
 		},
 		dataType : type,
 		//dataType : 'json',
@@ -47,13 +48,23 @@ function getVerficCode() {
 //构建内容  
 function buildHtml(jsonData){
 	if(jsonData){
-        var tr = [
-            '<tr>',
-              '<td>',jsonData.channel,'</td>',
-              '<td>',jsonData.imageCode,'</td>',
-              '</tr>'  
-        ].join('');
-        $("#gripTablebody").append(tr);
+		if('0000'!=jsonData.responseCode){
+	        var tr = [
+	            '<tr>',
+	              '<td>',jsonData.responseCode,'</td>',
+	              '<td>',jsonData.errMessage,'</td>',
+	              '</tr>'  
+	        ].join('');
+	        $("#gripTablebody").append(tr);
+		}else{
+	        var tr = [
+	            '<tr>',
+	              '<td>',jsonData.channel,'</td>',
+	              '<td>',jsonData.imageCode,'</td>',
+	              '</tr>'  
+	        ].join('');
+	        $("#gripTablebody").append(tr);
+		}
         
         /* var tr = [
             '<tr>',
