@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.kidd.base.http.client.KiddHttpBuilder;
-import com.kidd.base.http.client.KiddHttpExecutor;
+import com.kidd.base.http.httpclient.KiddHttpBuilder;
+import com.kidd.base.http.httpclient.KiddHttpExecutor;
 import com.kidd.base.utils.KiddStringUtils;
 
 

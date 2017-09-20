@@ -1,4 +1,4 @@
-package com.kidd.base.http.client;
+package com.kidd.base.http.httpclient;
 
 import java.io.File;
 import java.io.FileInputStream;

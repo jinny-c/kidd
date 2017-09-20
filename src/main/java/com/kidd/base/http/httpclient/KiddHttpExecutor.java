@@ -1,4 +1,4 @@
-package com.kidd.base.http.client;
+package com.kidd.base.http.httpclient;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
