@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"></meta>
+    <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white"></meta>
+    <title>我的二维码</title>
+    <script th:src="@{/static/js/utf.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/jquery-1.9.1.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/jquery.qrcode.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/jweixin-1.0.0.js}" type="text/javascript"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .page {
+            position: relative;
+            margin: auto;
+            max-width: 640px;
+            min-width: 320px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .spread {
+            width: 100%;
+        }
+
+        #code {
+            margin-top: 1.5em;
+        }
+
+        .tip {
+            font-family: Microsoft YaHei;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 1.5em;
+            overflow: hidden;
+            line-height: 1.5em;
+            color: #000;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--推广码-->
+<div class=" page">
+    <img class="spread" th:src="${banner}"/>
+    <div id="qrcode"></div>
+    <p class="tip"><strong>截图保存推广码，邀请好友</strong></p>
+</div>
+
+
+<!--消息提示 -->
+<div class="js_tooltips"/>
+
+<script th:inline="javascript">
+    //关闭微信头部分享菜单
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        WeixinJSBridge.call('hideOptionMenu');
+        WeixinJSBridge.call('hideToolbar');
+    });
+
+    var width = window.screen.width;
+    width = width - width * 0.3;
+    var qrCodeText = [[${qrCodeText}]];
+    var logo = [[${logo}]];
+    function generateQRCode(rendermethod, picwidth, picheight, url) {
+        $("#qrcode").qrcode({
+            render: rendermethod, // 渲染方式有table方式（IE兼容）和canvas方式
+            width: picwidth, //宽度
+            height: picheight, //高度
+            text: utf16to8(url), //内容
+            typeNumber: -1,//计算模式
+            correctLevel: 2,//二维码纠错级别
+            background: "#ffffff",//二维码的背景色
+            foreground: "#000000",  //二维码的前景色
+            src: logo //二维码中间的图片
+        });
+        $("#qrcode").css("text-align", "center");
+    }
+    generateQRCode("canvas", width, width, qrCodeText);
+
+    function showTips(msg) {
+        $('.js_tooltips').text(msg);
+        $('.js_tooltips').show();
+        $('.weui_toptips').css('background-color', '#1aad19');
+    }
+</script>
+
+</body>
+</html>
