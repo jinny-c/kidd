@@ -9,7 +9,7 @@ public enum KiddWapWildcardEnum {
 	;
 
 	private String key;
-	private String value;
+	private String desc;
 
 	public String getKey() {
 		return key;
@@ -19,17 +19,18 @@ public enum KiddWapWildcardEnum {
 		this.key = key;
 	}
 
-	public String getValue() {
-		return value;
+
+	public String getDesc() {
+		return desc;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
-	KiddWapWildcardEnum(String key, String value) {
+	KiddWapWildcardEnum(String key, String desc) {
 		this.key = key;
-		this.value = value;
+		this.desc = desc;
 	}
 	
 	public static boolean isExsit(String key) {

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,11 +50,11 @@ public class KiddWapUserController extends KiddBaseController{
     
 	@Autowired
 	private KiddCacheManager cacheManager;
-	
 	/** 异步线程 **/
 	private IAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor();
-    
-
+	@Value("${local.url}")
+	private String url;
+	
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() throws KiddControllerException{
 		log.info("index enter");
@@ -72,6 +73,7 @@ public class KiddWapUserController extends KiddBaseController{
 	@RequestMapping(value = "/toLogin", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toLogin() throws KiddControllerException{
 		log.info("toLogin enter");
+		log.info("local.url={}", url);
 		
 		return toWapHtml("login");
 	}
@@ -169,6 +171,7 @@ public class KiddWapUserController extends KiddBaseController{
 					} catch (Exception e) {
 						log.error("asynchronous exception", e);
 					}
+					KiddTraceLogUtil.endTrace();
 					return null;
 				}
 			});
