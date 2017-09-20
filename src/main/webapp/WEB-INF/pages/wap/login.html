@@ -55,8 +55,8 @@
 			<div class="weui_cell">
 				<div class="weui_cell_bd weui_cell_primary">
 					<input id="mobile" name="mobile" class="weui_input" pattern="[0-9]*" 
-						onkeypress="formatMobile(this);removeDisbled(validateMobile(this));" onkeyup="formatMobile(this)" onkeydown="formatMobile(this)"
-						onblur="removeDisbled(validateMobile(this));" 
+						onkeypress="formatMobile(this);removeDisbled(validateMobile(this,false));" onkeyup="formatMobile(this)" onkeydown="formatMobile(this)"
+						onblur="removeDisbled(validateMobile(this,true));" 
 						type="tel" placeholder="请输入手机号"></input>
 				</div>
 				<div class="weui_cell_ft">

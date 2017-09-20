@@ -133,7 +133,6 @@ public class KiddSpringWebArgumentResolver implements
 				// 数据解密
 				// TODO
 				if (kiddSecureProcessor.isDecr(filed) && null != arg) {
-					//logger.info(JiddStringUtils.replace("jiddSecureProcessor decrypt field=[{}]",filed.getName()));
 					logger.info("jiddSecureProcessor decrypt field=[{}],value=[{}]",filed.getName(),String.valueOf(arg));
 					arg = kiddSecureProcessor.decrypt("key", String.valueOf(arg), null, null);
 				}

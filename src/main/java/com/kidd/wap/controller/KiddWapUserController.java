@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kidd.base.common.KiddBaseController;
+import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.exception.KiddGlobalValidException;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
@@ -23,6 +24,7 @@ import com.kidd.base.factory.cache.KiddCacheManager;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
 import com.kidd.wap.controller.dto.UserLoginReq;
+import com.kidd.wap.controller.enums.KiddWapWildcardEnum;
 
 
 /**
@@ -79,34 +81,42 @@ public class KiddWapUserController extends KiddBaseController{
 		return toWapHtml("userInfo");
 	}
 
-	@RequestMapping(value = "/getVerificationCode_{flag}", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/getVerificationCode_{wildcard}", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Object getVerifiCode(@KiddSecureAnno GetValidateCodeReq req,@PathVariable String flag){
+	public Object getVerifiCode(@KiddSecureAnno GetValidateCodeReq req,@PathVariable String wildcard){
 		try {
-			log.info("getVerifiCode,req={},flag={}", req, flag);
-			if (!"wap".equals(flag)) {
-				//return toErr("error", "message");
+			log.info("getVerifiCode,req={},wildcard={}", req, wildcard);
+			if (!KiddWapWildcardEnum.isExsit(wildcard)) {
+				return toErr(KiddErrorCodes.E_KIDD_ERROR, "没有定义该请求！");
 			}
 			SecureRandom random = new SecureRandom();
 			StringBuilder randomCode = new StringBuilder();
-			for (int i = 0; i < CODE_COUNT; i++) {
-				String strRand = String.valueOf(CODE_SEQUENCE[random
-						.nextInt(CODE_SEQUENCE.length)]);
-				randomCode.append(strRand);
-			}
-			
 			GetValidateCodeResp resp = new GetValidateCodeResp();
 			resp.setChannel(req.getChannel());
-			resp.setImageCode(randomCode.toString());
-			
-			//String wap = cacheManager.getCacheConfig("0_wap");
-			//log.info("getCacheConfig,val={},", wap);
-			
+
+			if (KiddWapWildcardEnum.isImageCode(wildcard)) {
+				String strRand = null;
+				for (int i = 0; i < CODE_COUNT; i++) {
+					strRand = String.valueOf(CODE_SEQUENCE[random
+							.nextInt(CODE_SEQUENCE.length)]);
+					randomCode.append(strRand);
+				}
+				resp.setImageCode(randomCode.toString());
+			}
+
+			if (KiddWapWildcardEnum.isVerifyCode(wildcard)) {
+				int rd = random.nextInt(9999 - 1000 + 1) + 1000;
+				randomCode.append(String.valueOf(rd));
+			}
+
+			// String wap = cacheManager.getCacheConfig("0_wap");
+			// log.info("getCacheConfig,val={},", wap);
+
 			cacheManager.setCacheConfig(req.getMobile(), randomCode.toString());
-			
-			//String view = cacheManager.getCacheConfig("view");
-			//log.info("getCacheConfig,val={},", view);
-			
+
+			// String view = cacheManager.getCacheConfig("view");
+			// log.info("getCacheConfig,val={},", view);
+
 			return toData(resp);
 		} catch (Exception e) {
 			log.error("getVerifiCode exception:{}", e);

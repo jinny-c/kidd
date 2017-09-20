@@ -10,6 +10,22 @@ function validateMobile(mobile) {
 	}
 	return true;
 }
+function validateMobile(mobile,flag) {
+	//获取手机号码 去除空格
+	var m = mobile.value.replace(/\s+/g,""); 
+	if(m.length != 11){
+		if(flag){
+			showEorrTips('请输入完整注册手机号');
+		}
+		return false;
+	}else if(!(/^1[3|4|5|7|8]\d{9}$/.test(m))){
+		if(flag){
+			showEorrTips('请输入正确的手机号');
+		}
+		return false;
+	}
+	return true;
+}
 
 // 电话号码格式化 (136 1234 1234)
 function formatMobile(mobile) {

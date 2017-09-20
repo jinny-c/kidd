@@ -120,7 +120,7 @@ public class KiddSecureProcessor implements Serializable {
 	}
 	private String decryptDes(String key, String data)
 			throws KiddControllerException {
-		return KiddStringUtils.join("decryptDes_",data);
+		return KiddStringUtils.join("dec_",data);
 		/*data = KiddStringUtils.trimStr(new SecureManager().Des(data, 0,
 				key));
 		return data;*/
