@@ -1,4 +1,4 @@
-package com.kidd.base.redefine;
+package com.kidd.base.spring.redefine;
 
 import java.util.HashMap;
 import java.util.Map;

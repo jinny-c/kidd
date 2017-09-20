@@ -23,5 +23,8 @@ public class KiddConstants {
 	 * HTTP ContentType 取值 - 文本
 	 */
 	static final String CONTENT_TYPE_TEXT = "text/plain; charset=UTF-8";
-	
+	/**
+	 * HTTP ContentType 取值 - 二进制
+	 */
+	public static String CONTENT_TYPE_BINARY = "application/octet-stream";
 }

@@ -1,4 +1,4 @@
-package com.kidd.base.redefine;
+package com.kidd.base.spring.redefine;
 
 import java.beans.PropertyDescriptor;
 import java.io.IOException;

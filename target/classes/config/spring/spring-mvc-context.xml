@@ -24,17 +24,17 @@
 	<mvc:annotation-driven>
 		<!-- RequestMappingHandlerAdapter.customArgumentResolvers -->
 		<mvc:argument-resolvers>
-			<bean class="com.kidd.base.redefine.KiddSpringWebArgumentResolver" />
+			<bean class="com.kidd.base.spring.redefine.KiddSpringWebArgumentResolver" />
 		</mvc:argument-resolvers>
 		<!-- AnnotationDrivenBeanDefinitionParser默认加载StringHttpMessageConverter、MappingJacksonHttpMessageConverter等， 
 			RequestMappingHandlerAdapter.messageConverters -->
 		<mvc:message-converters>
-			<bean class="com.kidd.base.redefine.KiddObjHttpMsgConvert" />
+			<bean class="com.kidd.base.spring.redefine.KiddObjHttpMsgConvert" />
 		</mvc:message-converters>
 	</mvc:annotation-driven>
     
      <!-- configure SimpleMappingExceptionResolver -->
-	<bean class="com.kidd.base.redefine.KiddSpringExceptionResolver">
+	<bean class="com.kidd.base.spring.redefine.KiddSpringExceptionResolver">
 		<!-- 指定所有没有指定的异常,都跳转到该页面 -->
         <property name="defaultErrorView" value="tips" />
         <!-- 跳转时携带异常对象 -->
