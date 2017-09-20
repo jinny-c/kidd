@@ -17,10 +17,10 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 
 import com.kidd.base.annotation.proc.KiddSecureProcessor;
+import com.kidd.base.common.exception.KiddGlobalValidException;
 import com.kidd.base.common.serialize.KiddSerialTypeEnum;
 import com.kidd.base.common.utils.KiddObjectTypeUtils;
 import com.kidd.base.common.utils.KiddStringUtils;
-import com.kidd.base.exception.KiddGlobalValidException;
 import com.kidd.base.http.RequestResponseContext;
 import com.kidd.base.spring.modelview.KiddModelAndView;
 

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 import com.kidd.base.annotation.KiddDecrAnno;
 import com.kidd.base.annotation.KiddEncrAnno;
 import com.kidd.base.annotation.KiddSecureAnno;
+import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.utils.KiddStringUtils;
-import com.kidd.base.exception.KiddControllerException;
 /**
  * 处理器
  * 

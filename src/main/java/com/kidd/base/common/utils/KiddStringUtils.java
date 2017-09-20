@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.kidd.base.enums.KiddSymbolEnum;
+import com.kidd.base.common.enums.KiddSymbolEnum;
 
 public class KiddStringUtils {
 

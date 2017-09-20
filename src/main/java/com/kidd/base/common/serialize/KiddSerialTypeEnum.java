@@ -1,7 +1,7 @@
 package com.kidd.base.common.serialize;
 
+import com.kidd.base.common.enums.KiddSymbolEnum;
 import com.kidd.base.common.utils.KiddStringUtils;
-import com.kidd.base.enums.KiddSymbolEnum;
 
 
 public enum KiddSerialTypeEnum {

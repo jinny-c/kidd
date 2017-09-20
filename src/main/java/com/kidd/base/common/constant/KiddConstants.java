@@ -1,4 +1,4 @@
-package com.kidd.base.common;
+package com.kidd.base.common.constant;
 
 public class KiddConstants {
 	public static final String MSG_TYPE_TEXT = "text";
@@ -18,13 +18,13 @@ public class KiddConstants {
 	/**
 	 * 通讯编码，默认:UTF-8
 	 */
-	static final String CHARSET_DEF = "UTF-8";
+	public final static String CHARSET_DEF = "UTF-8";
 	/**
 	 * HTTP ContentType 取值 - 文本
 	 */
-	static final String CONTENT_TYPE_TEXT = "text/plain; charset=UTF-8";
+	public final static String CONTENT_TYPE_TEXT = "text/plain; charset=UTF-8";
 	/**
 	 * HTTP ContentType 取值 - 二进制
 	 */
-	public static String CONTENT_TYPE_BINARY = "application/octet-stream";
+	public final static String CONTENT_TYPE_BINARY = "application/octet-stream";
 }

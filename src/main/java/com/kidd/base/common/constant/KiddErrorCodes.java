@@ -1,4 +1,4 @@
-package com.kidd.base.common;
+package com.kidd.base.common.constant;
 
 public class KiddErrorCodes {
 

@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import com.kidd.base.exception.KiddGlobalValidException;
+import com.kidd.base.common.exception.KiddGlobalValidException;
 
 /**
  * <a href="SimpleAsyncTaskExecutor.java.html"><b><i>View Source</i></b></a>

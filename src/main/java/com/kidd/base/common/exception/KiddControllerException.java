@@ -1,4 +1,4 @@
-package com.kidd.base.exception;
+package com.kidd.base.common.exception;
 
 public class KiddControllerException extends KiddGlobalValidException {
 	

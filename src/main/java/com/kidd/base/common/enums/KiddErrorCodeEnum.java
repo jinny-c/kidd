@@ -1,4 +1,4 @@
-package com.kidd.base.enums;
+package com.kidd.base.common.enums;
 
 
 public enum KiddErrorCodeEnum {

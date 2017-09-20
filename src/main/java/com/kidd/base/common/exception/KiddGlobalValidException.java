@@ -1,5 +1,5 @@
 
-package com.kidd.base.exception;
+package com.kidd.base.common.exception;
 
 public class KiddGlobalValidException extends Exception {
 	private static final long serialVersionUID = 1L;

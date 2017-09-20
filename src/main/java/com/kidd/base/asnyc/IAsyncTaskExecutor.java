@@ -2,7 +2,7 @@ package com.kidd.base.asnyc;
 
 import java.util.concurrent.Future;
 
-import com.kidd.base.exception.KiddGlobalValidException;
+import com.kidd.base.common.exception.KiddGlobalValidException;
 
 /**
  * <a href="IAsyncTaskExecutor.java.html"><b><i>View Source</i></b></a>

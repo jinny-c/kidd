@@ -6,7 +6,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kidd.base.common.KiddConstants;
+import com.kidd.base.common.constant.KiddConstants;
 import com.kidd.base.common.serialize.KiddSerialTypeEnum;
 import com.kidd.base.http.HttpHeader;
 import com.kidd.base.spring.modelview.KiddModelAndView;

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.kidd.base.common.KiddErrorCodes;
+import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.params.valid.KiddNotBlankValidator;
 
 /**

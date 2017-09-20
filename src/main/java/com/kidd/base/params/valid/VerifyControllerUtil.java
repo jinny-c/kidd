@@ -12,9 +12,9 @@ import javax.validation.ValidatorFactory;
 import org.apache.log4j.Logger;
 
 import com.kidd.base.common.KiddBaseReqDto;
-import com.kidd.base.common.KiddErrorCodes;
+import com.kidd.base.common.constant.KiddErrorCodes;
+import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.utils.KiddStringUtils;
-import com.kidd.base.exception.KiddControllerException;
 
 /**
  * 验证Controller层DTO工具类
