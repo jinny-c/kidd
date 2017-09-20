@@ -6,12 +6,12 @@
 
 	<listener>
 		<display-name>InitParamListener</display-name>
-		<listener-class>com.kidd.base.listener.ContextListener</listener-class>
+		<listener-class>com.kidd.base.servlet.listener.ContextListener</listener-class>
 	</listener>
    
 	<filter>
 		<filter-name>initFilter</filter-name>
-		<filter-class>com.kidd.base.fiter.InitFilter</filter-class>
+		<filter-class>com.kidd.base.servlet.fiter.InitFilter</filter-class>
 		<init-param>
 			<param-name>traffic.maxToken</param-name>
 			<param-value>5</param-value>
@@ -20,6 +20,10 @@
 	<filter-mapping>
 		<filter-name>initFilter</filter-name>
 		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>initFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
    
    <servlet>
@@ -35,6 +39,15 @@
        <servlet-name>springmvc</servlet-name>
        <url-pattern>*.htm</url-pattern>
    </servlet-mapping>
+   <servlet-mapping>
+       <servlet-name>springmvc</servlet-name>
+       <url-pattern>*.do</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+       <servlet-name>springmvc</servlet-name>
+       <url-pattern>*.action</url-pattern>
+   </servlet-mapping>
+   
    <welcome-file-list>
        <welcome-file>/WEB-INF/pages/index.jsp</welcome-file>
    </welcome-file-list>

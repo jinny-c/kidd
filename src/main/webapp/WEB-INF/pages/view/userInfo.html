@@ -47,34 +47,29 @@
 </head>
 <body>
 <div class="weui_msg">
-    <div class="weui_icon_area" th:if="${flag eq '01'}">
+    <div class="weui_icon_area" >
         <img class="statu success" th:src="@{/static/images/succ_green.png}"/>
-        <span class="pay_msg">登录成功！</span>
-    </div>
-    <div class="weui_icon_area" th:if="${flag eq '02'}">
-        <img class="statu success" th:src="@{/static/images/success.png}"/>
-        <span class="pay_msg">申请成功！</span>
+        <span class="pay_msg">进入页面成功！</span>
     </div>
 </div>
 
-<div th:if="${flag eq '01'}">
+<div th:if="${'01' eq flag}">
     <div class="preview_item">
-        <label class="preview_label">恭喜您可以进行其他操作。</label>
+        <label class="preview_label">恭喜您可以通过公众号立即发起无卡交易。</label>
     </div>
 </div>
 
-<div th:if="${flag eq '02'}">
     <div class="preview_item">
-        <label class="preview_label">您的申请已受理，我们将会在三个工作日内与您联系，请保持手机畅通。</label>
+        <label class="preview_label">恭喜您，流程走的通。</label>
     </div>
-</div>
 
 <br/>
 <br/>
 <br/>
 	<div class="weui_btn_area">
-		<a id="reg_btn" href="#" class="weui_btn blue_btn"
-			onclick="closseAndBack()">返回主界面</a>
+		<a id="reg_btn" href="#" class="weui_btn blue_btn" onclick="closseAndBack()">返回主界面</a>
+		<a id="reg_btn" href="#" class="weui_btn blue_btn" onclick=" window.history.go(-1);">返回go</a>
+		<a id="reg_btn" href="#" class="weui_btn blue_btn" onclick=" window.history.back(-1);">返回back</a>
 	</div>
 
 <script type="text/javascript">
@@ -82,18 +77,6 @@
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         WeixinJSBridge.call('hideOptionMenu');
         WeixinJSBridge.call('hideToolbar');
-    });
-
-    //禁用返回按钮
-    $(function(){
-        var state = {
-            title: "title",
-            url: "#"
-        };
-        window.history.pushState(state, "title", "#");
-        window.addEventListener('popstate', function(e){
-            window.history.forward(1);
-        }, false);
     });
 
 	function closseAndBack(){

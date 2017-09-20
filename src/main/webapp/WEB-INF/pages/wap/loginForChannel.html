@@ -39,15 +39,15 @@
 </head>
 <body>
 	<div class="weui-navbar">
-		<div class="weui-navbar__item" id="channel_a">手机号登录</div>
-		<div class="weui-navbar__item" id="channel_b">用户名登录</div>
+		<div class="weui-navbar__item" id="channel_a">A类型登录</div>
+		<div class="weui-navbar__item" id="channel_b">B类型登录</div>
 	</div>
 	<div class="weui-tab__panel">
 		<br />
 		<div id="channel_a_img" class="page__bd page__bd_spacing">
 			<div class="weui-footer">
 				<div class="icon-box">
-					<img src="../../static/images/user.png"></img>
+					<img src="../static/images/user.png"></img>
 				</div>
 			</div>
 		</div>
@@ -55,8 +55,8 @@
 			<div class="weui_cell">
 				<div class="weui_cell_bd weui_cell_primary">
 					<input id="mobile" name="mobile" class="weui_input" pattern="[0-9]*" 
-						onkeypress="formatMobile(this);removeDisbled(validateMobile(this,false));" onkeyup="formatMobile(this)" onkeydown="formatMobile(this)"
-						onblur="removeDisbled(validateMobile(this,true));" 
+						onkeypress="formatMobile(this);removeDisbled(validateMobile(this));" onkeyup="formatMobile(this)" onkeydown="formatMobile(this)"
+						onblur="removeDisbled(validateMobile(this));" 
 						type="tel" placeholder="请输入手机号"></input>
 				</div>
 				<div class="weui_cell_ft">
@@ -128,19 +128,16 @@
 		}, 3000);
 	}
 	var _ctx = [[${application.ctx}]];
-	var channel = 'mChannel';
-	var isLock = false;
-	
 	//初始化
 	function init(){
-		isLock = false;
-		channel = 'mChannel';
+		var isLock = false;
+		var channel = 'A';
 	  	$('#b_channel').hide();
 	  	$('#a_channel').show();
 	  	$('#channel_a_img').show();
 	    $('#channel_a').addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
 	    $('#channel_a').addClass('weui-font-color').siblings('.weui-font-color').removeClass('weui-font-color');
-	    setPageTitle('类型m用户');
+	    setPageTitle('类型A用户');
 	  	clearAll();
 	  	randInmageCode();
 	}
@@ -154,14 +151,14 @@
 				$('#b_channel').hide();
 				$('#a_channel').show();
 				$('#channel_a_img').show();
-				channel = 'mChannel';
-				setPageTitle('m类型用户');
+				channel = 'A';
+				setPageTitle('A类型用户');
 		    }else{
 				$('#a_channel').hide();
 				$('#channel_a_img').hide();
 				$('#b_channel').show();
-				channel = 'uChannel';
-				setPageTitle('u类型用户');
+				channel = 'B';
+				setPageTitle('B类型用户');
 		     }
 		});
 	});
@@ -181,7 +178,7 @@
 	}
 	function removeDisbled(){
 		//判断电话号码，解禁获取验证码按钮
-		if( _seconds <=0){
+		if(flag && _seconds <=0){
 	    	$("#getCode").removeAttr("disabled");
 	    	$("#getCode").removeClass('deactive');
 		}
@@ -196,66 +193,41 @@
 		var userName = $("#userName").val();
 		var password = $("#password").val();
 		var imageCode = $("#imageCode").val();
-		var mobile = $("#mobile").val().replace(/\s+/g,"");
+		var m = $("#mobile").val().replace(/\s+/g,"");
 		var verifyCode = $("#vali_code").val();
-		
-		var loginType = "00";
-		
-		if('mChannel'==channel){//m用户
-			loginType = "01";
-			if(!validateMobile(mobile) ){
-				return;
+		if('A'==channel){//A用户
+			}else{//B用户
 			}
-			if(!verifyCode){
-				showEorrTips("请填写验证码");
-				return;
-	        }
-		}else{//u用户
-			loginType = "00";
-			if(!validateName(userName) ){
-				return;
-			}
-			if(!password){
-				showEorrTips('请输入密码');
-				return;
-			}
-			if(!imageCode){
-				showEorrTips("请输入图形验证码");
-				return;
-	        }
-		}
 		$('#reg_btn').addClass('deactive');
 	       if(isLock){
 	      		return;
 	      	}
 	      	isLock = true;
 	      	$.ajax({	
-			url:  _ctx+'/wap/user/login.htm',
+			url:  _ctx+'/user/userLogin.htm',
 			method: 'POST',
 			data : {
-					"mobile" : mobile,
+					"mobile" : m,
 					"verifyCode" :verifyCode,
 					"action" :'login',
 					"userName" :userName,//用户名
 	   	            "password" :password,
 		            "imageCode":imageCode,
-		            "loginType":loginType,
-		            "channel":channel,
-		            "clientChannel":channel
+		            "channel":channel
 	  				},
 			dataType: 'json',
 			success: function(data){
 				if(data){
-					var code = data.responseCode;
-					var msg = data.errMessage;
-					if('0000'==code){
+					var code = data.resCode;
+					var msg = data.resMsg;
+					if('00'==code){
 						//验证成功
-						window.location.href =  _ctx+'/wap/user/toSuccess.htm?flag=01';
+						window.location.href =  _ctx+'/user/toSuccess.htm?flag=01';
 					}else{
 						showEorrTips(msg);
 						isLock = false;
 						$('#reg_btn').removeClass('deactive');
-						if('uChannel'==channel){//秒秒通用户
+						if('FASTBILL'==channel){//秒秒通用户
 							randInmageCode();
 						}
 					}
@@ -278,46 +250,32 @@
 		_interval._remaining(_target);
 		
 		 $.ajax({	
-		 	url:  _ctx+'/wap/user/getVerificationCode_verifyCode.htm',
-		 	method: 'POST',
+		 	url:  _ctx+'/user/getMobileVerifiCode.htm?mobile=mobile&action=login',
+		 	method: 'GET',
 		 	dataType: 'text',
-		 	data : {
-				"mobile" : "13612341234",
-				"channel" : "channel",
-				"clientChannel" : "clientChannel"
-			},
 		 	success: function(data){
-				var dataObj=eval("("+data+")");
-				if(dataObj){
-					if('0000'!=dataObj.responseCode){
-						if(dataObj.errMessage){
-							showEorrTips(dataObj.errMessage);
-						}
-					}
-				}else{
-					showEorrTips("验证码暂时无法发送，请稍后再试");
-				}
-		 		
+		 		if(data == '01'){
+		 			showEorrTips("验证码暂时无法发送，请稍后再试");
+		 		} else if (data == 'U052') {
+	                   showEorrTips("未查到相关用户");
+	                   //_clearInterval();
+	               } else if(data != '00'){
+		 			showEorrTips(decodeURIComponent(data));
+		 		}
 		 	}
 		 });
 	}
 	/*生成4位随机数*/
 	 function randInmageCode(){
 		 $.ajax({
-			 	url:  _ctx+'/wap/user/getVerificationCode_imageCode.htm',
+			 	url:  _ctx+'/user/getVerifiCode.htm',
 			 	method: 'GET',
-			 	dataType: 'json',
-				data : {
-					"mobile" : "13612341234",
-					"channel" : "channel",
-					"clientChannel" : "clientChannel"
-				},
+			 	dataType: 'text',
 			 	success: function(data){
-			 		if(data.errMessage){
-			 			showEorrTips("获取图形验证码失败，请稍后再试："+data.errMessage);
-			 		}else{
-			 			initCanvas(data.imageCode,$("#mycanvas"),randInmageCode);
+			 		if(data == '01'){
+			 			showEorrTips("获取图形验证码失败，请稍后再试");
 			 		}
+			 		initCanvas(data,$("#mycanvas"),randInmageCode);
 			 	}
 			 });
 	 }			
