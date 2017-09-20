@@ -1,4 +1,4 @@
-package com.kidd.base.cache;
+package com.kidd.base.factory.cache;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -7,8 +7,8 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kidd.base.cache.service.IKiddRefreshService;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
+import com.kidd.base.factory.cache.service.IKiddRefreshService;
 
 /**
  * 管理无卡支付微信公众平台的API调用凭证 【区别网页授权凭证】

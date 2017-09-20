@@ -1,4 +1,4 @@
-package com.kidd.base.cache.service;
+package com.kidd.base.factory.cache.service;
 
 
 /**

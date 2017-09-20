@@ -2,15 +2,15 @@ package com.kidd.wap.controller.dto;
 
 import java.io.Serializable;
 
-import com.kidd.base.annotation.KiddDecrAnno;
-import com.kidd.base.annotation.KiddNotBlank;
-import com.kidd.base.annotation.KiddSecureAnno;
 import com.kidd.base.common.KiddBaseReqDto;
 import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.common.enums.KiddSymbolEnum;
+import com.kidd.base.common.params.valid.KiddValidResp;
 import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.common.utils.ToStringUtils;
-import com.kidd.base.params.valid.KiddValidResp;
+import com.kidd.base.factory.annotation.KiddDecrAnno;
+import com.kidd.base.factory.annotation.KiddNotBlank;
+import com.kidd.base.factory.annotation.KiddSecureAnno;
 
 @KiddSecureAnno
 public class GetValidateCodeReq extends KiddBaseReqDto implements Serializable {

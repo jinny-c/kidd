@@ -1,4 +1,4 @@
-package com.kidd.base.cache;
+package com.kidd.base.factory.cache;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,8 +11,8 @@ import org.springframework.context.event.ApplicationContextEvent;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 
-import com.kidd.base.cache.service.IKiddRefreshService;
 import com.kidd.base.common.utils.KiddStringUtils;
+import com.kidd.base.factory.cache.service.IKiddRefreshService;
 
 /**
  * SpringContext监听器

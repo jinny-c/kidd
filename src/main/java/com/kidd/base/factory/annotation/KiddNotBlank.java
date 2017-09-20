@@ -1,4 +1,4 @@
-package com.kidd.base.annotation;
+package com.kidd.base.factory.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,7 +9,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 import com.kidd.base.common.constant.KiddErrorCodes;
-import com.kidd.base.params.valid.KiddNotBlankValidator;
+import com.kidd.base.common.params.valid.KiddNotBlankValidator;
 
 /**
  * 非空校验

@@ -1,10 +1,10 @@
-package com.kidd.base.params.valid;
+package com.kidd.base.common.params.valid;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.kidd.base.annotation.KiddNotBlank;
 import com.kidd.base.common.utils.KiddStringUtils;
+import com.kidd.base.factory.annotation.KiddNotBlank;
 
 /**
  * JiddNotBlankValidator.java

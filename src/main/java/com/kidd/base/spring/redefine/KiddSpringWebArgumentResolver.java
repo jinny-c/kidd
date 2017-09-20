@@ -15,12 +15,12 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import com.kidd.base.annotation.KiddSecureAnno;
-import com.kidd.base.annotation.proc.KiddSecureProcessor;
 import com.kidd.base.common.KiddBaseReqDto;
 import com.kidd.base.common.exception.KiddGlobalValidException;
-import com.kidd.base.params.valid.KiddValidResp;
-import com.kidd.base.params.valid.VerifyControllerUtil;
+import com.kidd.base.common.params.valid.KiddValidResp;
+import com.kidd.base.common.params.valid.VerifyControllerUtil;
+import com.kidd.base.factory.annotation.KiddSecureAnno;
+import com.kidd.base.factory.annotation.proc.KiddSecureProcessor;
 
 /**
  * web参数处理类

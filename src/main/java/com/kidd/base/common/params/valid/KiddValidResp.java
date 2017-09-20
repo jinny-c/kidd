@@ -1,4 +1,4 @@
-package com.kidd.base.params.valid;
+package com.kidd.base.common.params.valid;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.kidd.base.cache;
+package com.kidd.base.factory.cache;
 
 import java.util.HashMap;
 import java.util.Map;

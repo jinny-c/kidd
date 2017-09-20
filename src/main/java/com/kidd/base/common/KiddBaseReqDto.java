@@ -1,8 +1,8 @@
 package com.kidd.base.common;
 
 import com.kidd.base.common.exception.KiddControllerException;
-import com.kidd.base.params.valid.KiddValidResp;
-import com.kidd.base.params.valid.VerifyControllerUtil;
+import com.kidd.base.common.params.valid.KiddValidResp;
+import com.kidd.base.common.params.valid.VerifyControllerUtil;
 
 /**
  * 请求参数验证类

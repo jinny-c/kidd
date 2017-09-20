@@ -1,4 +1,4 @@
-package com.kidd.base.asnyc;
+package com.kidd.base.factory.asnyc;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

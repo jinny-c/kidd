@@ -1,10 +1,10 @@
-package com.kidd.base.cache.service.impl;
+package com.kidd.base.factory.cache.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.kidd.base.cache.service.IKiddRefreshService;
+import com.kidd.base.factory.cache.service.IKiddRefreshService;
 
 @Service(value = "kiddRefreshService")
 public class KiddRefreshServiceImpl implements IKiddRefreshService {

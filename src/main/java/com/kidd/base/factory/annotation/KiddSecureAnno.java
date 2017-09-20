@@ -1,4 +1,4 @@
-package com.kidd.base.annotation;
+package com.kidd.base.factory.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

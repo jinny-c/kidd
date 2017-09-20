@@ -2,10 +2,10 @@ package com.kidd.wap.controller.dto;
 
 import java.io.Serializable;
 
-import com.kidd.base.annotation.KiddEncrAnno;
-import com.kidd.base.annotation.KiddSecureAnno;
 import com.kidd.base.common.KiddBaseRespDto;
 import com.kidd.base.common.utils.ToStringUtils;
+import com.kidd.base.factory.annotation.KiddEncrAnno;
+import com.kidd.base.factory.annotation.KiddSecureAnno;
 
 @KiddSecureAnno
 public class GetValidateCodeResp extends KiddBaseRespDto implements Serializable {

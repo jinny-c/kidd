@@ -1,4 +1,4 @@
-package com.kidd.base.annotation.proc;
+package com.kidd.base.factory.annotation.proc;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -8,11 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 
-import com.kidd.base.annotation.KiddDecrAnno;
-import com.kidd.base.annotation.KiddEncrAnno;
-import com.kidd.base.annotation.KiddSecureAnno;
 import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.utils.KiddStringUtils;
+import com.kidd.base.factory.annotation.KiddDecrAnno;
+import com.kidd.base.factory.annotation.KiddEncrAnno;
+import com.kidd.base.factory.annotation.KiddSecureAnno;
 /**
  * 处理器
  * 
