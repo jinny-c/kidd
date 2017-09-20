@@ -169,6 +169,7 @@ public class KiddWapUserController extends KiddBaseController{
 					} catch (Exception e) {
 						log.error("asynchronous exception", e);
 					}
+					KiddTraceLogUtil.endTrace();
 					return null;
 				}
 			});
