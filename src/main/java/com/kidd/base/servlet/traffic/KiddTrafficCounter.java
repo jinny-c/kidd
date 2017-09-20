@@ -1,4 +1,4 @@
-package com.kidd.base.traffic;
+package com.kidd.base.servlet.traffic;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

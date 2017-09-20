@@ -4,7 +4,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import com.kidd.base.annotation.KiddNotBlank;
-import com.kidd.base.utils.KiddStringUtils;
+import com.kidd.base.common.utils.KiddStringUtils;
 
 /**
  * JiddNotBlankValidator.java

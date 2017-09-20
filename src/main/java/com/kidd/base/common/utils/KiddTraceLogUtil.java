@@ -1,4 +1,4 @@
-package com.kidd.base.utils;
+package com.kidd.base.common.utils;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.MDC;

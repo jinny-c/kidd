@@ -2,7 +2,7 @@ package com.kidd.base.spring.modelview;
 
 import java.io.Serializable;
 
-import com.kidd.base.serialize.KiddSerialTypeEnum;
+import com.kidd.base.common.serialize.KiddSerialTypeEnum;
 
 
 public class KiddModelAndView<T> implements Serializable {

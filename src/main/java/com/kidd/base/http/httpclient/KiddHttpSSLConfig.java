@@ -13,7 +13,7 @@ import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.Args;
 
-import com.kidd.base.utils.KiddStringUtils;
+import com.kidd.base.common.utils.KiddStringUtils;
 class KiddHttpSSLConfig {
 
 	/**

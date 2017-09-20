@@ -1,8 +1,8 @@
-package com.kidd.base;
+package com.kidd.base.common;
 
 import java.io.Serializable;
 
-import com.kidd.base.utils.ToStringUtils;
+import com.kidd.base.common.utils.ToStringUtils;
 
 /**
  * 请求结果类

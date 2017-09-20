@@ -3,8 +3,8 @@ package com.kidd.base.http;
 
 import java.io.Serializable;
 
-import com.kidd.base.serialize.KiddSerialTypeEnum;
-import com.kidd.base.utils.ToStringUtils;
+import com.kidd.base.common.serialize.KiddSerialTypeEnum;
+import com.kidd.base.common.utils.ToStringUtils;
 
 public class HttpHeader implements Serializable {
 

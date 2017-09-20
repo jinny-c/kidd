@@ -2,15 +2,15 @@ package com.kidd.wap.controller.dto;
 
 import java.io.Serializable;
 
-import com.kidd.base.KiddBaseReqDto;
 import com.kidd.base.annotation.KiddDecrAnno;
 import com.kidd.base.annotation.KiddNotBlank;
 import com.kidd.base.annotation.KiddSecureAnno;
+import com.kidd.base.common.KiddBaseReqDto;
 import com.kidd.base.common.KiddErrorCodes;
+import com.kidd.base.common.utils.KiddStringUtils;
+import com.kidd.base.common.utils.ToStringUtils;
 import com.kidd.base.enums.KiddSymbolEnum;
 import com.kidd.base.params.valid.KiddValidResp;
-import com.kidd.base.utils.KiddStringUtils;
-import com.kidd.base.utils.ToStringUtils;
 
 @KiddSecureAnno
 public class UserLoginReq  extends KiddBaseReqDto implements Serializable {

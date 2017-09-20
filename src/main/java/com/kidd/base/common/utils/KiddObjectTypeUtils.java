@@ -1,4 +1,4 @@
-package com.kidd.base.utils;
+package com.kidd.base.common.utils;
 
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;

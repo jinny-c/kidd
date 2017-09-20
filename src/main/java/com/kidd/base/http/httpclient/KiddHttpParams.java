@@ -2,7 +2,7 @@ package com.kidd.base.http.httpclient;
 
 import java.nio.charset.Charset;
 
-import com.kidd.base.utils.KiddStringUtils;
+import com.kidd.base.common.utils.KiddStringUtils;
 
 class KiddHttpParams {
 	/** 通讯URL **/

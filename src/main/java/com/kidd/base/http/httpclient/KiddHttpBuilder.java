@@ -8,7 +8,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.Args;
 
-import com.kidd.base.utils.KiddStringUtils;
+import com.kidd.base.common.utils.KiddStringUtils;
 
 public class KiddHttpBuilder {
 	private KiddHttpParams params;

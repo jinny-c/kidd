@@ -12,7 +12,7 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 
 import com.kidd.base.cache.service.IKiddRefreshService;
-import com.kidd.base.utils.KiddStringUtils;
+import com.kidd.base.common.utils.KiddStringUtils;
 
 /**
  * SpringContext监听器

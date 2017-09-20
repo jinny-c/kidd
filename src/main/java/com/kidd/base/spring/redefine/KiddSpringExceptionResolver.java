@@ -11,11 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
-import com.kidd.base.common.KiddResponseUtils;
+import com.kidd.base.common.utils.KiddResponseUtils;
+import com.kidd.base.common.utils.KiddStringUtils;
+import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.enums.KiddErrorCodeEnum;
 import com.kidd.base.exception.KiddGlobalValidException;
-import com.kidd.base.utils.KiddStringUtils;
-import com.kidd.base.utils.KiddTraceLogUtil;
 
 public class KiddSpringExceptionResolver extends SimpleMappingExceptionResolver {
 

@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kidd.base.cache.service.IKiddRefreshService;
-import com.kidd.base.utils.KiddTraceLogUtil;
+import com.kidd.base.common.utils.KiddTraceLogUtil;
 
 /**
  * 管理无卡支付微信公众平台的API调用凭证 【区别网页授权凭证】

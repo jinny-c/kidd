@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kidd.base.KiddBaseController;
 import com.kidd.base.annotation.KiddSecureAnno;
 import com.kidd.base.asnyc.IAsyncTaskExecutor;
 import com.kidd.base.asnyc.SimpleAsyncTaskExecutor;
 import com.kidd.base.cache.KiddCacheManager;
+import com.kidd.base.common.KiddBaseController;
+import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.exception.KiddControllerException;
 import com.kidd.base.exception.KiddGlobalValidException;
-import com.kidd.base.utils.KiddTraceLogUtil;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
 import com.kidd.wap.controller.dto.UserLoginReq;

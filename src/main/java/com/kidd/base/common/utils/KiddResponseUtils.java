@@ -1,4 +1,4 @@
-package com.kidd.base.common;
+package com.kidd.base.common.utils;
 
 import java.io.IOException;
 
@@ -6,8 +6,9 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kidd.base.common.KiddConstants;
+import com.kidd.base.common.serialize.KiddSerialTypeEnum;
 import com.kidd.base.http.HttpHeader;
-import com.kidd.base.serialize.KiddSerialTypeEnum;
 import com.kidd.base.spring.modelview.KiddModelAndView;
 import com.kidd.base.spring.modelview.RespErr;
 

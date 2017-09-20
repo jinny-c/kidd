@@ -12,9 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.http.RequestResponseContext;
-import com.kidd.base.traffic.KiddTrafficCounter;
-import com.kidd.base.utils.KiddTraceLogUtil;
+import com.kidd.base.servlet.traffic.KiddTrafficCounter;
 
 /**
  * 初始化过滤器

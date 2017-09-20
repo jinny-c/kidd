@@ -23,10 +23,10 @@ import org.apache.http.util.Args;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
+import com.kidd.base.common.serialize.KiddSerialTypeEnum;
+import com.kidd.base.common.utils.KiddObjectTypeUtils;
+import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.enums.KiddSymbolEnum;
-import com.kidd.base.serialize.KiddSerialTypeEnum;
-import com.kidd.base.utils.KiddObjectTypeUtils;
-import com.kidd.base.utils.KiddStringUtils;
 
 public class KiddHttpExecutor {
 	private static final Logger logger = Logger

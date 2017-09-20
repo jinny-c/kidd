@@ -1,4 +1,4 @@
-package com.kidd.base;
+package com.kidd.base.common;
 
 import com.kidd.base.exception.KiddControllerException;
 import com.kidd.base.params.valid.KiddValidResp;

@@ -1,4 +1,4 @@
-package com.kidd.base;
+package com.kidd.base.common;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,15 +12,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
+import com.kidd.base.common.serialize.KiddSerialTypeEnum;
+import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.enums.KiddErrorCodeEnum;
 import com.kidd.base.exception.KiddControllerException;
 import com.kidd.base.http.HttpHeader;
 import com.kidd.base.http.RequestResponseContext;
-import com.kidd.base.serialize.KiddSerialTypeEnum;
 import com.kidd.base.spring.modelview.KiddModelAndView;
 import com.kidd.base.spring.modelview.RespErr;
 import com.kidd.base.spring.modelview.RespSucc;
-import com.kidd.base.utils.KiddStringUtils;
 
 /**
  * 基础Controller
