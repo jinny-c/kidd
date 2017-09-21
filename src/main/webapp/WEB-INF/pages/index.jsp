@@ -121,6 +121,9 @@ function buildHtml_list(list){
 			<ul>
 				<li><a href="wap/user/login.htm">login</a></li>
 			</ul>
+			<ul>
+				<li><a href="wap/user/toQRCode.htm">toQRCode</a></li>
+			</ul>
 		</div>
 		<div class="preview_item">
 			<br />

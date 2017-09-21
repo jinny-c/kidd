@@ -1,5 +1,7 @@
 package com.kidd.wap.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.security.SecureRandom;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,6 +57,18 @@ public class KiddWapUserController extends KiddBaseController{
 	@Value("${local.url}")
 	private String url;
 	
+	@RequestMapping(value = "/toQRCode", method = {RequestMethod.GET, RequestMethod.POST})
+	public String toQRCode(Model model) throws KiddControllerException{
+		log.info("toQRCode enter");
+		asyncGetIp();
+		HttpServletRequest request = RequestResponseContext.getRequest();
+		String host = request.getRemoteHost();// 返回发出请求的客户机的主机名
+		model.addAttribute("qrCodeText", host);
+		//model.addAttribute("banner", "no");
+		model.addAttribute("logo", "/kidd/static/images/user.png");
+		
+		return toWapHtml("show_QR_code");
+	}
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() throws KiddControllerException{
 		log.info("index enter");
@@ -74,7 +88,6 @@ public class KiddWapUserController extends KiddBaseController{
 	public String toLogin() throws KiddControllerException{
 		log.info("toLogin enter");
 		log.info("local.url={}", url);
-		
 		return toWapHtml("login");
 	}
 	@RequestMapping(value = "/toSuccess", method = {RequestMethod.GET, RequestMethod.POST})
@@ -177,6 +190,64 @@ public class KiddWapUserController extends KiddBaseController{
 			});
 		} catch (Exception e) {
 			log.error("do asynchronous exception",e);
+		}
+	}
+
+	private void asyncGetIp() {
+		try {
+			final HttpServletRequest request = RequestResponseContext.getRequest();
+			
+			final String traceId = KiddTraceLogUtil.getTraceId();
+			log.info("asyncGetIp start");
+			asyncTaskExecutor.exeWithoutResult(new IAsyncTaskExecutor.AsyncTaskCallBack<Object>() {
+				@Override
+				public Object invork() throws KiddGlobalValidException {
+					KiddTraceLogUtil.beginTrace(traceId);
+					
+					String uri = request.getRequestURI();//返回请求行中的资源名称
+					String url = request.getRequestURL().toString();//获得客户端发送请求的完整url
+					String ip1 = request.getRemoteAddr();//返回发出请求的IP地址
+					String params = request.getQueryString();//返回请求行中的参数部分
+					String host=request.getRemoteHost();//返回发出请求的客户机的主机名
+					int port =request.getRemotePort();//返回发出请求的客户机的端口号。
+					System.out.println(ip1);
+					System.out.println(url);
+					System.out.println(uri);
+					System.out.println(params);
+					System.out.println(host);
+					System.out.println(port);
+					
+					if (request == null)
+						return null;
+					String ip = request.getHeader("X-Forwarded-For");
+					log.info("asyncGetIp start(1),ip={}", ip);
+					if(ip == null || ip.length() == 0){
+						if ("unknown".equalsIgnoreCase(ip))
+							ip = request.getHeader("Proxy-Client-IP");
+						if ("unknown".equalsIgnoreCase(ip))
+							ip = request.getHeader("WL-Proxy-Client-IP");
+						if ("unknown".equalsIgnoreCase(ip))
+							ip = request.getHeader("HTTP_CLIENT_IP");
+						if ("unknown".equalsIgnoreCase(ip))
+							ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+						if ("unknown".equalsIgnoreCase(ip))
+							ip = request.getRemoteAddr();
+					}
+					log.info("asyncGetIp start(2),ip={}", ip);
+					if ("127.0.0.1".equals(ip) || "0:0:0:0:0:0:0:1".equals(ip)){
+						try {
+							ip = InetAddress.getLocalHost().getHostAddress();
+						} catch (UnknownHostException ue) {
+							log.error("unknownhostexception={}",ue);
+						}
+					}
+					log.info("asyncGetIp start(3),ip={}", ip);
+					KiddTraceLogUtil.endTrace();
+					return null;
+				}
+			});
+		} catch (Exception e) {
+			log.error("do asynchronous exception", e);
 		}
 	}
 }
