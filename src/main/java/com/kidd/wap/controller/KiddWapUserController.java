@@ -1,8 +1,8 @@
 package com.kidd.wap.controller;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.security.SecureRandom;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -203,45 +203,46 @@ public class KiddWapUserController extends KiddBaseController{
 				@Override
 				public Object invork() throws KiddException {
 					KiddTraceLogUtil.beginTrace(traceId);
-					
-					String uri = request.getRequestURI();//返回请求行中的资源名称
-					String url = request.getRequestURL().toString();//获得客户端发送请求的完整url
-					String ip1 = request.getRemoteAddr();//返回发出请求的IP地址
-					String params = request.getQueryString();//返回请求行中的参数部分
-					String host=request.getRemoteHost();//返回发出请求的客户机的主机名
-					int port =request.getRemotePort();//返回发出请求的客户机的端口号。
-					System.out.println(ip1);
-					System.out.println(url);
-					System.out.println(uri);
-					System.out.println(params);
-					System.out.println(host);
-					System.out.println(port);
-					
-					if (request == null)
+					if (request == null){
 						return null;
-					String ip = request.getHeader("X-Forwarded-For");
-					log.info("asyncGetIp start(1),ip={}", ip);
-					if(ip == null || ip.length() == 0){
-						if ("unknown".equalsIgnoreCase(ip))
-							ip = request.getHeader("Proxy-Client-IP");
-						if ("unknown".equalsIgnoreCase(ip))
-							ip = request.getHeader("WL-Proxy-Client-IP");
-						if ("unknown".equalsIgnoreCase(ip))
-							ip = request.getHeader("HTTP_CLIENT_IP");
-						if ("unknown".equalsIgnoreCase(ip))
-							ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-						if ("unknown".equalsIgnoreCase(ip))
-							ip = request.getRemoteAddr();
 					}
-					log.info("asyncGetIp start(2),ip={}", ip);
-					if ("127.0.0.1".equals(ip) || "0:0:0:0:0:0:0:1".equals(ip)){
-						try {
-							ip = InetAddress.getLocalHost().getHostAddress();
-						} catch (UnknownHostException ue) {
-							log.error("unknownhostexception={}",ue);
+
+					String req_uri = request.getRequestURI();// 返回请求行中的资源名称
+					String req_url = request.getRequestURL().toString();// 获得客户端发送请求的完整url
+					String req_ip1 = request.getRemoteAddr();// 返回发出请求的IP地址
+					String req_params = request.getQueryString();// 返回请求行中的参数部分
+					String req_host = request.getRemoteHost();// 返回发出请求的客户机的主机名
+					int req_port = request.getRemotePort();// 返回发出请求的客户机的端口号。
+					Map<String, Object> hv = new HashMap<String, Object>();
+					hv.put("req_uri", req_uri);
+					hv.put("req_url", req_url);
+					hv.put("req_ip1", req_ip1);
+					hv.put("req_params",req_params);
+					hv.put("req_host", req_host);
+					hv.put("req_port", req_port);
+					log.info("asyncGetIp start(1),hv={}", hv);
+					
+					
+					String remoteAddr = request.getRemoteAddr();
+					String forwarded = request.getHeader("X-Forwarded-For");
+					String realIp = request.getHeader("X-Real-IP");
+					
+					String ipAdd = null;
+					if (realIp == null) {
+						if (forwarded == null) {
+							ipAdd = remoteAddr;
+						} else {
+							ipAdd = KiddStringUtils.join(remoteAddr,"/",forwarded);
+						}
+					} else {
+						if (realIp.equals(forwarded)) {
+							ipAdd = realIp;
+						} else {
+							ipAdd = KiddStringUtils.join(realIp,"/",forwarded.replaceAll(", "
+									+ realIp, ""));
 						}
 					}
-					log.info("asyncGetIp start(3),ip={}", ip);
+					log.info("asyncGetIp start(2),ip={}", ipAdd);
 					KiddTraceLogUtil.endTrace();
 					return null;
 				}
