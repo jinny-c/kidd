@@ -30,14 +30,14 @@ public class KiddSecureProcessor implements Serializable {
 	private IUserLogService userLogService;
 
 	public UserKeyBean getUserKey(String version, String terminalUserID)
-			throws MicroGlobalValidException {}
+			throws KiddGlobalValidException {}
 
 	*//**
 	 * 获取头信息
 	 * 
 	 * @return
 	 *//*
-	public MicroHttpHeader getHeader() {}*/
+	public KiddHttpHeader getHeader() {}*/
 
 	public boolean isSecure(MethodParameter parameter) {
 		return parameter.getParameterAnnotation(KiddSecureAnno.class) != null;

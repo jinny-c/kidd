@@ -64,7 +64,7 @@ public class KiddValidResp implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MicroValidResp [isSucc=").append(isSucc)
+		builder.append("KiddValidResp [isSucc=").append(isSucc)
 				.append(", errCode=").append(errCode).append(", errMsg=")
 				.append(errMsg).append(", className=").append(className)
 				.append("]");

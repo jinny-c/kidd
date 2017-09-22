@@ -49,7 +49,7 @@ public class KiddSpringExceptionResolver extends SimpleMappingExceptionResolver 
 			KiddGlobalValidException gvEX = (KiddGlobalValidException) ex;
 			errorMsg = gvEX.getErrorMsg();
 			respMsg = KiddResponseUtils.toErr(request, gvEX.getErrorCode(), gvEX.getErrorMsg());
-			log.error("捕获MicroGlobalValidException: {}", ex.toString());
+			log.error("捕获KiddGlobalValidException: {}", ex.toString());
 		} else {
 			log.error("捕获Exception", ex);
 		}

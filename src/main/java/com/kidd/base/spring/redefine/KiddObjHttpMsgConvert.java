@@ -80,7 +80,7 @@ public class KiddObjHttpMsgConvert extends
 	 * 
 	 * @see
 	 * org.springframework.http.converter.AbstractHttpMessageConverter#writeInternal
-	 * (java.lang.MicroModelAndView, org.springframework.http.HttpOutputMessage)
+	 * (java.lang.KiddModelAndView, org.springframework.http.HttpOutputMessage)
 	 */
 	@Override
 	protected void writeInternal(KiddModelAndView model,
@@ -99,7 +99,7 @@ public class KiddObjHttpMsgConvert extends
 			logger.debug("resp encr judge start");
 			this.encr(data);
 		} catch (KiddGlobalValidException e) {
-			/*String respMsg = MicroResponseUtils.toErr(RequestResponseContext.getRequest(),
+			/*String respMsg = KiddResponseUtils.toErr(RequestResponseContext.getRequest(),
 					e.getErrorCode(), e.getErrorMsg());
 			outputMessage.getBody().write(respMsg.getBytes(HpayCharset.UTF8.getValue()));*/
 			return;
@@ -137,7 +137,7 @@ public class KiddObjHttpMsgConvert extends
 	 * 加密处理
 	 * 
 	 * @param data
-	 * @throws MicroGlobalValidException
+	 * @throws KiddGlobalValidException
 	 */
 	private void encr(Object data) throws KiddGlobalValidException {
         encr(data, data.getClass());
@@ -148,7 +148,7 @@ public class KiddObjHttpMsgConvert extends
      * 加密处理
      *
      * @param data
-     * @throws MicroGlobalValidException
+     * @throws KiddGlobalValidException
      */
     private void encr(Object data, Class<? extends Object> clazz) throws KiddGlobalValidException {
         // 2016-09-20 处理父类中需要加密的属性字段
@@ -159,7 +159,7 @@ public class KiddObjHttpMsgConvert extends
             PropertyDescriptor pd = null;
             Method reader = null;
             Method writer = null;
-            /*MicroHttpHeader header = KiddSecureProcessor.getHeader();
+            /*HttpHeader header = KiddSecureProcessor.getHeader();
             UserKeyBean userKey = KiddSecureProcessor.getUserKey(
                     header.getVersion(), header.getTerminalUserID());*/
             try {
@@ -172,7 +172,7 @@ public class KiddObjHttpMsgConvert extends
                     if (!kiddSecureProcessor.isEncr(field)) {
                         continue;
                     }
-                    // 2016-09-20 递归处理被MicroEncrAnno注解标识的集合
+                    // 2016-09-20 递归处理被KiddEncrAnno注解标识的集合
                     if(KiddObjectTypeUtils.isCollections(field.getType())){
                         field.setAccessible(true);
                         List<?> list = (List<?>) field.get(data);
