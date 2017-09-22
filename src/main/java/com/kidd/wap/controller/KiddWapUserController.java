@@ -1,8 +1,10 @@
 package com.kidd.wap.controller;
 
+import java.net.InetAddress;
 import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -68,13 +70,12 @@ public class KiddWapUserController extends KiddBaseController{
 	@RequestMapping(value = "/toQRCode", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toQRCode(Model model) throws KiddControllerException{
 		log.info("toQRCode enter");
-		asyncGetIp();
-		HttpServletRequest request = RequestResponseContext.getRequest();
-		String host = request.getRemoteHost();// 返回发出请求的客户机的主机名
-		model.addAttribute("qrCodeText", host);
+		asyncGetReqIp();
+		String sysIp = asyncGetConfig();
+		model.addAttribute("qrCodeText", sysIp);
 		//model.addAttribute("banner", "no");
 		model.addAttribute("logo", "/kidd/static/images/user.png");
-		
+		log.info("toQRCode end,sysIp={}", sysIp);
 		return toWapHtml("show_QR_code");
 	}
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
@@ -138,6 +139,9 @@ public class KiddWapUserController extends KiddBaseController{
 		try {
 			log.info("getVerifiCode,req={},wildcard={}", req, wildcard);
 			if (!KiddWapWildcardEnum.isExsit(wildcard)) {
+				if("wap".equals(wildcard)){
+					return toErr(KiddErrorCodes.E_KIDD_SUCC, asyncGetConfig());
+				}
 				return toErr(KiddErrorCodes.E_KIDD_ERROR, "没有定义的请求！");
 			}
 			SecureRandom random = new SecureRandom();
@@ -210,12 +214,11 @@ public class KiddWapUserController extends KiddBaseController{
 		}
 	}
 
-	private void asyncGetIp() {
+	private void asyncGetReqIp() {
 		try {
 			final HttpServletRequest request = RequestResponseContext.getRequest();
-			
 			final String traceId = KiddTraceLogUtil.getTraceId();
-			log.info("asyncGetIp start");
+			log.info("asyncGetReqIp start");
 			asyncTaskExecutor.exeWithoutResult(new IAsyncTaskExecutor.AsyncTaskCallBack<Object>() {
 				@Override
 				public Object invork() throws KiddException {
@@ -224,21 +227,14 @@ public class KiddWapUserController extends KiddBaseController{
 						return null;
 					}
 
-					String req_uri = request.getRequestURI();// 返回请求行中的资源名称
-					String req_url = request.getRequestURL().toString();// 获得客户端发送请求的完整url
-					String req_ip1 = request.getRemoteAddr();// 返回发出请求的IP地址
-					String req_params = request.getQueryString();// 返回请求行中的参数部分
-					String req_host = request.getRemoteHost();// 返回发出请求的客户机的主机名
-					int req_port = request.getRemotePort();// 返回发出请求的客户机的端口号。
 					Map<String, Object> hv = new HashMap<String, Object>();
-					hv.put("req_uri", req_uri);
-					hv.put("req_url", req_url);
-					hv.put("req_ip1", req_ip1);
-					hv.put("req_params",req_params);
-					hv.put("req_host", req_host);
-					hv.put("req_port", req_port);
+					hv.put("req_uri", request.getRequestURI());// 返回请求行中的资源名称
+					hv.put("req_url", request.getRequestURL().toString());// 获得客户端发送请求的完整url
+					hv.put("req_ip1", request.getRemoteAddr());// 返回发出请求的IP地址
+					hv.put("req_params",request.getQueryString());// 返回请求行中的参数部分
+					hv.put("req_host", request.getRemoteHost());// 返回发出请求的客户机的主机名
+					hv.put("req_port", request.getRemotePort());// 返回发出请求的客户机的端口号。
 					log.info("asyncGetIp start(1),hv={}", hv);
-					
 					
 					String remoteAddr = request.getRemoteAddr();
 					String forwarded = request.getHeader("X-Forwarded-For");
@@ -259,7 +255,7 @@ public class KiddWapUserController extends KiddBaseController{
 									+ realIp, ""));
 						}
 					}
-					log.info("asyncGetIp start(2),ip={}", ipAdd);
+					log.info("asyncGetReqIp start(2),ip={}", ipAdd);
 					KiddTraceLogUtil.endTrace();
 					return null;
 				}
@@ -268,4 +264,38 @@ public class KiddWapUserController extends KiddBaseController{
 			log.error("do asynchronous exception", e);
 		}
 	}
+
+	public String asyncGetConfig() {
+		log.info("asyncGetConfig start");
+		final String traceId = KiddTraceLogUtil.getTraceId();
+		try {
+			return asyncTaskExecutor.execute(new IAsyncTaskExecutor.AsyncTaskCallBack<String>() {
+				@Override
+				public String invork() throws KiddException {
+					KiddTraceLogUtil.beginTrace(traceId);
+					String computerIp = null;
+					try {
+						InetAddress addr = InetAddress.getLocalHost();
+						String ip =computerIp= addr.getHostAddress().toString(); // 获取本机ip
+						String hostName = addr.getHostName().toString(); // 获取本机计算机名称
+						//log.info("本机IP：{},\n本机名称:{}", ip, hostName);
+						log.info("本机IP：{},本机名称:{}", ip, hostName);
+						Properties props = System.getProperties();
+						log.info("操作系统的名称：{},操作系统的版本：{}",
+								props.getProperty("os.name"),
+								props.getProperty("os.version"));
+					} catch (Exception e) {
+						// TODO: handle exception
+						log.error("do asynchronous invork exception", e);
+					}
+					KiddTraceLogUtil.endTrace();
+					return computerIp;
+				}
+			});
+		} catch (Exception e) {
+			log.error("do asynchronous exception", e);
+		}
+		return null;
+	}
+	
 }

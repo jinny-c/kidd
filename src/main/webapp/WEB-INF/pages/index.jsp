@@ -16,11 +16,11 @@
 
 var _ctx = "http://127.0.0.1:8082/kidd";
 
-function getVerficCode() {
+function getVerficCode(wildcard) {
 	var type = "json";
 	//type = "text";
 	$.ajax({
-		url : _ctx + '/wap/user/getVerificationCode_wap.htm',
+		url : _ctx + '/wap/user/getVerificationCode_'+wildcard+'.htm',
 		method : 'POST',
 		data : {
 			"mobile" : "13612341234",
@@ -100,7 +100,9 @@ function buildHtml_list(list){
 
 	<div>
 		<div>
-			<a id="reg_btn" href="#" onclick="getVerficCode()">getVerficCode/wap</a>
+			<a id="reg_btn" href="#" onclick="getVerficCode('wap')">getVerficCode/wap</a>
+			<br/>
+			<a id="reg_btn" href="#" onclick="getVerficCode('other')">getVerficCode/other</a>
 			<table style="width: 100%">
 				<tbody id="gripTablebody">
 				</tbody>
