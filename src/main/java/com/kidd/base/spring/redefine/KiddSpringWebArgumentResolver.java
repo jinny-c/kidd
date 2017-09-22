@@ -86,7 +86,7 @@ public class KiddSpringWebArgumentResolver implements
 	 */
 	private void paramsValid(Object target, Class<? extends Object> clazz,
 			NativeWebRequest request) throws KiddGlobalValidException {
-		// 2017-03-07 microView工程DTO目前继承关系为二层
+		// 2017-03-07 View工程DTO目前继承关系为二层
 		if (clazz.getSuperclass() == KiddBaseReqDto.class
 				|| clazz.getSuperclass().getSuperclass() == KiddBaseReqDto.class) {
 			KiddBaseReqDto req = (KiddBaseReqDto) target;

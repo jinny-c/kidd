@@ -20,7 +20,6 @@ public abstract class KiddBaseReqDto {
     /**
      * 验证参数的正确性 【该方法由未使用@JiddSecureAnno注解的Controller手动调用】
      *
-     * @throws com.micro.app.commcon.ControllerException
      */
     public void paramsValid() throws KiddControllerException {
         KiddValidResp valid = VerifyControllerUtil.validateReqDto(this);

@@ -78,7 +78,7 @@ public class KiddStringUtils {
 	}
 	
 	/**
-	 * 占位符日志输出 MicroStringUtils.replace("请求：txnSeqNo={},txnDate={}", "12342342",
+	 * 占位符日志输出 KiddStringUtils.replace("请求：txnSeqNo={},txnDate={}", "12342342",
 	 * "20160323"))
 	 * 
 	 * @param message

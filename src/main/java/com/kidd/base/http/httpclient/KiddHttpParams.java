@@ -189,7 +189,7 @@ class KiddHttpParams {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MicroHttpParams [url=");
+		builder.append("KiddHttpParams [url=");
 		builder.append(url);
 		builder.append(", charset=");
 		builder.append(charset);
