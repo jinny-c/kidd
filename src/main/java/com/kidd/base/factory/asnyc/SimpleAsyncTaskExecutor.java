@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import com.kidd.base.common.exception.KiddGlobalValidException;
+import com.kidd.base.common.exception.KiddException;
 
 /**
  * <a href="SimpleAsyncTaskExecutor.java.html"><b><i>View Source</i></b></a>
@@ -30,26 +30,26 @@ public class SimpleAsyncTaskExecutor implements IAsyncTaskExecutor {
 	}
 
 	@Override
-	public <T> T execute(AsyncTaskCallBack<T> callBack) throws KiddGlobalValidException {
+	public <T> T execute(AsyncTaskCallBack<T> callBack) throws KiddException {
 		Future<T> future = doExecute(callBack);
 		try {
 			return future.get(timeout, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			throw new KiddGlobalValidException("E-BASE-100", "Async Interrupted Error.", e);
+			throw new KiddException("E-BASE-100", "Async Interrupted Error.", e);
 		} catch (ExecutionException e) {
-			throw new KiddGlobalValidException("E-BASE-101", "Async Execution Error.", e);
+			throw new KiddException("E-BASE-101", "Async Execution Error.", e);
 		} catch (TimeoutException e) {
-			throw new KiddGlobalValidException("E-BASE-102", "Async Invork Timeout.", e);
+			throw new KiddException("E-BASE-102", "Async Invork Timeout.", e);
 		}
 	}
 	
 	@Override
-	public <T> Future<T> executeTask(AsyncTaskCallBack<T> callBack) throws KiddGlobalValidException {
+	public <T> Future<T> executeTask(AsyncTaskCallBack<T> callBack) throws KiddException {
 		return doExecute(callBack);
 	}
 
 	@Override
-	public void exeWithoutResult(AsyncTaskCallBack<Object> callBack) throws KiddGlobalValidException {
+	public void exeWithoutResult(AsyncTaskCallBack<Object> callBack) throws KiddException {
 		doExecute(callBack);
 	}
 

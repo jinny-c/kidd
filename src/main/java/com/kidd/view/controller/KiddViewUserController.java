@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kidd.base.common.KiddBaseController;
 import com.kidd.base.common.exception.KiddControllerException;
-import com.kidd.base.common.exception.KiddGlobalValidException;
+import com.kidd.base.common.exception.KiddException;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.factory.annotation.KiddSecureAnno;
 import com.kidd.base.factory.asnyc.IAsyncTaskExecutor;
@@ -124,7 +124,7 @@ public class KiddViewUserController extends KiddBaseController{
 			log.info("asyncSendVerifiCode start");
 			asyncTaskExecutor.exeWithoutResult(new IAsyncTaskExecutor.AsyncTaskCallBack<Object>() {
 				@Override
-				public Object invork() throws KiddGlobalValidException {
+				public Object invork() throws KiddException {
 					KiddTraceLogUtil.beginTrace(traceId);
 					try {
 						log.info("asynchronous start,code={}",verifyCode);

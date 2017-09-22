@@ -20,8 +20,7 @@ import com.kidd.base.factory.annotation.KiddSecureAnno;
  */
 @Component
 public class KiddSecureProcessor implements Serializable {
-	private static final long serialVersionUID = 5419849524867234626L;
-
+	private static final long serialVersionUID = 1L;
 	
 	private static Logger logger = LoggerFactory.getLogger(KiddSecureProcessor.class);
 

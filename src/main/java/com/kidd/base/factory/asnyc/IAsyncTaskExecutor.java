@@ -2,7 +2,7 @@ package com.kidd.base.factory.asnyc;
 
 import java.util.concurrent.Future;
 
-import com.kidd.base.common.exception.KiddGlobalValidException;
+import com.kidd.base.common.exception.KiddException;
 
 /**
  * <a href="IAsyncTaskExecutor.java.html"><b><i>View Source</i></b></a>
@@ -17,7 +17,7 @@ public interface IAsyncTaskExecutor {
 	 * @return
 	 * @throws SupportException
 	 */
-	<T> T execute(AsyncTaskCallBack<T> callBack) throws KiddGlobalValidException;
+	<T> T execute(AsyncTaskCallBack<T> callBack) throws KiddException;
 	
 	/**
 	 * 执行异步调用——有返回值
@@ -27,7 +27,7 @@ public interface IAsyncTaskExecutor {
 	 * @return
 	 * @throws SupportException
 	 */
-	<T> Future<T> executeTask(AsyncTaskCallBack<T> callBack) throws KiddGlobalValidException;
+	<T> Future<T> executeTask(AsyncTaskCallBack<T> callBack) throws KiddException;
 	
 	/**
 	 * 执行异步调用——无返回值
@@ -35,7 +35,7 @@ public interface IAsyncTaskExecutor {
 	 * @param callBack
 	 * @throws SupportException
 	 */
-	void exeWithoutResult(AsyncTaskCallBack<Object> callBack) throws KiddGlobalValidException;
+	void exeWithoutResult(AsyncTaskCallBack<Object> callBack) throws KiddException;
 
 	/**
 	 * <a href="AsyncTaskCallBack.java.html"><b><i>View Source</i></b></a>
@@ -51,7 +51,7 @@ public interface IAsyncTaskExecutor {
 		 * @return
 		 * @throws SupportException
 		 */
-		public T invork() throws KiddGlobalValidException;
+		public T invork() throws KiddException;
 
 	}
 
