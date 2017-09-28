@@ -23,12 +23,16 @@ import com.kidd.base.common.KiddBaseController;
 import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.exception.KiddException;
+import com.kidd.base.common.exception.KiddFactoryException;
 import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.factory.annotation.KiddSecureAnno;
 import com.kidd.base.factory.asnyc.IAsyncTaskExecutor;
 import com.kidd.base.factory.asnyc.SimpleAsyncTaskExecutor;
 import com.kidd.base.factory.cache.KiddCacheManager;
+import com.kidd.base.factory.timer.KiddTimerFuture;
+import com.kidd.base.factory.timer.service.IKiddTimerProcessor;
+import com.kidd.base.factory.timer.service.impl.KiddTimerExecutor;
 import com.kidd.base.http.RequestResponseContext;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
@@ -70,7 +74,8 @@ public class KiddWapUserController extends KiddBaseController{
 	@RequestMapping(value = "/toQRCode", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toQRCode(Model model) throws KiddControllerException{
 		log.info("toQRCode enter");
-		asyncGetReqIp();
+		timingQueryId();
+		//asyncGetReqIp();
 		String sysIp = asyncGetConfig();
 		model.addAttribute("qrCodeText", sysIp);
 		//model.addAttribute("banner", "no");
@@ -213,10 +218,39 @@ public class KiddWapUserController extends KiddBaseController{
 			log.error("do asynchronous exception",e);
 		}
 	}
-
-	private void asyncGetReqIp() {
+	/**
+	 * 定时任务
+	 */
+	private void timingQueryId() {
+		final KiddTimerExecutor timer = new KiddTimerExecutor();
+		final HttpServletRequest request = RequestResponseContext.getRequest();
 		try {
-			final HttpServletRequest request = RequestResponseContext.getRequest();
+			log.info("timingQueryId start");
+			timer.schedAtFixedDelayCount(
+					new IKiddTimerProcessor<String>() {
+						private int count = 0;
+						private KiddTimerFuture<String> future = new KiddTimerFuture<String>(
+								false, "44");
+						@Override
+						public KiddTimerFuture<String> process()
+								throws KiddFactoryException {
+							asyncGetReqIp(request);
+							count++;
+							if (count == 3) {
+								//future.setFuture(j);
+								future.setSucc(true);
+							}
+							return future;
+						}
+					}, 1 * 1000l, 1 * 1000l, 4l);
+		} catch (Exception e) {
+			// TODO: handle exception
+			log.error("timingQueryId Exception:{}",e);
+		}
+	}
+	private void asyncGetReqIp(final HttpServletRequest request) {
+		try {
+			//final HttpServletRequest request = RequestResponseContext.getRequest();
 			final String traceId = KiddTraceLogUtil.getTraceId();
 			log.info("asyncGetReqIp start");
 			asyncTaskExecutor.exeWithoutResult(new IAsyncTaskExecutor.AsyncTaskCallBack<Object>() {
@@ -224,6 +258,7 @@ public class KiddWapUserController extends KiddBaseController{
 				public Object invork() throws KiddException {
 					KiddTraceLogUtil.beginTrace(traceId);
 					if (request == null){
+						log.error("asyncGetReqIp exception,requser is null");
 						return null;
 					}
 

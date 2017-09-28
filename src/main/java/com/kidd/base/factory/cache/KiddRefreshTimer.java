@@ -33,13 +33,13 @@ public class KiddRefreshTimer {
 			@Override
 			public void run() {
 				KiddTraceLogUtil.beginTrace(); // 日志跟踪开始
-				log.info("refreshToken任务执行开始");
+				log.info("refresh任务执行开始");
 				try {
 					refreshToken();
 				} catch (Exception e) {
-					log.error("refreshToken任务执行失败", e);
+					log.error("refresh任务执行失败", e);
 				}
-				log.info("refreshToken任务执行成功");
+				log.info("refresh任务执行成功");
 				KiddTraceLogUtil.endTrace(); // 日志跟踪结束
 			}
 		}, 0, PERIOD, TimeUnit.MINUTES); //延迟0分钟，每隔PERIOD分钟检查TOKEN
