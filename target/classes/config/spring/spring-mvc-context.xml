@@ -68,7 +68,17 @@
          默认HTTP状态码
          <property name="defaultStatusCode" value="500"></property> -->
 	</bean>
-	
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/wap/**" />
+			<bean class="com.kidd.base.spring.interceptor.KiddCompatibleInterceptor" />
+		</mvc:interceptor>
+		<!-- <mvc:interceptor> <mvc:mapping path="/nocard*/**"/> <bean class="com.micro.wap.interceptor.MicroNoCardPermissionInterceptor"/> 
+			</mvc:interceptor> -->
+	</mvc:interceptors>
+    
+    
     <!-- thymeleaf 模板引擎  start-->
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
         <property name="prefix" value="/WEB-INF/pages/" />

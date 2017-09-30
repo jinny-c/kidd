@@ -14,6 +14,7 @@ public class KiddConstants {
 	public final static String CURRENT_USER = "userEntity";
 	public final static String OAUTH2_CODE = "code";
 	public final static String PUB_NO_ID = "pubId";
+	public final static String SCAN_SHARE_CODE_URI = "/scanShareCode.htm";
 
 	/**
 	 * 通讯编码，默认:UTF-8
