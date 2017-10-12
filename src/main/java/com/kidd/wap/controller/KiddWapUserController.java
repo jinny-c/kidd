@@ -112,6 +112,13 @@ public class KiddWapUserController extends KiddBaseController{
 		model.addAttribute("flag", flag);
 		return toWapHtml("res_success");
 	}
+	
+	@RequestMapping(value = "/wechat", method = {RequestMethod.GET, RequestMethod.POST})
+	public String wechat() throws KiddControllerException{
+		log.info("wechat enter");
+		log.info("local.url={}", url);
+		return toWapHtml("login");
+	}
 	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Object login(@KiddSecureAnno UserLoginReq req) throws KiddControllerException{

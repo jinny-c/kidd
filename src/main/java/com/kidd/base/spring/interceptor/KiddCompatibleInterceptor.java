@@ -1,16 +1,21 @@
 package com.kidd.base.spring.interceptor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.kidd.base.common.constant.KiddConstants;
 import com.kidd.base.common.enums.KiddErrorCodeEnum;
 import com.kidd.base.common.exception.KiddGlobalValidException;
 import com.kidd.base.common.utils.KiddStringUtils;
+import com.kidd.base.factory.wechat.KiddPubNoClient;
 import com.kidd.wap.controller.dto.OAuthUser;
 
 public class KiddCompatibleInterceptor extends HandlerInterceptorAdapter {
@@ -19,6 +24,66 @@ public class KiddCompatibleInterceptor extends HandlerInterceptorAdapter {
 	
 	//private static final String HYSFT_PUB_ID = "gh_51790c1ef5c3";
 	private static final String HYSFT_PUB_ID = "gh_d8ca418ebb2b";
+	
+	@Autowired
+	private KiddPubNoClient kiddPubNoClient;
+	
+	private static class MenuSwitch {
+		private boolean isValidWechatUser;
+		private boolean isValidUser;
+		private boolean isUserAccess;
+
+		/** 菜单开关控制 **/
+		private static Map<String, MenuSwitch> menuSwitchMap = new HashMap<String, MenuSwitch>();
+		static {
+			menuSwitchMap.put("/*", new MenuSwitch(false, false, false)); // 默认不拦截
+			menuSwitchMap.put("/scanShareCode.htm", new MenuSwitch(true, true, false));  //扫码注册
+			menuSwitchMap.put("/payEntry.htm", new MenuSwitch()); // 收款
+			menuSwitchMap.put("/creditCardEntry.htm", new MenuSwitch()); // 信用卡管理
+			menuSwitchMap.put("/toLogin.htm", new MenuSwitch(true, true, false)); // 切换用户
+			menuSwitchMap.put("/userInfo.htm", new MenuSwitch()); // 用户基本信息
+			menuSwitchMap.put("/card.htm", new MenuSwitch()); // 修改收款卡
+			menuSwitchMap.put("/queryBillsEntry.htm", new MenuSwitch()); // 交易明细
+			menuSwitchMap.put("/showRecommend.htm", new MenuSwitch()); // 我的推广码
+			menuSwitchMap.put("/showPrizeIndex.htm", new MenuSwitch()); // 抽奖活动
+			menuSwitchMap.put("/wechat.htm", new MenuSwitch()); // 微信
+		}
+
+		private MenuSwitch() {
+			isValidWechatUser = true;
+			isValidUser = true;
+			isUserAccess = true;
+		}
+
+		private MenuSwitch(boolean isValidWechatUser, boolean isValidNoCardUser, boolean isUserAccess) {
+			this.isValidWechatUser = isValidWechatUser;
+			this.isValidUser = isValidNoCardUser;
+			this.isUserAccess = isUserAccess;
+		}
+
+		private static boolean isNeedValidWechatUser(String url) {
+			return getMenuSwitch(url).isValidWechatUser;
+		}
+
+		private static boolean isNeedValidUser(String url) {
+			MenuSwitch menuSwitch = getMenuSwitch(url);
+			return menuSwitch.isValidWechatUser && menuSwitch.isValidUser;
+		}
+
+		private static boolean isNeedCtrlUserAccess(String url) {
+			MenuSwitch menuSwitch = getMenuSwitch(url);
+			return menuSwitch.isValidWechatUser && menuSwitch.isValidUser && menuSwitch.isUserAccess;
+		}
+
+		private static MenuSwitch getMenuSwitch(String url) {
+			String key = url.substring(url.lastIndexOf("/"));
+			MenuSwitch menuSwitch = menuSwitchMap.get(key);
+			if (menuSwitch == null) {
+				return menuSwitchMap.get("/*");
+			}
+			return menuSwitch;
+		}
+	}
 	
 	/** 需要刷新商户审核状态的URI集合 **/
 	private static final String[] needRefreshUris = {
@@ -38,30 +103,47 @@ public class KiddCompatibleInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 	                         HttpServletResponse response, Object handler) throws Exception {
 		log.info("preHandle enter");
-		if (request.getRequestURI().endsWith(KiddConstants.SCAN_SHARE_CODE_URI)
-				&& KiddStringUtils.isBlank(request.getParameter(KiddConstants.PUB_NO_ID))) {
-			request.setAttribute(KiddConstants.PUB_NO_ID, HYSFT_PUB_ID);
+		
+		// 是否验证微信授权
+		if (MenuSwitch.isNeedValidWechatUser(request.getRequestURI())) {
+			validWechatUser(request);
 		}
-		validWechatUser(HYSFT_PUB_ID,request);
-		// 刷新商户信息
-		if (isNeedRefreshUri(request.getRequestURI())) {
-			refreshNoCardUser(request);
+		// 是否验证用户
+		if (MenuSwitch.isNeedValidUser(request.getRequestURI())) {
+			log.info("preHandle isNeedValidUser");
+		}
+
+		// 是否进入用户访问控制模块
+		if (MenuSwitch.isNeedCtrlUserAccess(request.getRequestURI())) {
+			log.info("preHandle isNeedCtrlUserAccess");
 		}
 		return true;
 	}
 
-	private void validWechatUser(String pubId,HttpServletRequest request) throws KiddGlobalValidException {
+	private void validWechatUser(HttpServletRequest request) throws KiddGlobalValidException {
 		//用户点击菜单进入
+		String pubId = request.getParameter(KiddConstants.PUB_NO_ID);
+		if (KiddStringUtils.isBlank(pubId)) {
+			request.setAttribute(KiddConstants.PUB_NO_ID, HYSFT_PUB_ID);
+			//pubId = (String)request.getAttribute(KiddConstants.PUB_NO_ID);
+			pubId = HYSFT_PUB_ID;
+		}
+		
 		String currentCode = request.getParameter(KiddConstants.OAUTH2_CODE);
 		if (KiddStringUtils.isBlank(currentCode)) {
-			log.info("非微信，无需授权");
-			return;
-			//throw new KiddGlobalValidException(KiddErrorCode.ERROR_CODE_MW001.getErrorCode(), KiddErrorCode.ERROR_CODE_MW001.getErrorMsg());
+			log.error("微信用户未授权或授权失败");
 		}
 
+		String latestCode = (String)request.getSession().getAttribute(KiddConstants.OAUTH2_CODE);
+		//允许用户刷新页面
+		if (KiddStringUtils.isNotBlank(latestCode) && latestCode.equals(currentCode)) {
+			//UserVO nuserVOCache = (UserVO)request.getSession().getAttribute(CURRENT_USER);
+			log.error("页面刷新获取用户信息");
+		}
+		
 		log.info("微信用户开始网页授权,公众号ID:[{}]", pubId);
-		//OAuthUser authUser = cacheConfig.getWXAuthUser(pubId, currentCode, KiddConstants.WX_OAUTH2_BASE_SCOPE);
-		OAuthUser authUser = null;
+		
+		OAuthUser authUser = kiddPubNoClient.getWXAuthUser(pubId, currentCode, KiddConstants.WX_OAUTH2_BASE_SCOPE);
 		if(authUser == null || KiddStringUtils.isBlank(authUser.getOpenid()) && KiddStringUtils
 				.isBlank(authUser.getAliPayUserID())){
 			log.error("获取微信用户信息失败,当前授权码[{}]无效", currentCode);

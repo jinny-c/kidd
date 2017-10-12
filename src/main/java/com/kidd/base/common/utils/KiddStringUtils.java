@@ -99,4 +99,22 @@ public class KiddStringUtils {
 		matcher.appendTail(result);
 		return result.toString();
 	}
+	
+	/**
+	 * 判断字符串是否包含在正则表达式中
+	 * 
+	 * @param str
+	 * @param regEx
+	 * @return
+	 */
+	public static boolean isContains(String str, String regEx) {
+		Pattern pat = Pattern.compile(regEx);
+		Matcher matcher = pat.matcher(str);
+		boolean flg = false;
+		if (matcher.find()) {
+			flg = true;
+		}
+		return flg;
+	}
+
 }

@@ -84,8 +84,8 @@ public class KiddPayBizUtil {
 	 * @return
 	 */
 	private static Map<String, String> getOAuthAccessToken(String appId, String appSecret, String code) {
-		String requestUrl = KiddStringUtils.replace(ConfigRef.WX_OAUTH2_TOKEN_URI, appId, appSecret, code);
 		try {
+			String requestUrl = KiddStringUtils.replace(ConfigRef.WX_OAUTH2_TOKEN_URI, appId, appSecret, code);
 			log.info("TraceID:{}, 请求网页授权的AccessToken: {}", KiddTraceLogUtil.getTraceId(), requestUrl);
 			String result = executor.doGetWithUrl(requestUrl, null);
 			log.info("TraceID:{}, 请求网页授权的AccessToken结果: {}", KiddTraceLogUtil.getTraceId(), result);

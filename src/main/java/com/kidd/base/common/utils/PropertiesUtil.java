@@ -26,16 +26,18 @@ public class PropertiesUtil {
     static {
         try {
             if(isWindowsOS()){
+            	log.info("load config-kidd.properties");
             	//windows 作为服务器启动项目
-                properties = loadProperties("classpath:prop/config-jidd.properties");
-                //properties = loadProperties("classpath:prop/config-sandbox.properties");
+                properties = loadProperties("classpath:prop/config-kidd.properties");
             } else {
                 //读取jidd.properties
-                String value = KiddWapConfigurer.getContextProperty("active.profile");
+                String value = KiddInitConfigurer.getContextProperty("active.profile");
                 if ("prod".equals(value)) {
+                	log.info("load config-prod.properties");
                     //生产环境配置
                     properties = loadProperties("classpath:prop/config-prod.properties");
                 } else {
+                	log.info("load config-test.properties");
                     properties = loadProperties("classpath:prop/config-test.properties");
                 }
             }

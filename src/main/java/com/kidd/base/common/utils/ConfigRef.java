@@ -2,8 +2,8 @@ package com.kidd.base.common.utils;
 
 public final class ConfigRef {
 	/** microWap.properties*/
-	public final static String NO_CARD_PAY_GATEWAY_URL = KiddWapConfigurer.getContextProperty("nocardpay.gateway.url");
-	public final static String NO_CARD_PAY_IMAGES_PATH = KiddWapConfigurer.getContextProperty("nocardpay.images.path");
+	public final static String NO_CARD_PAY_GATEWAY_URL = KiddInitConfigurer.getContextProperty("nocardpay.gateway.url");
+	//public final static String NO_CARD_PAY_IMAGES_PATH = KiddWapConfigurer.getContextProperty("nocardpay.images.path");
 
 	/** WAP应用配置 */
 	public final static String LOGIN_URI = PropertiesUtil.getProperty("login.uri");

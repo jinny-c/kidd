@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.kidd.base.factory.wechat.dto.KiddPubNoInfoDTO;
 
 @Component
 public class KiddCacheManager {
@@ -96,5 +97,16 @@ public class KiddCacheManager {
 		log.info("clearAllCache start");
 		kiddConfigCache.invalidateAll();
 	}
-
+	
+	public KiddPubNoInfoDTO getPubNoConfig(String pubId) {
+		log.info("getPubNoConfig start,pubId={}", pubId);
+		return null;
+	}
+	
+	public String getAccessToken(String pubId) {
+		log.info("getAccessToken start,pubId={}", pubId);
+		//String cache = this.getCacheConfig(pubId);
+		return null;
+	}
+	
 }

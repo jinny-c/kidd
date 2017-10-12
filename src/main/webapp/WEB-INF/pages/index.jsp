@@ -129,6 +129,11 @@ function buildHtml_list(list){
 			<ul>
 				<li><a href="wap/user/toQRCode.htm">toQRCode</a></li>
 			</ul>
+			<ul>
+				<li>
+					<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb17ce3d03ed8073e&redirect_uri=http://10.148.21.80:8082/kidd/wap/user/wechat.htm?pubId=gh_d8ca418ebb2b&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect">wechat</a>
+				</li>
+			</ul>
 		</div>
 		<div class="preview_item">
 			<br />
