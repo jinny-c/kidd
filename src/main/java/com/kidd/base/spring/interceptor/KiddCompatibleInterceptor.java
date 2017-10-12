@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.kidd.base.common.constant.KiddConstants;
+import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.common.enums.KiddErrorCodeEnum;
 import com.kidd.base.common.exception.KiddGlobalValidException;
 import com.kidd.base.common.utils.KiddStringUtils;
@@ -132,13 +133,14 @@ public class KiddCompatibleInterceptor extends HandlerInterceptorAdapter {
 		String currentCode = request.getParameter(KiddConstants.OAUTH2_CODE);
 		if (KiddStringUtils.isBlank(currentCode)) {
 			log.error("微信用户未授权或授权失败");
+			throw new KiddGlobalValidException(KiddErrorCodes.E_KIDD_ERROR, "微信用户未授权或授权失败");
 		}
 
 		String latestCode = (String)request.getSession().getAttribute(KiddConstants.OAUTH2_CODE);
 		//允许用户刷新页面
-		if (KiddStringUtils.isNotBlank(latestCode) && latestCode.equals(currentCode)) {
-			//UserVO nuserVOCache = (UserVO)request.getSession().getAttribute(CURRENT_USER);
+		if (isNeedRefreshUri(request.getRequestURI()) && KiddStringUtils.isNotBlank(latestCode) && latestCode.equals(currentCode)) {
 			log.error("页面刷新获取用户信息");
+			refreshNoCardUser(request);
 		}
 		
 		log.info("微信用户开始网页授权,公众号ID:[{}]", pubId);
@@ -147,7 +149,7 @@ public class KiddCompatibleInterceptor extends HandlerInterceptorAdapter {
 		if(authUser == null || KiddStringUtils.isBlank(authUser.getOpenid()) && KiddStringUtils
 				.isBlank(authUser.getAliPayUserID())){
 			log.error("获取微信用户信息失败,当前授权码[{}]无效", currentCode);
-			throw new KiddGlobalValidException(KiddErrorCodeEnum.ERROR_CODE_KW001.getErrorCode(), KiddErrorCodeEnum.ERROR_CODE_KW001.getErrorMsg());
+			throw new KiddGlobalValidException(KiddErrorCodeEnum.ERROR_CODE_KW0001.getErrorCode(), KiddErrorCodeEnum.ERROR_CODE_KW0001.getErrorMsg());
 		}
 
 		//存缓存

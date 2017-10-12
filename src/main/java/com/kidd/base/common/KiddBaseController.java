@@ -85,13 +85,13 @@ public class KiddBaseController {
 		} catch (ServletException e) {
 			e.printStackTrace();
 			throw new KiddControllerException(
-					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorCode(),
-					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorMsg());
+					KiddErrorCodeEnum.ERROR_CODE_KW9000.getErrorCode(),
+					KiddErrorCodeEnum.ERROR_CODE_KW9000.getErrorMsg());
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new KiddControllerException(
-					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorCode(),
-					KiddErrorCodeEnum.ERROR_CODE_KW900.getErrorMsg());
+					KiddErrorCodeEnum.ERROR_CODE_KW9000.getErrorCode(),
+					KiddErrorCodeEnum.ERROR_CODE_KW9000.getErrorMsg());
 		}
 		log.info("toRequestForward success");
 		return toSucc();

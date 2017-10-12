@@ -15,7 +15,6 @@ import com.kidd.base.common.enums.KiddErrorCodeEnum;
 import com.kidd.base.common.exception.KiddGlobalValidException;
 import com.kidd.base.common.utils.KiddResponseUtils;
 import com.kidd.base.common.utils.KiddStringUtils;
-import com.kidd.base.common.utils.KiddTraceLogUtil;
 
 public class KiddSpringExceptionResolver extends SimpleMappingExceptionResolver {
 
@@ -40,10 +39,10 @@ public class KiddSpringExceptionResolver extends SimpleMappingExceptionResolver 
 		}
 		
 		
-        String respMsg = KiddResponseUtils.toErr(request, KiddErrorCodeEnum.ERROR_CODE_KW999.getErrorCode(),
-        		KiddErrorCodeEnum.ERROR_CODE_KW999.getErrorMsg());
-		String errorMsg = KiddErrorCodeEnum.ERROR_CODE_KW999.getErrorMsg();
-		String errorCode = KiddErrorCodeEnum.ERROR_CODE_KW999.getErrorCode();
+        String respMsg = KiddResponseUtils.toErr(request, KiddErrorCodeEnum.ERROR_CODE_KW9999.getErrorCode(),
+        		KiddErrorCodeEnum.ERROR_CODE_KW9999.getErrorMsg());
+		String errorMsg = KiddErrorCodeEnum.ERROR_CODE_KW9999.getErrorMsg();
+		String errorCode = KiddErrorCodeEnum.ERROR_CODE_KW9999.getErrorCode();
 		
 		if (ex instanceof KiddGlobalValidException) {
 			KiddGlobalValidException gvEX = (KiddGlobalValidException) ex;
