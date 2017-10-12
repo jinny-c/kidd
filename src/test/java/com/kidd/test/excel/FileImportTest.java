@@ -31,6 +31,7 @@ public class FileImportTest {
 			if (1 == key) {
 				continue;
 			}
+			@SuppressWarnings("unchecked")
 			List<String> rowV = (List<String>) entry.getValue();
 			userId = rowV.get(1);
 			merCode = rowV.get(45);
