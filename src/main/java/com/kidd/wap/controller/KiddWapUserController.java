@@ -94,6 +94,7 @@ public class KiddWapUserController extends KiddBaseController{
 		String flag = request.getParameter("flag");
 		try {
 			log.info("index,queryCount={}",kiddMgmtUmgService.queryCount());
+			log.info("index,queryByPrimaryKey={}",kiddMgmtUmgService.queryByPrimaryKey(19886676));
 			if(flag.equals(""));
 		} catch (Exception e) {
 			// TODO: handle exception

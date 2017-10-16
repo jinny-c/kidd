@@ -5,8 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kidd.base.common.utils.KiddObjectUtils;
 import com.kidd.db.mybatis.umg.mapper.KiddMerchRecommendInfoMapper;
+import com.kidd.db.mybatis.umg.mapper.domain.KiddMerchRecommendInfo;
 import com.kidd.db.mybatis.umg.services.IKiddMgmtUmgService;
+import com.kidd.db.mybatis.umg.services.bean.KiddMerchRecommendBean;
 
 @Service(value = "kiddMgmtUmgService")
 public class KiddMgmtUmgServiceImpl implements IKiddMgmtUmgService {
@@ -20,6 +23,14 @@ public class KiddMgmtUmgServiceImpl implements IKiddMgmtUmgService {
 		log.info("queryCount start");
 		//merchRecommendInfoMapper.selectAll();
 		return merchRecommendInfoMapper.selectAll();
+	}
+
+	@Override
+	public KiddMerchRecommendBean queryByPrimaryKey(Integer id) {
+		// TODO Auto-generated method stub
+		log.info("queryByPrimaryKey start,id={}",id);
+		KiddMerchRecommendInfo info = merchRecommendInfoMapper.selectByPrimaryKey(id);
+		return KiddObjectUtils.copyProperty(KiddMerchRecommendBean.class, info);
 	}
 	
 }
