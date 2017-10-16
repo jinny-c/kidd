@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kidd.db.mybatis.umg.mapper.KiddMerchRecommendInfoMapper">
+	<resultMap id="BaseResultMap" type="com.kidd.db.mybatis.umg.mapper.domain.KiddMerchRecommendInfo">
+		<constructor>
+			<idArg column="LOGIN_USER_ID" jdbcType="DECIMAL" javaType="java.lang.Integer" />
+			<arg column="MERCHANT_CODE" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="RECOMMENDER" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="RECOMMEND_TYPE" jdbcType="DECIMAL" javaType="java.lang.Short" />
+			<arg column="RECOMMEND_PUB_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="CREATE_TIME" jdbcType="DATE" javaType="java.util.Date" />
+			<arg column="UPT_TIME" jdbcType="DATE" javaType="java.util.Date" />
+		</constructor>
+	</resultMap>
+	<sql id="Base_Column_List">
+		LOGIN_USER_ID, MERCHANT_CODE, RECOMMENDER, RECOMMEND_TYPE,
+		RECOMMEND_PUB_ID,
+		CREATE_TIME,
+		UPT_TIME
+	</sql>
+	
+	<select id="selectAll" resultType="java.lang.Integer">
+		select
+		count(1)
+		from HPAY.MICRO_MERCH_RECOMMEND_INFO
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from HPAY.MICRO_MERCH_RECOMMEND_INFO
+		where LOGIN_USER_ID =
+		#{loginUserId,jdbcType=DECIMAL}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		HPAY.MICRO_MERCH_RECOMMEND_INFO
+		where LOGIN_USER_ID =
+		#{loginUserId,jdbcType=DECIMAL}
+	</delete>
+
+	<insert id="insert"
+		parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddMerchRecommendInfo">
+		insert into HPAY.MICRO_MERCH_RECOMMEND_INFO
+		(LOGIN_USER_ID,
+		MERCHANT_CODE, RECOMMENDER,
+		RECOMMEND_TYPE,
+		RECOMMEND_PUB_ID, CREATE_TIME,
+		UPT_TIME)
+		values
+		(#{loginUserId,jdbcType=DECIMAL}, #{merchantCode,jdbcType=VARCHAR},
+		#{recommender,jdbcType=VARCHAR},
+		#{recommendType,jdbcType=DECIMAL},
+		#{recommendPubId,jdbcType=VARCHAR},
+		sysdate, sysdate)
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddMerchRecommendInfo">
+		update HPAY.MICRO_MERCH_RECOMMEND_INFO
+		<set>
+			<if test="merchantCode != null">
+				MERCHANT_CODE = #{merchantCode,jdbcType=VARCHAR},
+			</if>
+			<if test="recommender != null">
+				RECOMMENDER = #{recommender,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendType != null">
+				RECOMMEND_TYPE = #{recommendType,jdbcType=DECIMAL},
+			</if>
+			<if test="recommendPubId != null">
+				RECOMMEND_PUB_ID = #{recommendPubId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=DATE},
+			</if>
+			<if test="uptTime != null">
+				UPT_TIME = #{uptTime,jdbcType=DATE},
+			</if>
+		</set>
+		where LOGIN_USER_ID = #{loginUserId,jdbcType=DECIMAL}
+	</update>
+
+	<sql id="DialectPrefix">
+		<if test="page != null">
+			select datarow.* from ( select row_.*,rownum as rwid from
+			(
+		</if>
+	</sql>
+	<sql id="DialectSuffix">
+		<if test="page != null">
+            <![CDATA[ ) row_ where rownum <= #{page.end} ) datarow
+	      where rwid >= #{page.begin} ]]>
+		</if>
+	</sql>
+	<select id="countRecordsByPaging" resultType="java.lang.Integer"
+		parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddMerchRecommendInfo">
+		select count(1) from HPAY.MICRO_PROFIT_LOG
+		where 1 = 1
+		<include refid="query_condition_sql" />
+	</select>
+	<select id="selectByPaging" resultMap="BaseResultMap"
+		parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddMerchRecommendInfo">
+		<include refid="DialectPrefix" />
+		select
+		<include refid="Base_Column_List" />
+		from HPAY.MICRO_PROFIT_LOG
+		where 1 = 1
+		<include refid="query_condition_sql" />
+		order by UPT_TIME desc
+		<include refid="DialectSuffix" />
+	</select>
+
+	<sql id="query_condition_sql">
+		<if test="req.profitSeq != null and req.profitSeq !=''">
+			and PROFIT_SEQ=#{req.profitSeq}
+		</if>
+		<if test="req.endDate !=null and req.endDate !='' ">
+            <![CDATA[
+            	and STAT_DATE <= #{req.endDate,jdbcType=VARCHAR}
+            ]]>
+		</if>
+	</sql>
+</mapper>

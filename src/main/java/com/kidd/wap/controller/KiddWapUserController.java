@@ -34,6 +34,7 @@ import com.kidd.base.factory.timer.KiddTimerFuture;
 import com.kidd.base.factory.timer.service.IKiddTimerProcessor;
 import com.kidd.base.factory.timer.service.impl.KiddTimerExecutor;
 import com.kidd.base.http.RequestResponseContext;
+import com.kidd.db.mybatis.umg.services.IKiddMgmtUmgService;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
 import com.kidd.wap.controller.dto.UserLoginReq;
@@ -49,6 +50,9 @@ import com.kidd.wap.controller.enums.KiddWapWildcardEnum;
 public class KiddWapUserController extends KiddBaseController{
 	/* Slf4j */
 	private static Logger log = LoggerFactory.getLogger(KiddWapUserController.class);
+	
+	@Autowired
+	private IKiddMgmtUmgService kiddMgmtUmgService;
 	
 	// 验证码字符个数
     private static final int CODE_COUNT = 4;
@@ -86,7 +90,16 @@ public class KiddWapUserController extends KiddBaseController{
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() throws KiddControllerException{
 		log.info("index enter");
-		
+		HttpServletRequest request = RequestResponseContext.getRequest();
+		String flag = request.getParameter("flag");
+		try {
+			log.info("index,queryCount={}",kiddMgmtUmgService.queryCount());
+			if(flag.equals(""));
+		} catch (Exception e) {
+			// TODO: handle exception
+			//log.error("index exception:", e);
+			log.info("index e.toString={},exception=", e,e);
+		}
 		return toWapHtml("userInfo");
 	}
 	@RequestMapping(value = "/toInfo", method = {RequestMethod.GET, RequestMethod.POST})
@@ -195,7 +208,7 @@ public class KiddWapUserController extends KiddBaseController{
 
 			return toData(resp);
 		} catch (Exception e) {
-			log.error("getVerifiCode exception:{}", e);
+			log.error("getVerifiCode exception", e);
 			return toErr("error", "message");
 		}
 	}
@@ -252,7 +265,7 @@ public class KiddWapUserController extends KiddBaseController{
 					}, 1 * 1000l, 1 * 1000l, 4l);
 		} catch (Exception e) {
 			// TODO: handle exception
-			log.error("timingQueryId Exception:{}",e);
+			log.error("timingQueryId Exception",e);
 		}
 	}
 	private void asyncGetReqIp(final HttpServletRequest request) {
