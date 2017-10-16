@@ -17,8 +17,8 @@ import com.kidd.base.factory.cache.KiddCacheManager;
 import com.kidd.base.factory.wechat.dto.KiddPubNoInfoDTO;
 import com.kidd.base.factory.wechat.dto.WechatTemplateMsg;
 import com.kidd.base.http.httpclient.KiddHttpExecutor;
+import com.kidd.base.http.util.KiddHttpExecutorHolder;
 import com.kidd.wap.controller.dto.OAuthUser;
-import com.kidd.wap.util.KiddHttpExecutorHolder;
 import com.kidd.wap.util.KiddPayBizUtil;
 
 @Component

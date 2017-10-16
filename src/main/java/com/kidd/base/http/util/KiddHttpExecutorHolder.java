@@ -1,4 +1,4 @@
-package com.kidd.wap.util;
+package com.kidd.base.http.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

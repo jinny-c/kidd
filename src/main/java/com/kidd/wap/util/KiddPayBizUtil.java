@@ -16,6 +16,7 @@ import com.kidd.base.common.utils.ConfigRef;
 import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.http.httpclient.KiddHttpExecutor;
+import com.kidd.base.http.util.KiddHttpExecutorHolder;
 import com.kidd.wap.controller.dto.OAuthUser;
 
 public class KiddPayBizUtil {
