@@ -75,11 +75,16 @@ public class KiddWapUserController extends KiddBaseController{
 	@Value("${local.url}")
 	private String url;
 	
+	/**
+	 * 二维码展示页
+	 * @param model
+	 * @return
+	 * @throws KiddControllerException
+	 */
 	@RequestMapping(value = "/toQRCode", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toQRCode(Model model) throws KiddControllerException{
 		log.info("toQRCode enter");
 		timingQueryId();
-		//asyncGetReqIp();
 		String sysIp = asyncGetConfig();
 		model.addAttribute("qrCodeText", sysIp);
 		//model.addAttribute("banner", "no");
@@ -87,6 +92,11 @@ public class KiddWapUserController extends KiddBaseController{
 		log.info("toQRCode end,sysIp={}", sysIp);
 		return toWapHtml("show_QR_code");
 	}
+	/**
+	 * 首页
+	 * @return
+	 * @throws KiddControllerException
+	 */
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() throws KiddControllerException{
 		log.info("index enter");
@@ -103,6 +113,12 @@ public class KiddWapUserController extends KiddBaseController{
 		}
 		return toWapHtml("userInfo");
 	}
+	/**
+	 * 详情页
+	 * @param model
+	 * @return
+	 * @throws KiddControllerException
+	 */
 	@RequestMapping(value = "/toInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toInfo(Model model) throws KiddControllerException{
 		log.info("toInfo enter");
@@ -112,12 +128,23 @@ public class KiddWapUserController extends KiddBaseController{
 		model.addAttribute("message", "hello word!");
 		return toWapHtml("info");
 	}
+	/**
+	 * 登陆页
+	 * @return
+	 * @throws KiddControllerException
+	 */
 	@RequestMapping(value = "/toLogin", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toLogin() throws KiddControllerException{
 		log.info("toLogin enter");
 		log.info("local.url={}", url);
 		return toWapHtml("login");
 	}
+	/**
+	 * 成功页
+	 * @param model
+	 * @return
+	 * @throws KiddControllerException
+	 */
 	@RequestMapping(value = "/toSuccess", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toSuccess(Model model) throws KiddControllerException{
 		HttpServletRequest request = RequestResponseContext.getRequest();
@@ -126,13 +153,23 @@ public class KiddWapUserController extends KiddBaseController{
 		model.addAttribute("flag", flag);
 		return toWapHtml("res_success");
 	}
-	
+	/**
+	 * 微信（授权）
+	 * @return
+	 * @throws KiddControllerException
+	 */
 	@RequestMapping(value = "/wechat", method = {RequestMethod.GET, RequestMethod.POST})
 	public String wechat() throws KiddControllerException{
 		log.info("wechat enter");
 		log.info("local.url={}", url);
 		return toWapHtml("login");
 	}
+	/**
+	 * 登陆
+	 * @param req
+	 * @return
+	 * @throws KiddControllerException
+	 */
 	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Object login(@KiddSecureAnno UserLoginReq req) throws KiddControllerException{
@@ -158,7 +195,12 @@ public class KiddWapUserController extends KiddBaseController{
 		}
 		return toSucc();
 	}
-
+	/**
+	 * 获取图形/手机验证码
+	 * @param req
+	 * @param wildcard
+	 * @return
+	 */
 	@RequestMapping(value = "/getVerificationCode_{wildcard}", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Object getVerifiCode(@KiddSecureAnno GetValidateCodeReq req,@PathVariable String wildcard){
@@ -243,11 +285,11 @@ public class KiddWapUserController extends KiddBaseController{
 	 * 定时任务
 	 */
 	private void timingQueryId() {
-		final KiddTimerExecutor timer = new KiddTimerExecutor();
+		KiddTimerExecutor timer = new KiddTimerExecutor();
 		final HttpServletRequest request = RequestResponseContext.getRequest();
+		log.info("timingQueryId start");
 		try {
-			log.info("timingQueryId start");
-			timer.schedAtFixedDelayCount(
+			String resFuture = timer.schedAtFixedDelayCount(
 					new IKiddTimerProcessor<String>() {
 						private int count = 0;
 						private KiddTimerFuture<String> future = new KiddTimerFuture<String>(
@@ -255,72 +297,73 @@ public class KiddWapUserController extends KiddBaseController{
 						@Override
 						public KiddTimerFuture<String> process()
 								throws KiddFactoryException {
-							asyncGetReqIp(request);
+							getFromRequest(request);
 							count++;
 							if (count == 3) {
-								//future.setFuture(j);
+								future.setFuture("success for three");
 								future.setSucc(true);
 							}
 							return future;
 						}
 					}, 1 * 1000l, 1 * 1000l, 4l);
-		} catch (Exception e) {
-			// TODO: handle exception
-			log.error("timingQueryId Exception",e);
-		}
-	}
-	private void asyncGetReqIp(final HttpServletRequest request) {
-		try {
-			//final HttpServletRequest request = RequestResponseContext.getRequest();
-			final String traceId = KiddTraceLogUtil.getTraceId();
-			log.info("asyncGetReqIp start");
+			log.info("timer resFuture={}",resFuture);
 			asyncTaskExecutor.exeWithoutResult(new IAsyncTaskExecutor.AsyncTaskCallBack<Object>() {
-				@Override
 				public Object invork() throws KiddException {
-					KiddTraceLogUtil.beginTrace(traceId);
-					if (request == null){
-						log.error("asyncGetReqIp exception,requser is null");
-						return null;
-					}
-
-					Map<String, Object> hv = new HashMap<String, Object>();
-					hv.put("req_uri", request.getRequestURI());// 返回请求行中的资源名称
-					hv.put("req_url", request.getRequestURL().toString());// 获得客户端发送请求的完整url
-					hv.put("req_ip1", request.getRemoteAddr());// 返回发出请求的IP地址
-					hv.put("req_params",request.getQueryString());// 返回请求行中的参数部分
-					hv.put("req_host", request.getRemoteHost());// 返回发出请求的客户机的主机名
-					hv.put("req_port", request.getRemotePort());// 返回发出请求的客户机的端口号。
-					log.info("asyncGetIp start(1),hv={}", hv);
-					
-					String remoteAddr = request.getRemoteAddr();
-					String forwarded = request.getHeader("X-Forwarded-For");
-					String realIp = request.getHeader("X-Real-IP");
-					
-					String ipAdd = null;
-					if (realIp == null) {
-						if (forwarded == null) {
-							ipAdd = remoteAddr;
-						} else {
-							ipAdd = KiddStringUtils.join(remoteAddr,"/",forwarded);
-						}
-					} else {
-						if (realIp.equals(forwarded)) {
-							ipAdd = realIp;
-						} else {
-							ipAdd = KiddStringUtils.join(realIp,"/",forwarded.replaceAll(", "
-									+ realIp, ""));
-						}
-					}
-					log.info("asyncGetReqIp start(2),ip={}", ipAdd);
-					KiddTraceLogUtil.endTrace();
+					log.error("do nothing");
 					return null;
-				}
+				};
 			});
-		} catch (Exception e) {
-			log.error("do asynchronous exception", e);
+		} catch (KiddException e) {
+			log.error("do timingQueryId exception", e);
 		}
 	}
-
+	/**
+	 * 获取request中的相关信息
+	 * @param request
+	 */
+	private void getFromRequest(HttpServletRequest request) {
+		try {
+			log.info("getReqIp start");
+			if (request == null){
+				log.error("getReqIp exception,requser is null");
+			}
+			Map<String, Object> hv = new HashMap<String, Object>();
+			hv.put("req_uri", request.getRequestURI());// 返回请求行中的资源名称
+			hv.put("req_url", request.getRequestURL().toString());// 获得客户端发送请求的完整url
+			hv.put("req_ip1", request.getRemoteAddr());// 返回发出请求的IP地址
+			hv.put("req_params",request.getQueryString());// 返回请求行中的参数部分
+			hv.put("req_host", request.getRemoteHost());// 返回发出请求的客户机的主机名
+			hv.put("req_port", request.getRemotePort());// 返回发出请求的客户机的端口号。
+			log.info("getReqIp start(1),hv={}", hv);
+			
+			String remoteAddr = request.getRemoteAddr();
+			String forwarded = request.getHeader("X-Forwarded-For");
+			String realIp = request.getHeader("X-Real-IP");
+			
+			String ipAdd = null;
+			if (realIp == null) {
+				if (forwarded == null) {
+					ipAdd = remoteAddr;
+				} else {
+					ipAdd = KiddStringUtils.join(remoteAddr,"/",forwarded);
+				}
+			} else {
+				if (realIp.equals(forwarded)) {
+					ipAdd = realIp;
+				} else {
+					ipAdd = KiddStringUtils.join(realIp,"/",forwarded.replaceAll(", "
+							+ realIp, ""));
+				}
+			}
+			log.info("getReqIp start(2),ip={}", ipAdd);
+		} catch (Exception e) {
+			log.error("getReqIp exception", e);
+		}
+	}
+	/**
+	 * 异步获取系统信息
+	 * @return
+	 */
 	public String asyncGetConfig() {
 		log.info("asyncGetConfig start");
 		final String traceId = KiddTraceLogUtil.getTraceId();
@@ -341,7 +384,6 @@ public class KiddWapUserController extends KiddBaseController{
 								props.getProperty("os.name"),
 								props.getProperty("os.version"));
 					} catch (Exception e) {
-						// TODO: handle exception
 						log.error("do asynchronous invork exception", e);
 					}
 					KiddTraceLogUtil.endTrace();
