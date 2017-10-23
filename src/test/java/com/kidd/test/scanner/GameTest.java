@@ -8,7 +8,7 @@ public class GameTest {
 	//巴什博奕
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//game1();
+		game1();
 		int n =31;
 		int m = 3;
 		//谁拿光，谁输
@@ -21,11 +21,14 @@ public class GameTest {
 
 	public static void game1() {
 		Scanner in = new Scanner(System.in);
+		//InputStream in = new FileInputStream(new File("C:\\AutoSubmit.java")); 
 		//n 总数，k最大取的数
 		int n, k;
 		while (in.hasNext()) {
 			n = in.nextInt();
+			System.out.println("接收字符串：n");
 			k = in.nextInt();
+			System.out.println("接收字符串：p");
 
 			if (n == 0 && k == 0)
 				break;
@@ -37,4 +40,5 @@ public class GameTest {
 
 		}
 	}
+	
 }
