@@ -9,6 +9,8 @@ import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 
 import com.kidd.base.common.exception.KiddControllerException;
+import com.kidd.base.common.secure.SecureManager;
+import com.kidd.base.common.secure.utils.KiddDESedeUtils;
 import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.factory.annotation.KiddDecrAnno;
 import com.kidd.base.factory.annotation.KiddEncrAnno;
@@ -112,7 +114,7 @@ public class KiddSecureProcessor implements Serializable {
 		//des
 		//data = new SecureManager().Des(data, 1,key);
 		//3des
-		//data = KiddDESedeUtils.doEncr(key, data);
+		data = KiddDESedeUtils.doEncr(key, data);
 		
 		data = data != null ? data.trim() : data;
 		return data;
@@ -123,6 +125,18 @@ public class KiddSecureProcessor implements Serializable {
 		/*data = KiddStringUtils.trimStr(new SecureManager().Des(data, 0,
 				key));
 		return data;*/
+	}
+	
+	public static void main(String[] args) {
+		//des加解密 key[16]位
+		//加密
+		String encStr = new SecureManager().Des("123123", 1, "50d43ea2a4e66786");
+		System.out.println("---------"+encStr);
+		//解密
+		String desStr = new SecureManager().Des(encStr, 0, "50d43ea2a4e66786");
+		System.out.println("---------"+desStr);
+		
+		
 	}
 	
 }
