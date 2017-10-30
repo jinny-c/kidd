@@ -22,7 +22,13 @@ public class KiddMgmtUmgServiceImpl implements IKiddMgmtUmgService {
 		// TODO Auto-generated method stub
 		log.info("queryCount start");
 		//merchRecommendInfoMapper.selectAll();
-		return merchRecommendInfoMapper.selectAll();
+		try {
+			return merchRecommendInfoMapper.selectAll();
+		} catch (Exception e) {
+			// TODO: handle exception
+			log.error("query count exception:",e);
+			return 0;
+		}
 	}
 
 	@Override
@@ -30,6 +36,9 @@ public class KiddMgmtUmgServiceImpl implements IKiddMgmtUmgService {
 		// TODO Auto-generated method stub
 		log.info("queryByPrimaryKey start,id={}",id);
 		KiddMerchRecommendInfo info = merchRecommendInfoMapper.selectByPrimaryKey(id);
+		if (null == info) {
+			return null;
+		}
 		return KiddObjectUtils.copyProperty(KiddMerchRecommendBean.class, info);
 	}
 	

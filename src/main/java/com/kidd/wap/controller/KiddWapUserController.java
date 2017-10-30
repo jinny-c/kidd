@@ -109,7 +109,7 @@ public class KiddWapUserController extends KiddBaseController{
 		} catch (Exception e) {
 			// TODO: handle exception
 			//log.error("index exception:", e);
-			log.info("index e.toString={},exception=", e,e);
+			log.info("index e.toString={},exception:", e,e);
 		}
 		return toWapHtml("userInfo");
 	}
