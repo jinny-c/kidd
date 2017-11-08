@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"></meta>
+    <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white"></meta>
+    <title>信息提示</title>
+    <link rel="stylesheet" th:href="@{/static/css/weui.css}"></link>
+    <link rel="stylesheet" th:href="@{/static/css/example.css}"></link>
+    <!--<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>-->
+    <script th:src="@{/static/js/jweixin-1.0.0.js}" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            WeixinJSBridge.call('hideOptionMenu');
+        });
+    </script>
+</head>
+<body>
+<!--<div class="weui_msg">
+    <div class="weui_icon_area"><i class="weui_icon_msg weui_icon_info"></i></div>
+    <div class="weui_text_area">
+        <p class="weui_msg_desc" th:text="${message}"></p>
+    </div>
+</div>-->
+
+<div class="weui_msg">
+    <img class="statu fail" th:src="@{/static/nocard/images/error.png}"/>
+    <!--<span class="pay_msg">支付失败！</span>-->
+    <div class="weui_text_area">
+        <p class="weui_msg_desc" th:text="${message}"></p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -46,7 +46,7 @@ public class KiddCompatibleInterceptor extends HandlerInterceptorAdapter {
 			menuSwitchMap.put("/card.htm", new MenuSwitch()); // 修改收款卡
 			menuSwitchMap.put("/queryBillsEntry.htm", new MenuSwitch()); // 交易明细
 			menuSwitchMap.put("/showRecommend.htm", new MenuSwitch()); // 我的推广码
-			menuSwitchMap.put("/showPrizeIndex.htm", new MenuSwitch()); // 抽奖活动
+			//menuSwitchMap.put("/showPrizeIndex.htm", new MenuSwitch()); // 抽奖活动
 			menuSwitchMap.put("/wechat.htm", new MenuSwitch()); // 微信
 		}
 

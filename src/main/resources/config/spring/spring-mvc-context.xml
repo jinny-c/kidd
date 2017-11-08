@@ -26,6 +26,11 @@
 	
     <!-- 启用spring 注解 -->
 	<context:annotation-config />
+	
+	<!-- 图片上传 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	-->
+	
     <!-- 配置静态资源 -->
     <mvc:resources location="/static/" mapping="/static/**" />
 	<!-- 对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->

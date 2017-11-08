@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"></meta>
+    <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white"></meta>
+
+    <title>我的中奖记录</title>
+
+    <link rel="stylesheet" th:href="@{/static/css/weui.css}"></link>
+    <link rel="stylesheet" th:href="@{/static/css/example.css}"></link>
+    <link rel="stylesheet" th:href="@{/static/css/css.css}"></link>
+
+    <link rel="stylesheet" th:href="@{/static/module/css/bootstrap.min.css}" media="screen"></link>
+    <link rel="stylesheet" th:href="@{/static/module/css/font-awesome.min.css}"></link>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" th:src="@{/static/wat/js/html5shiv.js}"></script>
+    <script type="text/javascript" th:src="@{/static/wat/js/respond.min.js}"></script>
+    <![endif]-->
+    <script  th:src="@{/static/nocard/js/wx.js}" type="text/javascript"></script>
+    <script type="text/javascript" th:src="@{/static/js/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{/static/js/jweixin-1.0.0.js}" type="text/javascript"></script>
+</head>
+<body>
+<form id="queryForm" style="display: none">
+    <input id="pageNo" name="pageNo" type="text" th:value="${pageNo}"/>
+    <input id='loginUserId' name="loginUserId" type="text" th:value="${loginUserId}"/>
+</form>
+<div class="jumbotron" style="background: #1a91ff">
+    <div class="container">
+        <h4 align="center">您共计中奖次数<span th:text="${totalCount}"></span>次</h4>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="40%">奖品</th>
+            <th>获奖时间</th>
+        </tr>
+        </thead>
+        <tbody id="gripTableBody">
+        <tr th:each="item:${userPrizeInfos}">
+            <td th:text="${item.prizeName}"></td>
+			<td th:text="${item.prizeDateFormat}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--错误提示 -->
+<div class="weui_toptips weui_warn js_tooltips">格式不对</div>
+<div class="text-center">
+    <ul class="pagination">
+        <li><a id="first" href="#"
+               th:onclick="'javascript:paging('+this+');'">首页</a></li>
+        <li><a id="prev" href="#"
+               th:onclick="'javascript:paging('+this+');'">上一页</a></li>
+        <li><a id="next" href="#"
+               th:onclick="'javascript:paging('+this+');'">下一页</a></li>
+        <li><a id="last" href="#"
+               th:onclick="'javascript:paging('+this+');'">尾页</a></li>
+    </ul>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+    //<![CDATA[
+    //关闭微信头部分享菜单
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        WeixinJSBridge.call('hideOptionMenu');
+        WeixinJSBridge.call('hideToolbar');
+    });
+
+    //显示错误提示
+    function showEorrTips(msg){
+        $('.js_tooltips').text(msg);
+        $('.js_tooltips').show();
+        setTimeout(function (){
+            $('.js_tooltips').hide();
+        }, 3000);
+    }
+
+ 	// 处理点击返回按钮强制刷新页面问题
+	$(function(){
+		var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+		if (ua.match(/MicroMessenger/i) == "micromessenger") {
+			// 写入空白历史记录
+			var state = {
+				title: "title",
+				url: "#"
+			};
+			window.history.pushState(state, "title", "#");
+			window.addEventListener('popstate', function(e){
+				// 点击返回按钮设置标志
+				sessionStorage.setItem("PRIZE_BACK_FLAG", '1');
+				//window.history.go(-1); // 注释掉，生产有部分用户自动返回
+			}, false);
+		}	
+	});
+
+    var totalPages = parseInt([[${totalPages}]]);
+    function paging(obj) {
+        var currPageNo = parseInt($('#pageNo').val());
+        var type = obj.id;
+        var visitFlag = true;
+        switch (type) {
+            case 'first' : {
+                currPageNo = 1;
+                break;
+            }
+            case 'prev' : {
+                if (currPageNo - 1 <= 0) {
+                    currPageNo = 1;
+                    visitFlag = false;
+                    console.log("当前已经是首页，不能往前翻");
+                    showEorrTips("当前已经是首页，不能往前翻");
+                    return false;
+                }
+                currPageNo = currPageNo - 1;
+                break;
+            }
+            case 'next' : {
+                if (currPageNo + 1 > totalPages) {
+                    currPageNo = totalPages;
+                    visitFlag = false;
+                    console.log("当前已经是尾页，不能往后翻");
+                    showEorrTips("当前已经是尾页，不能往后翻");
+                    return false;
+                }
+                currPageNo = currPageNo + 1;
+                break;
+            }
+            case 'last' : {
+                currPageNo = totalPages;
+            }
+        }
+        $("#pageNo").val(currPageNo);
+        if(visitFlag) {
+        	queryPrizeRecords();
+        }
+    }
+
+    var _ctx = [[${application.ctx}]];
+    function queryPrizeRecords() {
+    	var pageNo = $('#pageNo').val();
+        var loginUserId = $('#loginUserId').val();
+        $.ajax({
+        	url: _ctx + '/prize/queryPrizeRocordsJson.htm',
+            method: 'POST',
+            data: {
+            	"pageNo": pageNo,
+                "loginUserId": loginUserId
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data == "" || null == data) {
+                	showEorrTips("中奖记录为空");
+                } else {
+                    buildHtml(data);
+                }
+            },
+            error: function (xhr, status, error) {
+            	showEorrTips("网络异常，请稍后再试!");
+            }
+        });
+    }
+
+    //构建内容
+    function buildHtml(list) {
+    	$("#gripTableBody").html("");
+        $.each(list, function (i, bean) {
+            var tr = [
+                '<tr>',
+                '<td>', bean.prizeName, '</td>',
+                '<td>', bean.prizeDateFormat, '</td>',
+                '</tr>'].join('');
+            $("#gripTableBody").append(tr);
+        });
+    }
+
+    //]]>
+</script>
+
+</body>
+</html>

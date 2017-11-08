@@ -27,8 +27,8 @@ public class KiddMgmtUmgServiceImpl implements IKiddMgmtUmgService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			log.error("query count exception:",e);
-			return 0;
 		}
+		return 0;
 	}
 
 	@Override
