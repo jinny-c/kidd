@@ -77,6 +77,13 @@ public class KiddStringUtils {
 		return str == null || str.trim().length() == 0;
 	}
 	
+	public static boolean isNull(String str) {
+		return isBlank(str) || str.trim().equalsIgnoreCase("null");
+	}
+	public static boolean isNotNull(String str) {
+		return !isNull(str);
+	}
+	
 	/**
 	 * 占位符日志输出 KiddStringUtils.replace("请求：txnSeqNo={},txnDate={}", "12342342",
 	 * "20160323"))
