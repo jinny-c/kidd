@@ -1,7 +1,7 @@
 {
-    "isAmtvalue":"1",
-    "prizeCode":"8",
-    "prizeId":"0",
+    "channel":"channel",
+    "clientChannel":"clientChannel",
+    "mobile":"mobile",
     "returnCode":"00",
     "tokenValue":"tokenValue"
 }

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <student id="12">
-	<name>test</name>
+	<channel>channel</channel>
+	<clientChannel>clientChannel</clientChannel>
+	<actionFlag>actionFlag</actionFlag>
 	<role>
 		<name>班长</name>
 		<desc>管理</desc>
