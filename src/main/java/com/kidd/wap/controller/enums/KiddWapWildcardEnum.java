@@ -52,4 +52,17 @@ public enum KiddWapWildcardEnum {
 	public static boolean isVerifyCode(String key) {
 		return wap_wildcard_verifyCode.key.equals(key);
 	}
+	
+	public static KiddWapWildcardEnum convert2Self(String key) {
+		if (KiddStringUtils.isBlank(key)) {
+			return null;
+		}
+		for (KiddWapWildcardEnum e : values()) {
+			if (e.key.equals(key)) {
+				return e;
+			}
+		}
+		return null;
+	}
+
 }

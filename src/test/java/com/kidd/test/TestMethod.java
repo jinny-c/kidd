@@ -2,6 +2,8 @@ package com.kidd.test;
 
 import java.security.SecureRandom;
 
+import com.kidd.wap.controller.enums.KiddWapWildcardEnum;
+
 
 public class TestMethod {
 
@@ -33,6 +35,19 @@ public class TestMethod {
 			randAll2(random);
 			randByParam(random,0);
 		}
+		
+		switch (KiddWapWildcardEnum.convert2Self("123")) {
+		case wap_wildcard_imageCode:
+			System.out.println("wap_wildcard_imageCode");
+			break;
+		case wap_wildcard_verifyCode:
+			System.out.println("wap_wildcard_verifyCode");
+			break;
+		default:
+			System.out.println("default");
+			break;
+		}
+		
 	}
 
 	private void randNext(SecureRandom random){

@@ -234,7 +234,16 @@ public class KiddWapUserController extends KiddBaseController{
 					randomCode.append(strRand);
 				}
 			}
-
+			
+			/*switch (KiddWapWildcardEnum.convert2Self(wildcard)) {
+			case wap_wildcard_imageCode:
+				break;
+			case wap_wildcard_verifyCode:
+				break;
+			default:
+				break;
+			}*/
+			
 			/*if (KiddWapWildcardEnum.isVerifyCode(wildcard)) {
 				//生成 [1000-9999) 之间的随机数字
 				int rd = random.nextInt(9999 - 1000 + 1) + 1000;
