@@ -208,7 +208,7 @@ public class KiddWapUserController extends KiddBaseController{
 			log.info("getVerifiCode,req={},wildcard={}", req, wildcard);
 			if (!KiddWapWildcardEnum.isExsit(wildcard)) {
 				if("wap".equals(wildcard)){
-					return toErr(KiddErrorCodes.E_KIDD_SUCC, asyncGetConfig());
+					return toErr(KiddErrorCodes.E_KIDD_ERROR, asyncGetConfig());
 				}
 				return toErr(KiddErrorCodes.E_KIDD_ERROR, "没有定义的请求！");
 			}

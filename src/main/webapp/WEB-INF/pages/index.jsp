@@ -100,6 +100,8 @@ function buildHtml_list(list){
 
 	<div>
 		<div>
+			<a id="reg_btn" href="#" onclick="getVerficCode('imageCode')">getVerficCode/imageCode</a>
+			<br/>
 			<a id="reg_btn" href="#" onclick="getVerficCode('wap')">getVerficCode/wap</a>
 			<br/>
 			<a id="reg_btn" href="#" onclick="getVerficCode('other')">getVerficCode/other</a>

@@ -28,4 +28,7 @@ public class KiddConstants {
 	 * HTTP ContentType 取值 - 二进制
 	 */
 	public final static String CONTENT_TYPE_BINARY = "application/octet-stream";
+	
+	public static final String X_REQUESTED_WITH = "x-requested-with";
+	public static final String FIELD_USER_AGENT = "User-Agent";
 }

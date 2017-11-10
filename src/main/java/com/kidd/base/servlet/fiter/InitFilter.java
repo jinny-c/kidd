@@ -12,7 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.kidd.base.common.constant.KiddConstants;
+import com.kidd.base.common.serialize.KiddSerialTypeEnum;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
+import com.kidd.base.http.HttpHeader;
 import com.kidd.base.http.RequestResponseContext;
 import com.kidd.base.servlet.traffic.KiddTrafficCounter;
 
@@ -49,6 +52,7 @@ public class InitFilter extends OncePerRequestFilter {
 				writeToResponse(response, respMsg);
 				return;
 			}
+			initHeader(request);
 			RequestResponseContext.setRequest(request);
 			RequestResponseContext.setResponse(response);
 			chain.doFilter(request, response);
@@ -80,4 +84,22 @@ public class InitFilter extends OncePerRequestFilter {
 		}
 	}
 	
+	private void initHeader(HttpServletRequest request) {
+		HttpHeader header = new HttpHeader();
+		header.setSessionId("sessionId");
+		header.setUniqueIdentifier("uniqueIdentifier");
+		header.setSignature("signature");
+		header.setDataType(KiddSerialTypeEnum.convert2Self("serilalType"));
+		
+		header.setUserAgent(request.getHeader(KiddConstants.FIELD_USER_AGENT));
+		header.setXmlRequestedWith(request.getHeader(KiddConstants.X_REQUESTED_WITH));
+		
+		header.setVersion("version");
+		header.setImei("imei");
+		header.setMachineModel("machineModel");
+		header.setPlantform("plantform");
+		
+		logger.info("initHeader end,{}", header);
+		request.setAttribute(HttpHeader.class.getName(), header);
+	}
 }

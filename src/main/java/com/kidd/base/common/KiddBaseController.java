@@ -111,13 +111,13 @@ public class KiddBaseController {
 		try {
 			httpHeader = getHttpHeader();
 		} catch (KiddControllerException e) {
-			log.error("KiddControllerException:",e);
+			log.error("KiddControllerException:", e);
 		}
-		
-		if (httpHeader != null ) {
-			return httpHeader.getDataType();
+
+		if (httpHeader == null || httpHeader.getDataType() == null) {
+			return KiddSerialTypeEnum.SERILAL_TYPE_FASTJSON;
 		}
-		return KiddSerialTypeEnum.SERILAL_TYPE_FASTJSON;
+		return httpHeader.getDataType();
 	}
 	
 	/**
