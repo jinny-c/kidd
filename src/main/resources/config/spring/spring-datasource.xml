@@ -16,8 +16,11 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<!-- hpdb_10.148.181.173 -->
+		<!-- hpdb_10.148.181.173 
 		<property name="url" value="jdbc:oracle:thin:@10.148.181.247:1521:hpdb17" />
+		-->
+		<!-- hpdb_10.148.181.172 -->
+		<property name="url" value="jdbc:oracle:thin:@10.148.181.169:1521:hpdb45" />
 		<property name="username" value="hpay" />
 		<property name="password" value="handpay" />
 	</bean>

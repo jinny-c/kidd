@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kidd.db.mybatis.umg.mapper.KiddUserInfoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.kidd.db.mybatis.umg.mapper.domain.KiddUserInfo">
+		<constructor>
+			<idArg column="USER_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="USER_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="REAL_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="NICK_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="RESERVED_FIELD" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="CREAT_TIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="UPD_TIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+			<arg column="USER_SEX" jdbcType="CHAR" javaType="java.lang.String" />
+		</constructor>
+	</resultMap>
+	<sql id="Base_Column_List">
+		USER_ID, USER_NAME, REAL_NAME, NICK_NAME, RESERVED_FIELD, CREAT_TIME,
+		UPD_TIME, USER_SEX
+	</sql>
+	<sql id="query_condition_sql">
+		<if test="userId != null">
+			and USER_ID = #{userId,jdbcType=VARCHAR},
+		</if>
+		<if test="userName != null">
+			and USER_NAME = #{userName,jdbcType=VARCHAR},
+		</if>
+		<if test="realName != null">
+			and REAL_NAME = #{realName,jdbcType=VARCHAR},
+		</if>
+		<if test="nickName != null">
+			and NICK_NAME = #{nickName,jdbcType=VARCHAR},
+		</if>
+		<if test="reservedField != null">
+			and RESERVED_FIELD = #{reservedField,jdbcType=VARCHAR},
+		</if>
+		<if test="creatTime != null">
+			and CREAT_TIME = #{creatTime,jdbcType=VARCHAR},
+		</if>
+		<if test="updTime != null">
+			and UPD_TIME = #{updTime,jdbcType=VARCHAR},
+		</if>
+		<if test="userSex != null">
+			and USER_SEX = #{userSex,jdbcType=CHAR},
+		</if>
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from KIDD_USER_INFO
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
+	<select id="selectByUserName" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from KIDD_USER_INFO
+		where USER_NAME = #{userName,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByCondition" resultMap="BaseResultMap"
+		parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddUserInfo">
+		select
+		<include refid="Base_Column_List" />
+		from KIDD_USER_INFO
+		where 1=1
+		<include refid="query_condition_sql" />
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from KIDD_USER_INFO
+		where USER_ID = #{userId,jdbcType=VARCHAR} and 1=2
+	</delete>
+
+	<insert id="insertSelective" parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddUserInfo">
+		insert into KIDD_USER_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="userName != null">
+				USER_NAME,
+			</if>
+			<if test="realName != null">
+				REAL_NAME,
+			</if>
+			<if test="nickName != null">
+				NICK_NAME,
+			</if>
+			<if test="reservedField != null">
+				RESERVED_FIELD,
+			</if>
+			<if test="creatTime != null">
+				CREAT_TIME,
+			</if>
+			<if test="updTime != null">
+				UPD_TIME,
+			</if>
+			<if test="userSex != null">
+				USER_SEX,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				#{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				#{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="reservedField != null">
+				#{reservedField,jdbcType=VARCHAR},
+			</if>
+			<if test="creatTime != null">
+				#{creatTime,jdbcType=VARCHAR},
+			</if>
+			<if test="updTime != null">
+				#{updTime,jdbcType=VARCHAR},
+			</if>
+			<if test="userSex != null">
+				#{userSex,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddUserInfo">
+		update KIDD_USER_INFO
+		<set>
+			<if test="userName != null">
+				USER_NAME = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				REAL_NAME = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				NICK_NAME = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="reservedField != null">
+				RESERVED_FIELD = #{reservedField,jdbcType=VARCHAR},
+			</if>
+			<if test="creatTime != null">
+				CREAT_TIME = #{creatTime,jdbcType=VARCHAR},
+			</if>
+			<if test="updTime != null">
+				UPD_TIME = #{updTime,jdbcType=VARCHAR},
+			</if>
+			<if test="userSex != null">
+				USER_SEX = #{userSex,jdbcType=CHAR},
+			</if>
+		</set>
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</update>
+
+
+	<sql id="DialectPrefix">
+		<if test="page != null">
+			select datarow.* from ( select row_.*,rownum as rwid from
+			(
+		</if>
+	</sql>
+	<sql id="DialectSuffix">
+		<if test="page != null">
+            <![CDATA[ ) row_ where rownum <= #{page.end} ) datarow
+	      where rwid >= #{page.begin} ]]>
+		</if>
+	</sql>
+	
+	<select id="countRecordsByPaging" resultType="java.lang.Integer"
+		parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddUserInfo">
+		select count(1) from HPAY.KIDD_USER_INFO
+		where 1 = 1
+		<include refid="query_condition_sql" />
+	</select>
+	<select id="selectByPaging" resultMap="BaseResultMap"
+		parameterType="com.kidd.db.mybatis.umg.mapper.domain.KiddUserInfo">
+		<include refid="DialectPrefix" />
+		select
+		<include refid="Base_Column_List" />
+		from HPAY.KIDD_USER_INFO
+		where 1 = 1
+		<include refid="query_condition_sql" />
+		order by UPT_TIME desc
+		<include refid="DialectSuffix" />
+	</select>
+	
+</mapper>

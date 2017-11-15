@@ -24,6 +24,7 @@ import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.exception.KiddException;
 import com.kidd.base.common.exception.KiddFactoryException;
+import com.kidd.base.common.exception.KiddServiceException;
 import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.factory.annotation.KiddSecureAnno;
@@ -35,6 +36,7 @@ import com.kidd.base.factory.timer.service.IKiddTimerProcessor;
 import com.kidd.base.factory.timer.service.impl.KiddTimerExecutor;
 import com.kidd.base.http.RequestResponseContext;
 import com.kidd.db.mybatis.umg.services.IKiddMgmtUmgService;
+import com.kidd.db.mybatis.umg.services.bean.KiddUserInfoBean;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
 import com.kidd.wap.controller.dto.UserLoginReq;
@@ -103,9 +105,18 @@ public class KiddWapUserController extends KiddBaseController{
 		HttpServletRequest request = RequestResponseContext.getRequest();
 		String flag = request.getParameter("flag");
 		try {
-			log.info("index,queryCount={}",kiddMgmtUmgService.queryCount());
-			log.info("index,queryByPrimaryKey={}",kiddMgmtUmgService.queryByPrimaryKey(19886676));
-			if(flag.equals(""));
+			//log.info("index,queryCount={}",kiddMgmtUmgService.queryCount());
+			//log.info("index,queryByPrimaryKey={}",kiddMgmtUmgService.queryByPrimaryKey(19886676));
+			
+			KiddUserInfoBean reqBean = new KiddUserInfoBean();
+			reqBean.setUserName("userNameTest");
+			kiddMgmtUmgService.modifyUserInfo(reqBean);
+			
+			//if(flag.equals(""));
+			if("".equals(flag));
+		} catch (KiddServiceException e) {
+			// TODO: handle exception
+			log.info("index exception:", e);
 		} catch (Exception e) {
 			// TODO: handle exception
 			//log.error("index exception:", e);

@@ -46,7 +46,7 @@
         <!-- 
         <table tableName="micro_banner_relation" schema="hpay" domainObjectName="MicroBannerRelation" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
         -->
-        <table tableName="micro_user_secure_info" domainObjectName="KiddUserSecureInfo" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="kidd_user_info" domainObjectName="KiddUserInfo" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>
