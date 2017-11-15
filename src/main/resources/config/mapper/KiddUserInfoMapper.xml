@@ -20,28 +20,28 @@
 	</sql>
 	<sql id="query_condition_sql">
 		<if test="userId != null">
-			and USER_ID = #{userId,jdbcType=VARCHAR},
+			and USER_ID = #{userId,jdbcType=VARCHAR}
 		</if>
 		<if test="userName != null">
-			and USER_NAME = #{userName,jdbcType=VARCHAR},
+			and USER_NAME = #{userName,jdbcType=VARCHAR}
 		</if>
 		<if test="realName != null">
-			and REAL_NAME = #{realName,jdbcType=VARCHAR},
+			and REAL_NAME = #{realName,jdbcType=VARCHAR}
 		</if>
 		<if test="nickName != null">
-			and NICK_NAME = #{nickName,jdbcType=VARCHAR},
+			and NICK_NAME = #{nickName,jdbcType=VARCHAR}
 		</if>
 		<if test="reservedField != null">
-			and RESERVED_FIELD = #{reservedField,jdbcType=VARCHAR},
+			and RESERVED_FIELD = #{reservedField,jdbcType=VARCHAR}
 		</if>
 		<if test="creatTime != null">
-			and CREAT_TIME = #{creatTime,jdbcType=VARCHAR},
+			and CREAT_TIME = #{creatTime,jdbcType=VARCHAR}
 		</if>
 		<if test="updTime != null">
-			and UPD_TIME = #{updTime,jdbcType=VARCHAR},
+			and UPD_TIME = #{updTime,jdbcType=VARCHAR}
 		</if>
 		<if test="userSex != null">
-			and USER_SEX = #{userSex,jdbcType=CHAR},
+			and USER_SEX = #{userSex,jdbcType=CHAR}
 		</if>
 	</sql>
 

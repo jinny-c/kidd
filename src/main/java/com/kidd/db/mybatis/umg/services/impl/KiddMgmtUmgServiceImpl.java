@@ -68,11 +68,12 @@ public class KiddMgmtUmgServiceImpl implements IKiddMgmtUmgService {
 		}
 		KiddUserInfo uInfo = userInfoMapper.selectByCondition(KiddObjectUtils
 				.copyProperty(KiddUserInfo.class, reqBean));
+		log.info("queryUseInfoByPrimaryKey uInfo={}",uInfo);
 		
 		//userInfoMapper.selectByPaging(KiddObjectUtils.copyProperty(KiddUserInfo.class, reqBean));
 		
-		//userInfoMapper.countRecordsByPaging(KiddObjectUtils.copyProperty(KiddUserInfo.class, reqBean));
-		log.info("queryUseInfoByPrimaryKey start,reqBean={}",uInfo);
+		int count = userInfoMapper.countRecordsByPaging(KiddObjectUtils.copyProperty(KiddUserInfo.class, reqBean));
+		log.info("queryUseInfoByPrimaryKey count={}",count);
 		return null;
 	}
 

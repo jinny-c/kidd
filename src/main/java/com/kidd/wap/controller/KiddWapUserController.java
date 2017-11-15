@@ -111,6 +111,7 @@ public class KiddWapUserController extends KiddBaseController{
 			KiddUserInfoBean reqBean = new KiddUserInfoBean();
 			reqBean.setUserName("userNameTest");
 			kiddMgmtUmgService.modifyUserInfo(reqBean);
+			kiddMgmtUmgService.queryUseInfoByPrimaryKey(reqBean);
 			
 			//if(flag.equals(""));
 			if("".equals(flag));
