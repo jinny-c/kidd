@@ -168,7 +168,6 @@ public class ReadOrWriteFileUtil {
 	/**
 	 * 获取excel中对应行中列的值
 	 * 
-	 * @user zcheng 2014-8-15
 	 * @param oneCell
 	 * @return
 	 */
