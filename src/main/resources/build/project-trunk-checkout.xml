@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!-- ======================================================================= -->
+<!-- Handpay back server build file                                                       -->
+<!-- ======================================================================= -->
+
+<project name="project trunk checkout" default="foreach" basedir=".">
+
+	<property file="prop-svn.properties" />
+	<property environment="env" />
+	<import file="project-list.xml" />
+
+	<target name="init">
+		<echo message="" />
+	</target>
+
+	<target name="foreach">
+		<foreach target="checkout" list="${project.list}" param="project.one" inheritall="true">
+		</foreach>
+	</target>
+
+	<target name="checkout">
+		<propertycopy name="project.name" from="project.name.${project.one}" />
+		<svn>
+			<status path="../trunk/hpay/${project.name}" textStatusProperty="project.status" revisionProperty="project.revision" />
+		</svn>
+		<echo>project.status=${project.status}</echo>
+		<echo>project.revision=${project.revision}</echo>
+		<trycatch>
+			<try>
+				<if>
+					<equals arg1="${project.revision}" arg2="-1" />
+					<then>
+						<!-- the project directory is not a svn working copy -->
+						<delete dir="../trunk/hpay/${project.name}" />
+						<mkdir dir="../trunk/hpay/${project.name}" />
+						<echo message="begin checkout the trunk project ${project.name}" />
+						<svn username="${svnant.repository.user}" password="${svnant.repository.passwd}">
+							<checkout url="${svnant.repository.url}/${project.name}/trunk" revision="HEAD" destPath="../trunk/hpay/${project.name}" />
+						</svn>
+						<echo message="end checkout the trunk project ${project.name}" />
+					</then>
+					<else>
+						<!-- the directory is a working copy then update it -->
+						<echo message="begin update the trunk project: ${project.name}" />
+						<svn username="${svnant.repository.user}" password="${svnant.repository.passwd}">
+							<update dir="../${project.name}" />
+						</svn>
+						<echo message="end update the trunk project: ${project.name}" />
+					</else>
+				</if>
+			</try>
+			<catch>
+				<echo message="error trunk project ${project.name}" />
+			</catch>
+		</trycatch>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Cleans up generated stuff                                           -->
+	<!-- =================================================================== -->
+	<target name="clean" depends="init">
+	</target>
+
+</project>
+

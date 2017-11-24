@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!-- ======================================================================= -->
+<!-- Handpay back server build file                                                       -->
+<!-- ======================================================================= -->
+
+<project name="project checkout" default="foreach" basedir=".">
+
+	<property file="prop-svn.properties" />
+	<property environment="env" />
+	<import file="project-list.xml" />
+
+	<target name="init">
+		<echo message="" />
+	</target>
+
+	<target name="foreach">
+		<foreach target="checkout" list="${project.list}" param="project.one" inheritall="true">
+		</foreach>
+	</target>
+
+	<target name="checkout">
+		<propertycopy name="project.name" from="project.name.${project.one}" />
+		<svn>
+			<status path="../${svnant.branch.name}/${project.name}" textStatusProperty="project.status" revisionProperty="project.revision" />
+		</svn>
+		<echo>project.status=${project.status}</echo>
+		<echo>project.revision=${project.revision}</echo>
+		<if>
+			<equals arg1="${project.revision}" arg2="-1" />
+			<then>
+				<!-- the project directory is not a svn working copy -->
+				<delete dir="../${svnant.branch.name}/${project.name}" />
+				<mkdir dir="../${svnant.branch.name}/${project.name}" />
+				<echo message="begin checkout the project ${project.name}-${svnant.branch.name} " />
+				<svn username="${svnant.repository.user}" password="${svnant.repository.passwd}">
+					<checkout url="${svnant.repository.url}/${project.name}/branches/${project.name}-${svnant.branch.name}" revision="HEAD" destPath="../${svnant.branch.name}/${project.name}" />
+				</svn>
+				<echo message="end checkout the project ${project.name}-${svnant.branch.name}" />
+			</then>
+			<else>
+				<!-- the directory is a working copy then update it -->
+				<echo message="begin update the project: ${project.name}" />
+				<svn username="${svnant.repository.user}" password="${svnant.repository.passwd}">
+					<update dir="../${project.name}-${svnant.branch.name}" />
+				</svn>
+				<echo message="end update the project: ${project.name}-${svnant.branch.name}" />
+			</else>
+		</if>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Cleans up generated stuff                                           -->
+	<!-- =================================================================== -->
+	<target name="clean" depends="init">
+	</target>
+
+</project>
+
