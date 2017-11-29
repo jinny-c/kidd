@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 请求响应上下文
  * 
- * @version 1.0 2016年4月8日
  * @history
  */
 public class RequestResponseContext {

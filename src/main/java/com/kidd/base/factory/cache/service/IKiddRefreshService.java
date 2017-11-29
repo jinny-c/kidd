@@ -1,5 +1,7 @@
 package com.kidd.base.factory.cache.service;
 
+import com.kidd.base.factory.cache.dto.KiddPubNumTokenDTO;
+
 
 /**
  *
@@ -18,4 +20,21 @@ public interface IKiddRefreshService {
 	String getToken(String pubNo, String appId);
 
 
+	
+	/**
+	 * 刷新微信公众号接口访问凭证
+	 * @param req
+	 */
+	void refreshAccessToken(KiddPubNumTokenDTO req);
+
+	/**
+	 * 查询缓存Token
+	 * @param pubNo
+	 * @param appId
+	 * @return
+	 */
+	String getAccessToken(String pubNo, String appId);
+	
+	String getAccessToken(KiddPubNumTokenDTO req);
+	
 }

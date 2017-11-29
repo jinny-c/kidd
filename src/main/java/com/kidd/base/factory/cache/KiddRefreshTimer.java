@@ -15,7 +15,6 @@ import com.kidd.base.factory.cache.service.IKiddRefreshService;
  * 1，access_token的有效期目前为2个小时，需定时刷新，重复获取将导致上次获取的access_token失效
  * 2，每天调用获取access_token接口的上限是2000次。
  *
- * @version 1.0 2017年06月20日
  * @history
  */
 public class KiddRefreshTimer {

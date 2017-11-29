@@ -8,11 +8,15 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.kidd.base.common.utils.ConfigRef;
+import com.kidd.base.factory.cache.dto.KiddPubNumTokenDTO;
+import com.kidd.base.factory.cache.service.IKiddRefreshService;
 import com.kidd.base.factory.wechat.dto.KiddPubNoInfoDTO;
 
 @Component
@@ -20,6 +24,9 @@ public class KiddCacheManager {
 	/** 日志 */
 	private static Logger log = LoggerFactory.getLogger(KiddCacheManager.class);
 
+	@Autowired
+	private IKiddRefreshService kiddRefreshServiceImpl;
+	
 	private LoadingCache<String, String> kiddConfigCache;
 	
 	public static Map<String, String> cacheMap = new HashMap<String, String>();
@@ -106,7 +113,14 @@ public class KiddCacheManager {
 	public String getAccessToken(String pubId) {
 		log.info("getAccessToken start,pubId={}", pubId);
 		//String cache = this.getCacheConfig(pubId);
-		return null;
+		KiddPubNumTokenDTO tokenDTO = new KiddPubNumTokenDTO();
+		tokenDTO.setPubNo("gh_51790c1ef5c3");
+		tokenDTO.setAppId("wxc265b22e9ecff5cc");
+		tokenDTO.setAppSecret("473a6a9b85a1e282d0623c71a91a6df5");
+		tokenDTO.setAccessTokenUrl(ConfigRef.WX_TOKEN_URI);
+		tokenDTO.setMandatory(true); //强制刷新
+		
+		return kiddRefreshServiceImpl.getAccessToken(tokenDTO);
 	}
 	
 }

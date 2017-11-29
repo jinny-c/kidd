@@ -13,6 +13,7 @@ public class KiddPubNoInfoDTO implements Serializable {
 	public static final String MSG_KEY_TRANS = "trans";
 	public static final String MSG_KEY_WITHDRAW = "withdraw";
 	public static final String MSG_KEY_CREDIT = "credit";
+	public static final String MSG_KEY_NOTICE_TEXT = "textNotice";
 
 	/** 微信公众号 【原始ID（微信号）：gh_xxxx】 */
 	private String pubId;
