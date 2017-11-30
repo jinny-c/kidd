@@ -35,6 +35,6 @@ public interface IKiddRefreshService {
 	 */
 	String getAccessToken(String pubNo, String appId);
 	
-	String getAccessToken(KiddPubNumTokenDTO req);
+	KiddPubNumTokenDTO getAccessToken(KiddPubNumTokenDTO req);
 	
 }

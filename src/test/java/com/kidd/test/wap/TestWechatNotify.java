@@ -15,12 +15,13 @@ import com.kidd.base.http.httpclient.KiddHttpExecutor;
  *
  * @history
  */
-public class TestWechatNotify2 {
+public class TestWechatNotify {
 
 	@Test
 	public void testNotify() throws Exception{
 		Map<String, Object> bodyValueMap = new HashMap<String, Object>();
 		bodyValueMap.put("pubId", "gh_51790c1ef5c3"); //固定值
+		bodyValueMap.put("pubId", "gh_d8ca418ebb2b"); //固定值
 		bodyValueMap.put("msgKey", "textNotice"); //固定值
 		bodyValueMap.put("openId", "oAD6ev2mkI3Nlz3ZaR2Edii6y-ZQ");  //固定值
 

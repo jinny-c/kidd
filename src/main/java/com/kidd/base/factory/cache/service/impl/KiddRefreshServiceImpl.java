@@ -89,7 +89,7 @@ public class KiddRefreshServiceImpl implements IKiddRefreshService {
 	}
 	
 	@Override
-	public String getAccessToken(KiddPubNumTokenDTO req) {
+	public KiddPubNumTokenDTO getAccessToken(KiddPubNumTokenDTO req) {
 		// TODO Auto-generated method stub
 		if (KiddStringUtils.isBlank(req.getAccessTokenUrl())) {
 			log.warn("微信公众号[{}]access_token接口地址为空", req.getPubNo());
@@ -100,7 +100,8 @@ public class KiddRefreshServiceImpl implements IKiddRefreshService {
 			log.info("微信公众号[{}]access_token开始", req.getPubNo());
 			WechatAccessToken accessToken = requestAccessToken(req);
 			log.info("微信公众号[{}]access_token成功", req.getPubNo());
-			return accessToken.getAccess_token();
+			
+			return store2RedisCache(req.getPubNo(), req.getAppId(), accessToken);
 		} catch (Throwable e) {
 			log.error("微信公众号[{}]access_token异常", req.getPubNo(), e);
 		}
@@ -140,19 +141,22 @@ public class KiddRefreshServiceImpl implements IKiddRefreshService {
 		return null;
 	}
 	
-	private void store2RedisCache(String pubNo, String appId,
+	private KiddPubNumTokenDTO store2RedisCache(String pubNo, String appId,
 			WechatAccessToken accessToken) {
 		if (null == accessToken) {
-			return;
+			return null;
 		}
-		KiddPubNumTokenDTO cache = new KiddPubNumTokenDTO();
-		cache.setPubNo(pubNo);
-		cache.setAppId(appId);
-		cache.setAccessToken(accessToken.getAccess_token());
-		cache.setCreateTime("");
+		KiddPubNumTokenDTO pubNoToken = new KiddPubNumTokenDTO();
+		pubNoToken.setPubNo(pubNo);
+		pubNoToken.setAppId(appId);
+		pubNoToken.setAccessToken(accessToken.getAccess_token());
+		pubNoToken.setCreateTime(KiddDateUtils.getCurrentDate());
 		// 计算无效时间，单位为：分
-		String nextInvalidateTime = "";
-		cache.setInvalidTime(nextInvalidateTime);
+		String nextInvalidateTime = KiddDateUtils.getNextTime(
+				KiddDateUtils.yyyyMMddHHmmss, pubNoToken.getCreateTime(),
+				accessToken.getExpires_in() / 60);
+		pubNoToken.setInvalidTime(nextInvalidateTime);
+		return pubNoToken;
 	}
 	
 	
