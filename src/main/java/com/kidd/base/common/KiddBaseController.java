@@ -131,6 +131,7 @@ public class KiddBaseController {
 		if (args != null && args.length > 0) {
 			response.setContentType(args[0]);
 		} else {
+			//TODO
 			response.setContentType(KiddConstants.CONTENT_TYPE_TEXT);
 		}
 		PrintWriter out = null;

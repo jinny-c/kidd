@@ -98,28 +98,9 @@ public class KiddPubNoClient {
 	public OAuthUser getWXAuthUser(String pubId, String code, String scope) {
 		KiddPubNoInfoDTO pubNoConfig = kiddCacheManager.getPubNoConfig(pubId);
 		if (pubNoConfig == null) {
-			pubNoConfig = getTestDto(pubId);
-			//return null;
+			return null;
 		}
 		return KiddPayBizUtil.getWXAuthUser(pubNoConfig.getAppId(), pubNoConfig.getAppSecret(), code, scope);
-	}
-
-	private KiddPubNoInfoDTO getTestDto(String pubId){
-		KiddPubNoInfoDTO dto = new KiddPubNoInfoDTO();
-		if("gh_51790c1ef5c3".equals(pubId)){
-			dto.setPubId("gh_51790c1ef5c3");
-			dto.setAppId("wxc265b22e9ecff5cc");
-			dto.setAppSecret("473a6a9b85a1e282d0623c71a91a6df5");
-			dto.setPubStatus("00");
-			dto.setPubName("开发用");	
-		}else{
-			dto.setPubId("gh_d8ca418ebb2b");
-			dto.setAppId("wxb17ce3d03ed8073e");
-			dto.setAppSecret("ea3b47e92bc17d958ea2f168c3f62dad");
-			dto.setPubStatus("00");
-			dto.setPubName("开发用");
-		}
-		return dto;
 	}
 		
 	/**

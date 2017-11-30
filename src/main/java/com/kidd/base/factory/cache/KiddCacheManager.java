@@ -108,7 +108,7 @@ public class KiddCacheManager {
 	
 	public KiddPubNoInfoDTO getPubNoConfig(String pubId) {
 		log.info("getPubNoConfig start,pubId={}", pubId);
-		return null;
+		return getTestDto(pubId);
 	}
 	
 	public String getAccessToken(String pubNo) {
@@ -129,28 +129,31 @@ public class KiddCacheManager {
 	}
 	
 	private KiddPubNumTokenDTO cover2Dto(String pubNo){
-		if("gh_d8ca418ebb2b".equals(pubNo)){
-			return cover2Dto2();
-		}
-		return cover2Dto1();
-	}
-	private KiddPubNumTokenDTO cover2Dto1(){
+		KiddPubNoInfoDTO pubNoDto = getTestDto(pubNo);
 		KiddPubNumTokenDTO tokenDTO = new KiddPubNumTokenDTO();
-		tokenDTO.setPubNo("gh_51790c1ef5c3");
-		tokenDTO.setAppId("wxc265b22e9ecff5cc");
-		tokenDTO.setAppSecret("473a6a9b85a1e282d0623c71a91a6df5");
+		tokenDTO.setPubNo(pubNoDto.getPubId());
+		tokenDTO.setAppId(pubNoDto.getAppId());
+		tokenDTO.setAppSecret(pubNoDto.getAppSecret());
 		tokenDTO.setAccessTokenUrl(ConfigRef.WX_TOKEN_URI);
 		tokenDTO.setMandatory(true); //强制刷新
 		return tokenDTO;
 	}
 	
-	private KiddPubNumTokenDTO cover2Dto2(){
-		KiddPubNumTokenDTO tokenDTO = new KiddPubNumTokenDTO();
-		tokenDTO.setPubNo("gh_d8ca418ebb2b");
-		tokenDTO.setAppId("wxb17ce3d03ed8073e");
-		tokenDTO.setAppSecret("ea3b47e92bc17d958ea2f168c3f62dad");
-		tokenDTO.setAccessTokenUrl(ConfigRef.WX_TOKEN_URI);
-		tokenDTO.setMandatory(true); //强制刷新
-		return tokenDTO;
+	private KiddPubNoInfoDTO getTestDto(String pubNoId){
+		KiddPubNoInfoDTO dto = new KiddPubNoInfoDTO();
+		if("gh_51790c1ef5c3".equals(pubNoId)){
+			dto.setPubId("gh_51790c1ef5c3");
+			dto.setAppId("wxc265b22e9ecff5cc");
+			dto.setAppSecret("473a6a9b85a1e282d0623c71a91a6df5");
+			dto.setPubStatus("00");
+			dto.setPubName("开发用");	
+		}else{
+			dto.setPubId("gh_d8ca418ebb2b");
+			dto.setAppId("wxb17ce3d03ed8073e");
+			dto.setAppSecret("ea3b47e92bc17d958ea2f168c3f62dad");
+			dto.setPubStatus("00");
+			dto.setPubName("开发用");
+		}
+		return dto;
 	}
 }

@@ -53,6 +53,7 @@ public class InitFilter extends OncePerRequestFilter {
 				return;
 			}
 			initHeader(request);
+			//response.setHeader("Access-Control-Allow-Origin", "*");
 			RequestResponseContext.setRequest(request);
 			RequestResponseContext.setResponse(response);
 			chain.doFilter(request, response);
@@ -72,6 +73,7 @@ public class InitFilter extends OncePerRequestFilter {
 	private void writeToResponse(HttpServletResponse response, String msg)
 			throws IOException {
 		byte[] data = msg.getBytes("UTF-8");
+		//TODO
 		response.setContentType("text/plain; charset=UTF-8");
 		ServletOutputStream outputStream = response.getOutputStream();
 		try {
@@ -91,8 +93,9 @@ public class InitFilter extends OncePerRequestFilter {
 		header.setSignature("signature");
 		header.setDataType(KiddSerialTypeEnum.convert2Self("serilalType"));
 		
-		header.setUserAgent(request.getHeader(KiddConstants.FIELD_USER_AGENT));
-		header.setXmlRequestedWith(request.getHeader(KiddConstants.X_REQUESTED_WITH));
+		//TODO
+		//header.setUserAgent(request.getHeader(KiddConstants.FIELD_USER_AGENT));
+		//header.setXmlRequestedWith(request.getHeader(KiddConstants.X_REQUESTED_WITH));
 		
 		header.setVersion("version");
 		header.setImei("imei");

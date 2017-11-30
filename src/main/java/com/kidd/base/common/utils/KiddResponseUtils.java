@@ -38,6 +38,7 @@ public class KiddResponseUtils {
 		byte[] data = msg.getBytes(KiddConstants.CHARSET_DEF);
 //		response.setHeader(KiddHttpConstants.NAME_HP_DATALENGTH, data.length + "");
 //		response.setHeader(KiddHttpConstants.NAME_HP_CONTENTTYPE, KiddHttpConstants.HP_CONTENT_TYPE_TEXT);
+		//TODO
 		response.setContentType(KiddConstants.CONTENT_TYPE_TEXT);
 		ServletOutputStream outputStream = response.getOutputStream();
 		try {
