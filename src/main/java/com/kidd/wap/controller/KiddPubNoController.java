@@ -195,7 +195,7 @@ public class KiddPubNoController extends KiddBaseController {
 			sbd.append(str);
 		}
 		log.info("TraceID:{}, SHA1签名数据：{}", KiddTraceLogUtil.getTraceId(), sbd.toString());
-		if(signature.equalsIgnoreCase(DigestUtils.shaHex(sbd.toString()))){
+		if(signature.equalsIgnoreCase(DigestUtils.sha1Hex(sbd.toString()))){
 			log.info("TraceID:{}, 微信服务器验签成功", KiddTraceLogUtil.getTraceId());
 			writeToResponse(echostr);
 			return;
