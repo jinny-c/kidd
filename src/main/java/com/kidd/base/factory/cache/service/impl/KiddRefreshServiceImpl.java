@@ -111,7 +111,6 @@ public class KiddRefreshServiceImpl implements IKiddRefreshService {
 	/**
 	 * 获取微信公众平台API接口调用的凭证
 	 *
-	 * @author jiezhang 2017-01-16
 	 * @return
 	 */
 	private WechatAccessToken requestAccessToken(KiddPubNumTokenDTO req) {

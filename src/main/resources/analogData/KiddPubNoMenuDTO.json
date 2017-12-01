@@ -1,0 +1,35 @@
+[
+    {
+        "menuId":"53",
+        "mainMenuFlag":"1",
+        "menuType":"sub_button",
+        "menuParentId":"",
+        "menuName":"金融服务",
+        "menuKey":"",
+        "menuValue":"",
+        "shortUrlFlag":"1",
+        "menuSortNo":"1.0"
+    },
+    {
+        "menuId":"54",
+        "mainMenuFlag":"0",
+        "menuType":"view",
+        "menuParentId":"53",
+        "menuName":"收款",
+        "menuKey":"",
+        "menuValue":"https://app.handbank.cn/hpayMicroWap/nocardpay/payEntry.htm",
+        "shortUrlFlag":"1",
+        "menuSortNo":"1.1"
+    },
+    {
+        "menuId":"55",
+        "mainMenuFlag":"0",
+        "menuType":"view",
+        "menuParentId":"53",
+        "menuName":"信用卡管理",
+        "menuKey":"",
+        "menuValue":"https://app.handbank.cn/hpayMicroWap/nocard/creditCardEntry.htm",
+        "shortUrlFlag":"1",
+        "menuSortNo":"1.2"
+    }
+]

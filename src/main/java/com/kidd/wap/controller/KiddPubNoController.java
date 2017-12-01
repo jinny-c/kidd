@@ -31,6 +31,7 @@ import com.kidd.base.factory.message.dto.KiddPushMessage;
 import com.kidd.base.factory.message.dto.WechatMessage;
 import com.kidd.base.factory.wechat.KiddPubNoClient;
 import com.kidd.base.factory.wechat.WechatMessageXMLUtil;
+import com.kidd.base.factory.wechat.service.IKiddPubNoMenuService;
 import com.kidd.base.http.RequestResponseContext;
 
 @Controller
@@ -45,6 +46,9 @@ public class KiddPubNoController extends KiddBaseController {
 	
 	@Autowired
 	private IMsgHandlerDispatcher msgHandlerDispatcher;
+	
+	@Autowired
+	private IKiddPubNoMenuService kiddPubNoMenuService;
 	
 	/**
 	 * 清除本地公众号缓存（手动）
@@ -106,10 +110,10 @@ public class KiddPubNoController extends KiddBaseController {
 	@RequestMapping(value = "/resetMenu", method = {RequestMethod.GET, RequestMethod.POST})
 	public String resetMenu(String pubId, Model model) throws KiddControllerException{
 		VerifyControllerUtil.assertNotBlank(pubId, "微信公众号ID不能为空！");
-		//VerifyControllerUtil.assertNotBlank(pubNoClient.getPubNoAppId(pubId),KiddErrorCode.ERROR_CODE_MW016.getErrorMsg());
+		VerifyControllerUtil.assertNotBlank(pubNoClient.getPubNoAppId(pubId),"KiddErrorCode.ERROR_CODE_MW016.getErrorMsg()");
 		log.info("TraceID:{}, 重置微信公众号[{}]菜单", KiddTraceLogUtil.getTraceId(), pubId);
-		//String jsonMenu = KiddPubNoMenuService.generateJsonMenuTree(pubId);
-		String jsonMenu = "jsonMenu";
+		String jsonMenu = kiddPubNoMenuService.generateJsonMenuTree(pubId);
+		//String jsonMenu = "jsonMenu";
 		log.info("微信公众号[{}]菜单配置", pubId, jsonMenu);
 		boolean flag = pubNoClient.createMenu(pubId, jsonMenu);
 		model.addAttribute("message", flag ? "菜单重置成功":"菜单重置失败");

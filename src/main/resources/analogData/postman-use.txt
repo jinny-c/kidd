@@ -1,0 +1,121 @@
+--获取菜单
+https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ZRQ-wfPZa_LahzfioDTMKe-8fPSCqmL58CMIdvO6GkCgvK9mOY8AlnVbC390G9x7EuDvQ7KVbW3cZHGZNOhRwih4V6nlEiCRgmo5PCtcohIMdyXd8ScKK0iiYe5zseuRQPFhADAAZP
+
+
+--微信菜单
+https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ZjHTZ-Vu5aCrkXGNQWp_5TdwDZKbgW1izVwqkITK9OkuUCR94n0o_Hq8nO-Facc-LG9s8pMd1f5SHIVx6t4upmyca9SjSw0Fe1TxY2LqlNTCKExhsw35i7FF3ofpwuc_TZMdAFAWCP
+Content-Type
+application/json
+
+{
+    "button": [
+        {
+            "name": "扫码", 
+            "sub_button": [
+                {
+                    "type": "scancode_waitmsg", 
+                    "name": "扫码带提示", 
+                    "key": "rselfmenu_0_0", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "scancode_push", 
+                    "name": "扫码推事件", 
+                    "key": "rselfmenu_0_1", 
+                    "sub_button": [ ]
+                },
+                {
+				  "type": "view",
+				  "name": "jiddProjects",
+				  "url": "https://w.url.cn/s/AbTFVrI"
+				},
+				{
+				  "type": "view",
+				  "name": "kidd",
+				  "url": "http://10.148.21.80:8082/kidd"
+				}
+            ]
+        }, 
+        {
+            "name": "发图", 
+            "sub_button": [
+                {
+                    "type": "pic_sysphoto", 
+                    "name": "系统拍照发图", 
+                    "key": "rselfmenu_1_0", 
+                   "sub_button": [ ]
+                 }, 
+                {
+                    "type": "pic_photo_or_album", 
+                    "name": "拍照或者相册发图", 
+                    "key": "rselfmenu_1_1", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "pic_weixin", 
+                    "name": "微信相册发图", 
+                    "key": "rselfmenu_1_2", 
+                    "sub_button": [ ]
+                },
+				{
+				  "type": "view",
+				  "name": "收款",
+				  "url": "https://w.url.cn/s/Ab2Ixas"
+				},
+				{
+				  "type": "view",
+				  "name": "交易明细",
+				  "url": "https://w.url.cn/s/AJID4o1"
+				}
+            ]
+        },
+		{
+        "name": "localhost测试",
+          "sub_button": [
+            {
+              "type": "view",
+              "name": "基本信息",
+              "url": "https://w.url.cn/s/A89N6Cd"
+            },
+            {
+              "type": "view",
+              "name": "修改收款卡",
+              "url": "https://w.url.cn/s/AFxUGeH"
+            },
+            {
+              "type": "view",
+              "name": "切换用户",
+              "url": "https://w.url.cn/s/AuLNRkz"
+            },
+			{
+              "type": "view",
+              "name": "信用卡管理",
+              "url": "https://w.url.cn/s/ARMKwNB"
+            },
+            {
+              "type": "view",
+              "name": "我的推广码",
+              "url": "https://w.url.cn/s/At54ATh"
+            }
+          ]
+      }
+    ]
+}
+
+
+
+--获取access_token
+https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxc265b22e9ecff5cc&secret=473a6a9b85a1e282d0623c71a91a6df5
+ 
+--短连接
+https://api.weixin.qq.com/cgi-bin/shorturl?access_token=N-_w2KLG2Ys0v0mqF-4MIbz1zF5eF5_ir-olNH0Rq3J9yNBELGvcR8azQT4VyzLFfl7X8QLFTvQYXJ-C4hIF9xaU0br4ItrblvdUxMjNZIgJKEdAJAVWQ
+Content-Type
+application/json
+{
+  "action": "long2short",
+  "long_url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx476314b18b83c384&redirect_uri=http://app.handbank.cn/hpayMicroWap/user/scanShareCode.htm?biz_content=c2lnbjowNjRlNWRjODJkNjA5NTI4MTU3NjU4ZDBkODc0ZjZiZHxyZWNNZXJjaGFudENvZGU6V0taRkBXSzE1MzAwMDAwMDAyfHB1YlR5cGU6V0VDSEFUX1dLfGNoYW5uZWw6V0taRg==&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=1#wechat_redirect"
+}
+
+
+http://localhost:8080/hpayMicroWap/pubnum/long2short.htm?pubId=gh_51790c1ef5c3&url=https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc265b22e9ecff5cc%26redirect_uri=http://10.148.21.80:8080/hpayMicroWap/nocard/scanShareCode.htm?biz_content=c2lnbjo1NDYwMjZhZmFkYjQyN2Q1OTcxYjc5YmZiZDUxYjY1ZHxhZ2VudElkOjQxMTU2fHB1YlR5cGU6V0VDSEFUX1dLfGNoYW5uZWw6V0taRg==%26response_type=code%26scope=snsapi_base%26state=STATE%26connect_redirect=1
+ 

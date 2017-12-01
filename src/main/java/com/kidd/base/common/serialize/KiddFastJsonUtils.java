@@ -1,5 +1,7 @@
 package com.kidd.base.common.serialize;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
@@ -25,6 +27,10 @@ public class KiddFastJsonUtils {
 	 */
 	public static <T> T toObj(String data, Class<T> clazz) {
 		return JSON.parseObject(data, clazz);
+	}
+	
+	public static <T> List<T> toListObj(String data, Class<T> clazz) {
+		return JSON.parseArray(data, clazz);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +50,29 @@ public class JsonFileUtil {
 	private static <T> T readJsonFile(Class<? extends T> clazz, File configFile) {
 		try {
 			return KiddFastJsonUtils.toObj(readJsonFile(configFile), clazz);
+		} catch (IOException e) {
+			log.error("readJsonFile IOException:", e);
+		}
+		return null;
+	}
+	
+	public static <T> List<T> readJsonListFile(Class<T> clazz, String path,
+			String name) {
+		try {
+			File file = new File(path + name);
+			if (file.isFile() && file.exists()) { // 判断文件是否存在
+				return readJsonListFile(clazz, file);
+			} else {
+				log.error("找不到指定的文件");
+			}
+		} catch (Exception e) {
+			log.error("获取文件出错:",e);
+		}
+		return null;
+	}
+	private static <T> List<T> readJsonListFile(Class<T> clazz, File configFile) {
+		try {
+			return KiddFastJsonUtils.toListObj(readJsonFile(configFile), clazz);
 		} catch (IOException e) {
 			log.error("readJsonFile IOException:", e);
 		}

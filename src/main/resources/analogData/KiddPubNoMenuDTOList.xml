@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<data>
+		<menuId>53</menuId>
+		<mainMenuFlag>1</mainMenuFlag>
+		<menuType>sub_button</menuType>
+		<menuParentId></menuParentId>
+		<menuName>金融服务</menuName>
+		<menuKey></menuKey>
+		<menuValue></menuValue>
+		<shortUrlFlag>1</shortUrlFlag>
+		<menuSortNo>1.0</menuSortNo>
+	</data>
+	<data>
+		<menuId>54</menuId>
+		<mainMenuFlag>0</mainMenuFlag>
+		<menuType>view</menuType>
+		<menuParentId>53</menuParentId>
+		<menuName>收款</menuName>
+		<menuKey></menuKey>
+		<menuValue>https://app.handbank.cn/hpayMicroWap/nocardpay/payEntry.htm</menuValue>
+		<shortUrlFlag>1</shortUrlFlag>
+		<menuSortNo>1.1</menuSortNo>
+	</data>
+	<data>
+		<menuId>55</menuId>
+		<mainMenuFlag>0</mainMenuFlag>
+		<menuType>view</menuType>
+		<menuParentId>53</menuParentId>
+		<menuName>信用卡管理</menuName>
+		<menuKey></menuKey>
+		<menuValue>https://app.handbank.cn/hpayMicroWap/nocard/creditCardEntry.htm</menuValue>
+		<shortUrlFlag>1</shortUrlFlag>
+		<menuSortNo>1.2</menuSortNo>
+	</data>
+</root>

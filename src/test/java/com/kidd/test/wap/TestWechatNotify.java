@@ -21,9 +21,10 @@ public class TestWechatNotify {
 	public void testNotify() throws Exception{
 		Map<String, Object> bodyValueMap = new HashMap<String, Object>();
 		bodyValueMap.put("pubId", "gh_51790c1ef5c3"); //固定值
-		bodyValueMap.put("pubId", "gh_d8ca418ebb2b"); //固定值
+		//bodyValueMap.put("pubId", "gh_d8ca418ebb2b"); //固定值
 		bodyValueMap.put("msgKey", "textNotice"); //固定值
 		bodyValueMap.put("openId", "oAD6ev2mkI3Nlz3ZaR2Edii6y-ZQ");  //固定值
+		bodyValueMap.put("openId", "oAD6ev2S4SJWcquqUUWuvrfs_zpA");  //固定值
 
 		Map<String, String> parameterMap = new HashMap<String, String>();
 		parameterMap.put("textData", "尊敬的用户您好，您尾号1234的银行卡有笔交易打款失败！");
