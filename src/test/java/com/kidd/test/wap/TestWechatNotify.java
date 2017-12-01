@@ -42,5 +42,26 @@ public class TestWechatNotify {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void long2short() throws Exception{
+		Map<String, String> bodyValueMap = new HashMap<String, String>();
+		bodyValueMap.put("pubId", "gh_51790c1ef5c3"); //固定值
+		//bodyValueMap.put("pubId", "gh_d8ca418ebb2b"); //固定值
+		bodyValueMap.put("url", "http://10.148.21.80:8082/kidd");
+		
+		try {
+			String url = "http://10.148.21.80:8082/kidd/wap/pubnum/long2short.htm";
+			KiddHttpExecutor executor = KiddHttpBuilder.create()
+					.loadPool(1, 1)
+					.loadTimeOut(3000, 3000)
+					.loadIgnoreUrl()
+					.build();
+			String responseStr = executor.doPostWithUrl(url, bodyValueMap, null);
+			System.out.println("=============" + responseStr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

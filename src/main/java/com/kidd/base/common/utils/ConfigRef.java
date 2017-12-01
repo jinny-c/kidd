@@ -9,8 +9,11 @@ public final class ConfigRef {
 	public final static String LOGIN_URI = PropertiesUtil.getProperty("login.uri");
 	public final static String USER_INFO_URL = PropertiesUtil.getProperty("user.info.url");
 	public final static String SHARE_URL = PropertiesUtil.getProperty("share.url");
+	public final static String SHARE_ENTRY_URL = PropertiesUtil.getProperty("share.entry.url");
 	public final static String NO_CARD_PAY_BACK_URL = PropertiesUtil.getProperty("nocardpay.backurl");
 	public final static String NO_CARD_PAY_FRONT_URL = PropertiesUtil.getProperty("nocardpay.fronturl");
+	public final static String USER_PRIZE_INFO_URL = PropertiesUtil.getProperty("user.prize.info.url");
+
 
 	/** 扫码支付微信公众号配置 */
 	public final static String WX_APP_ID_SCAN_PAY = PropertiesUtil.getProperty("scanpay.wx.appid");

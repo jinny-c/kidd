@@ -29,6 +29,7 @@ import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.factory.message.IMsgHandlerDispatcher;
 import com.kidd.base.factory.message.dto.KiddPushMessage;
 import com.kidd.base.factory.message.dto.WechatMessage;
+import com.kidd.base.factory.wechat.KiddNoCardPubNoUtil;
 import com.kidd.base.factory.wechat.KiddPubNoClient;
 import com.kidd.base.factory.wechat.WechatMessageXMLUtil;
 import com.kidd.base.factory.wechat.service.IKiddPubNoMenuService;
@@ -91,8 +92,8 @@ public class KiddPubNoController extends KiddBaseController {
 		if (KiddStringUtils.isBlank(pubNoAppId)) {
 			return KiddSymbolEnum.Blank.symbol();
 		}
-		//String oAuth2Url = KiddNoCardPubNoUtil.getOAuth2Url(pubNoClient.getPubNoAppId(pubId), url);
-		String oAuth2Url ="url";
+		String oAuth2Url = KiddNoCardPubNoUtil.getOAuth2Url(pubNoClient.getPubNoAppId(pubId), url);
+		//String oAuth2Url ="url";
 		try {
 			String shortUrl = pubNoClient.long2short(pubId, oAuth2Url);
 			log.info("短链接：{}", shortUrl);
