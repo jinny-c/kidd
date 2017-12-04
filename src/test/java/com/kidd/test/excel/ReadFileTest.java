@@ -1,10 +1,8 @@
 package com.kidd.test.excel;
 
-import java.util.List;
-
 import com.kidd.base.common.utils.readFile.JsonFileUtil;
 import com.kidd.base.common.utils.readFile.XmlFileUtil;
-import com.kidd.base.factory.wechat.dto.KiddPubNoMenuDTO;
+import com.kidd.wap.controller.dto.GetValidateCodeReq;
 
 
 public class ReadFileTest {
@@ -22,14 +20,16 @@ public class ReadFileTest {
 		
 		//GetValidateCodeReq req1 = XmlFileUtil.readXmlFile(GetValidateCodeReq.class,path, name1);
 		//System.out.println("======"+req1);
-		//GetValidateCodeReq req = new GetValidateCodeReq();
-		//req.setMobile("mobile");
-		//req.setChannel("channel");
-		//String res = XmlFileUtil.convertToXml(req);
-		//System.out.println("======"+res);
+		GetValidateCodeReq req = new GetValidateCodeReq();
+		req.setMobile("mobile");
+		req.setChannel("channel");
+		String res = XmlFileUtil.convertToXml(req);
+		System.out.println("======"+res);
 		//GetValidateCodeReq req2 = JsonFileUtil.readJsonFile(GetValidateCodeReq.class,path, name2);
 		//System.out.println("======"+req2);
-		List<KiddPubNoMenuDTO> dto = JsonFileUtil.readJsonListFile(KiddPubNoMenuDTO.class,path, name3);
-		System.out.println("======"+dto);
+		//List<KiddPubNoMenuDTO> dto = JsonFileUtil.readJsonListFile(KiddPubNoMenuDTO.class,path, name3);
+		//System.out.println("======"+dto);
+		
+		
 	}
 }

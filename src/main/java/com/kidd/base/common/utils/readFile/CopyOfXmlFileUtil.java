@@ -6,20 +6,19 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
-public class XmlFileUtil {
+public class CopyOfXmlFileUtil {
 
 	private static final Logger log = LoggerFactory
-			.getLogger(XmlFileUtil.class);
+			.getLogger(CopyOfXmlFileUtil.class);
 
 	private final static String encoding = "UTF-8";
 
@@ -94,15 +93,20 @@ public class XmlFileUtil {
 		return t;
 	}
 	
-	//TODO com.kidd.base.factory.wechat.WechatMessageXMLUtil
-	public static String convertToXml(Object obj) {
+	public static String convertToXml(Object obj) {  
+		String result = null;
 		try {
-			XStream xStream = new XStream(new DomDriver());
-			return xStream.toXML(obj);
+			JAXBContext context = JAXBContext.newInstance(obj.getClass());
+			Marshaller marshaller = context.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			marshaller.setProperty(Marshaller.JAXB_ENCODING, encoding);
 
+			StringWriter writer = new StringWriter();
+			marshaller.marshal(obj, writer);
+			result = writer.toString();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return result;
 	}
 }
