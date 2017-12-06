@@ -1,8 +1,18 @@
 package com.kidd.base.factory.cache;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.PostConstruct;
 
@@ -16,6 +26,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.kidd.base.common.utils.ConfigRef;
 import com.kidd.base.common.utils.KiddDateUtils;
+import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.factory.cache.dto.KiddPubNumTokenDTO;
 import com.kidd.base.factory.cache.service.IKiddRefreshService;
 import com.kidd.base.factory.wechat.dto.KiddPubNoInfoDTO;
@@ -30,10 +41,32 @@ public class KiddCacheManager {
 	
 	private LoadingCache<String, Object> kiddConfigCache;
 	
+	private Lock lock;
+	
+	// 任务执行器
+	private ExecutorService executorService;
+
+	// 5线程执行
+	private void initThreadPool() {
+		if (executorService == null) {
+			log.info("initThreadPool start");
+			executorService = new ThreadPoolExecutor(5, 5, 0L,
+					TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(),
+					new ThreadPoolExecutor.DiscardPolicy());
+		}
+	}
+	
 	public static Map<String, Object> cacheMap = new HashMap<String, Object>();
 
 	@PostConstruct
 	public void init() {
+		// 为true表示为公平锁，为fasle为非公平锁。默认情况下，如果使用无参构造器，则是非公平锁
+		lock = new ReentrantLock(true);// 公平锁
+		// 即便是公平锁，如果通过不带超时时间限制的tryLock()的方式获取锁的话，它也是不公平的
+		// 但是带有超时时间限制的tryLock(long timeout, TimeUnit unit)方法则不一样，还是会遵循公平或非公平的原则的
+		
+		initThreadPool();
+		
 		kiddConfigCache = CacheBuilder.newBuilder()
 				.refreshAfterWrite(4, TimeUnit.HOURS) // 默认4个小时过期
 				.build(new CacheLoader<String, Object>() {
@@ -73,7 +106,22 @@ public class KiddCacheManager {
 
 	public void refreshCache(String key) {
 		log.debug("refreshCache start,key={}", key);
+		lock.lock();
 		try {
+			
+			List<Future<String>> results = new ArrayList<Future<String>>();
+			for (int i = 0; i < 6; i++) {
+				results.add(executorService.submit(new threadProcessor(i+"a")));
+			}
+			for (Future<String> result : results) {
+				try {
+					log.info("future get={}",result.get());
+				} catch (Exception e) {
+					e.printStackTrace();
+					log.error("future get exception",e);
+				}
+			}
+			
 			String cacheRes = (String)kiddConfigCache.asMap().get(key);
 			String value = "cache refresh";
 			if (cacheRes == null) {
@@ -82,6 +130,8 @@ public class KiddCacheManager {
 			kiddConfigCache.asMap().put(key, value);
 		} catch (Exception e) {
 			log.error("refreshCache",e);
+		} finally {
+			lock.unlock();
 		}
 	}
 
@@ -155,5 +205,28 @@ public class KiddCacheManager {
 			dto.setPubName("开发用");
 		}
 		return dto;
+	}
+	
+	/**
+	 * 线程执行的类
+	 * 
+	 */
+	private class threadProcessor implements Callable<String> {
+		private String value;
+
+		public threadProcessor(String value) {
+			this.value = value;
+		}
+
+		@Override
+		public String call() throws Exception {
+			log.info("id={}",KiddTraceLogUtil.getTraceId());
+			try {
+				log.info("thread call value={}",value);
+			} catch (Exception e) {
+				log.error("thread call exception:{}", e);
+			}
+			return value;
+		}
 	}
 }

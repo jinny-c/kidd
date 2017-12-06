@@ -134,7 +134,7 @@ public class KiddWapUserController extends KiddBaseController{
 	@RequestMapping(value = "/toInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toInfo(Model model) throws KiddControllerException{
 		log.info("toInfo enter");
-		
+		cacheManager.refreshCache("key");
 		asyncSendVerifiCode("info code");
 		
 		model.addAttribute("message", "hello word!");
