@@ -1,12 +1,17 @@
 package com.kidd.test.pattern.structural;
 
+import java.util.Enumeration;
+
 import com.kidd.test.pattern.structural.eight.Proxy;
 import com.kidd.test.pattern.structural.eleven.Composite;
 import com.kidd.test.pattern.structural.eleven.Employee;
 import com.kidd.test.pattern.structural.eleven.Leaf1;
+import com.kidd.test.pattern.structural.eleven.LeafTest;
 import com.kidd.test.pattern.structural.eleven.Tree1;
 import com.kidd.test.pattern.structural.eleven.TreeLinkedList;
 import com.kidd.test.pattern.structural.eleven.TreeNode1;
+import com.kidd.test.pattern.structural.eleven.TreeNodeTest;
+import com.kidd.test.pattern.structural.eleven.TreeTest;
 import com.kidd.test.pattern.structural.nine.Computer;
 import com.kidd.test.pattern.structural.seven.Decorator;
 import com.kidd.test.pattern.structural.seven.Source;
@@ -31,7 +36,7 @@ public class StructuralTest {
 		// test9();
 		// test10();
 		// test11_2();
-		test11_3();
+		test11_0();
 	}
 
 	// 适配器模式(Adapder)。主要分为三类：类的适配器模式、对象的适配器模式、接口的适配器模式
@@ -123,6 +128,37 @@ public class StructuralTest {
 	// 组合模式（Composite）
 	// 组合模式有时又叫部分-整体模式在处理类似树形结构的问题时比较方便
 	// 将多个对象组合在一起进行操作，常用于表示树形结构中，例如二叉树，数等
+	private static void test11_0() {
+		TreeTest tree = new TreeNodeTest("tree");
+		// 第一层
+		TreeTest node1a = new TreeNodeTest("1node", tree);
+		tree.add(node1a);
+		TreeTest leaf1 = new LeafTest("1leaf", tree);
+		tree.add(leaf1);
+		// 第二层
+		TreeTest node2a = new TreeNodeTest("2node", node1a);
+		node1a.add(node2a);
+		TreeTest leaf2 = new LeafTest("2leaf", node1a);
+		node1a.add(leaf2);
+		
+		node2a.add(new LeafTest("3leaf", node2a));
+
+		System.out.println("build the tree finished!" + tree);
+		Enumeration<TreeTest> children = tree.getChildren();
+		getAll(children,1);
+	}
+	
+	private static void getAll(Enumeration<TreeTest> children,int i){
+		while (children.hasMoreElements()) {
+			TreeTest frist1 = (TreeTest) children.nextElement();// 调用nextElement方法获得元素
+			System.out.println(i+"--"+frist1.getName());
+			if (null != frist1.getChildren()) {
+				getAll(frist1.getChildren(),i+1);
+			}
+			
+		}
+	}
+	
 	private static void test11_1() {
 		Tree1 tree = new Tree1("A");
 		TreeNode1 nodeB = new TreeNode1("B");
