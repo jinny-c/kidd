@@ -11,6 +11,10 @@ import com.kidd.base.common.utils.ReadOrWriteFileUtil;
 public class FileImportTest {
 
 	public static void main(String[] args) {
+		method1();
+	}
+	
+	private static void method1() {
 		String path ="E:/rtx接收文件/";
 		String name ="20171012_user.xls";
 		StringBuffer stb = new StringBuffer();
