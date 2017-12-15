@@ -19,9 +19,11 @@
 
 <script type="text/javascript">
 
-var _ctx = "http://127.0.0.1:8082/kidd";
+//var _ctx = "http://127.0.0.1:8082/kidd";
+//var _ctx = [[${application.ctx}]];
 //var _ctx = "http://10.148.21.80:8082/kidd";
 /* 同一个ip、同一个网络协议、同一个端口，三者都满足就是同一个域，否则就是跨域问题了 */
+var _ctx = '/kidd';
 
 function getVerficCode(wildcard) {
 	var type = "json";
