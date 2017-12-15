@@ -31,12 +31,12 @@ import com.kidd.test.pattern.structural.ten.SourceSub2;
 //结构型模式，共七种：(适配器模式)、装饰器模式、(代理模式)、外观模式、桥接模式、组合模式、享元模式。
 public class StructuralTest {
 	public static void main(String[] args) {
-		// test7();
+		test6_3();
 		// test8();
 		// test9();
 		// test10();
 		// test11_2();
-		test11_0();
+		// test11_0();
 	}
 
 	// 适配器模式(Adapder)。主要分为三类：类的适配器模式、对象的适配器模式、接口的适配器模式
@@ -140,25 +140,25 @@ public class StructuralTest {
 		node1a.add(node2a);
 		TreeTest leaf2 = new LeafTest("2leaf", node1a);
 		node1a.add(leaf2);
-		
+
 		node2a.add(new LeafTest("3leaf", node2a));
 
 		System.out.println("build the tree finished!" + tree);
 		Enumeration<TreeTest> children = tree.getChildren();
-		getAll(children,1);
+		getAll(children, 1);
 	}
-	
-	private static void getAll(Enumeration<TreeTest> children,int i){
+
+	private static void getAll(Enumeration<TreeTest> children, int i) {
 		while (children.hasMoreElements()) {
 			TreeTest frist1 = (TreeTest) children.nextElement();// 调用nextElement方法获得元素
-			System.out.println(i+"--"+frist1.getName());
+			System.out.println(i + "--" + frist1.getName());
 			if (null != frist1.getChildren()) {
-				getAll(frist1.getChildren(),i+1);
+				getAll(frist1.getChildren(), i + 1);
 			}
-			
+
 		}
 	}
-	
+
 	private static void test11_1() {
 		Tree1 tree = new Tree1("A");
 		TreeNode1 nodeB = new TreeNode1("B");
