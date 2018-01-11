@@ -1,0 +1,57 @@
+Important notes for editing or creating language files
+------------------------------------------------------
+
+>>       If the name of the language (file name) is in English it will
+         be auto-detected, else selection in MemPad menu is required.
+
+>>       *.lng files can be opened with a text editor
+>>       To edit: pls open your language + English side by side
+
+>>       You can edit the *.lng files while MemPad is open, however, 
+         the changes will be effective only after restarting MemPad.
+
+>>       Missing text items will show in English
+         The default language (English) is built-in.
+
+>>       The numbers identify a text item. 
+>>       Lines beginning with semicolon as well as empty lines are ignored
+
+>>       A Dollar sign is a token for something to insert by MemPad (pls test)
+
+Menu items:
+
+>>       A question mark indicates that this is a toggle (on/off).
+
+>>       Insert an ampersand ("&") before a letter to be marked as hotkey
+         The first character is the default hotkey
+         Note: Hotkeys expect that the menu is opened by keyboard (not by mouse)
+
+=========
+
+If you would like to suggest any corrections or improvements, or share your own language file with other MemPad users, please send an eMail to the author, mailto:horst.schaeffer@gmx.net
+
+=========
+
+Currently available languages, translated by.. 
+
+Czech                           Pavel Z.
+English         (built-in)
+French                          Michel V.
+German                          Horst
+Italian                         Andrea Carrarini
+Norwegian                       FreewareTips
+Polish                          Jacek ~Zebrowski
+Portuguese      (Brazil)        MCHAL
+Portuguese      (Portugal)      Miguel
+Russian                         Ramil K.
+Chinese         (Simplified)    yylzcom
+Slowak                          Andy Salay
+Spanish         (Argentina)     Mario Guillermo Macri
+Swedish                         Roger J.
+Turkish                         Tunay Durul, tunayx@gmail.com
+                                Cengiz Aytun, caytun@gmail.com
+
+Special thanks to the users who supplied the translations!
+
+=========
+* 04 FEB 2011

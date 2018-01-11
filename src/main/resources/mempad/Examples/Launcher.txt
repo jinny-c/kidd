@@ -1,0 +1,4 @@
+Calculator;calc.exe
+Character Map;charmap.exe
+
+Launcher.txt;Launcher.txt

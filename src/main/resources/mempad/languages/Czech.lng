@@ -1,0 +1,229 @@
+; ++ Main Menu ++
+
+01=&Nové okno
+02=pro '$' soubory
+03=pro &jinou skupinu souborù...
+04=Složka s &daty
+167=J&azyk
+05=Otevøít (ve &Windows)...
+100=Rychlé spuštìní...
+06=&Konec
+
+07=&Soubor
+08=&Otevøít...
+09=&Poslední soubor (F7)
+10=&Nový
+11=pouze ke &ètení
+12=&šifrování souboru
+13=&Uložit (Ctrl+S)
+14=&Znovu naèíst
+15=O&bnovit ze zálohy
+
+16=S&tránka
+17=&Hledat od zaèátku
+18=Hledat další (&dolù)
+19=Hledat další (na&horu)
+20=Uložit do pamìti
+21=Navigace vzad
+22=Navigace vpøed
+23=&Oblíbené
+24=&Pøiøadit tuto stránku
+25=&Zakázat
+26=Zamknout stránku
+27=Položka pro &dnešní den
+28=Pozadí &uzlu
+29=&Vybrat barvu
+30=&Obnovit barvu
+
+31=&Export
+32=Aktuální &stránka
+33=Celý &uzel
+34=&Vše
+35=Znovu &importovat stránku
+
+36=&Nastavení
+37=&Písmo
+38=&Text
+39=&Index
+40=P&ozadí
+41=&Text (platí jako výchozí)
+42=&Index
+43=&Vše
+44=nástrojová &lišta
+45=&index [Ctrl+Win]
+46=&klávesová zkratka...
+47=minimalizovat do &systémové oblasti
+48=ukonèit klávesou &ESC
+49=&minimalizovat klávesou ESC
+50=vždy navrchu
+51=&zamykat stránky
+52=&automatické ukládání (každých $ min)
+53=v&ypnout zálohování
+
+54=&Nápovìda
+55=&O programu
+56=&Instance programu
+
+; ++ Index Menu ++
+
+57=&Pøidat jako další
+58=Pøidat pø&ed
+59=Pøidat jako p&odøízený
+60=&Smazat
+61=&Vyjmout
+62=Pøe&jmenovat
+63=Získat &adresu stránky
+64=Pøesunout &dolù
+65=Pøesunout na&horu
+66=Pøesunout na &vyšší úrovìò
+67=Pøesunout na &nižší úroveò
+68=S&balit vše
+69=&Rozbalit vše
+168=Se&øadit uzly na stejné úrovni
+169=&vzestupnì
+170=&sestupnì
+
+; ++ Text Menu ++
+
+70=&Vyjmout
+71=&Kopírovat
+72=V&ložit
+73=Vy&brat vše
+74=&VELKÁ písmena
+75=&malá písmena
+76=&Zpìt
+77=Zn&ovu
+78=&Datum a èas
+79=Odkaz na &stránku
+80=Odkaz na soubo&r...
+
+; ++ New button (4 alternatives, semicolon separated)
+
+81=Nový >;Vložit >;Ze souboru;Import >
+
+; ++ New/insert mode menu ++ 
+
+82=&Nová stránka
+83=V&ložit:
+84=Stránka z &textového souboru
+85=&Importovat stránku nebo uzel
+
+; ++ Button ToolTips ++
+
+86=Režim vkládání (zdroj)
+87=Pøidat jako další (pravé tlaèítko: jako pøedchozí)
+88=Pøidat jako podøízený
+89=Vyjmout stránku/uzel (pro vložení/pøidání jinde)
+90=Pro pøesun $: nejprve zvolte cíl a potom vložit/pøidat
+91=Smazat stránku/uzel
+92=Pøesunout nahoru
+93=Pøesunout dolù
+94=Na vyšší úroveò (jako další uzel)
+95=Na nižší úroveò (pod pøedchozí uzel)
+96=Sbalit ostatní uzly (pravé tlaèítko: rozbalit vše)
+97=Hledat od zaèátku
+98=Hledat další smìrem dolù (pravé tlaèítko: smìrem nahoru)
+99=Zalomit øádky
+
+; ++ Generic dialog box ++
+
+101=Chyba
+102=Varování
+103=Info
+104=Ok
+105=Zrušit
+
+; ++ Window: File group request ++
+
+106=Skupina souborù MemPad (typ):
+107=Odstranit nepoužité INI soubory
+
+; ++ Window: Encryption ++
+
+108=Kompatibilní
+109=Heslo:
+110=Opakovat heslo:
+111=Šifrování vypnuto
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Nedostatek pamìti
+113=Dešifrování selhalo
+114=Poznámka: Pokud soubor není zašifrovaný
+115=zøejmì jste se pokusili otevøít neplatný formát souboru.
+116=Toto není platný soubor aplikace MemPad.
+117=Šifrování selhalo
+118=
+
+; ++ Window Export ++
+
+119=Exportovat do:
+120=Formát nadpisu (znak dolaru bude nahrazen nadpisem)
+121=Symbol úrovnì (vícenásobný)
+122=Otevøít soubor
+123=Podle pøípony
+124=Programem:
+
+; ++ Message: Diary ++
+
+125=Nejprve vytvoøte uzel (stránku)
+
+; ++ Window: Search ++
+
+126=Ponechat otevøené
+127=v textu
+128=v indexu
+129=Rozlišovat velikost
+130=Celá slova
+131=Hledat:
+132=Obnovit
+133=Shora
+134=V rámci uzlu
+135=Vpøed
+136=Vzad
+137=Nahradit
+138=Èím:
+139=Automaticky hledat další
+140=Žádný další výskyt
+
+; ++ Dialog: Files ++
+
+141=Uložit soubor
+142=Název souboru:
+143=Soubor již existuje! Pøepsat?
+144=Nelze vytvoøit soubor
+145=Nelze zapisovat do souboru
+146=
+147=Pokraèovat bez uložení?
+148=Otevøít soubor
+149=Uložit zmìny?
+150=Program
+
+; ++ Dialog: Backup ++
+
+151=Nelze vytvoøit zálohu
+152=Soubor zálohy neexistuje
+153=Obnovení dat z poslední zálohy
+154=Nelze obnovit ze zálohy
+155=Smazat i zálohu?
+
+; ++ Dialog: Reload ++
+
+156=Naètení všech stránek ze souboru
+157=Nelze naèíst soubor
+
+; ++ Page Handling ++
+
+158=Kliknìte na tlaèítko [+] nebo stisknìte Alt+Insert pro vytvoøení stránky
+159=Vytvoøit odkaz na soubor
+160=Smazat tento uzel?
+161=Smazat tuto stránku?
+162=Vložit textový soubor
+163=Soubor nelze naèíst
+
+; ++ Window: Hotkey ++
+
+164=Kombinace kláves pro aktivaci a skrytí programu
+165=BackSpace zruší klávesovou zkratku
+166=Neakceptováno
+

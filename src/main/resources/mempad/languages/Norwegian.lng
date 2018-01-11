@@ -1,0 +1,229 @@
+; ++ Main Menu ++
+
+01=Nytt vindu
+02=for '$'-filer
+03=for annen filgruppe..
+04=Datamappe
+167=Språk
+05=Åpne (ekstern)..
+100=Hurtigstart..
+06=Avslutt
+
+07=Fil
+08=Åpne..
+09=Forrige (F7)
+10=Ny
+11=Skrivebeskytte?
+12=Kryptere?
+13=Lagre (Ctrl+S)
+14=&Last på nytt
+15=Gjenopprett &sikkerhetskopi
+
+16=Notat
+17=Søk
+18=Søk neste (ned)
+19=Søk neste (opp)
+20=Notatminne
+21=Hopp tilbake
+22=Hopp fram
+23=Favoritter
+24=Tildel dette notat
+25=Deaktiver
+26=Låse notat?
+27=Dagbok-oppføring
+28=Bakgrunnsfarge
+29=Velg farge
+30=Tilbakestill farge
+
+31=Eksport
+32=Enkeltnotat
+33=Notat inkl. undernotat(er)
+34=Alle
+35=Gjenimporter notat
+
+36=Innstillinger
+37=Skrift
+38=Tekst
+39=Indeks
+40=Bakgrunn
+41=Tekst (standard)
+42=Indeks
+43=Begge
+44=Verktøylinje?
+45=Indeks?  [Ctrl+Win]
+46=Tastesnarvei..
+47=Minimere til &Systemfeltet?
+48=Avslutte med ESC?
+49=Minimere med ESC?
+50=Beholde vindu øverst?
+51=Notater &låste som standard?
+52=Auto-lagre? (hvert $ min)
+53=Ingen sikkerhetskopier?
+
+54=Hjelp
+55=Info
+56=Instans
+
+; ++ Index Menu ++
+
+57=Legg til notat - etter
+58=Legg til notat - før
+59=Legg til som undernotat
+60=Slett
+61=Klipp ut (for å flytte)
+62=Endre navn
+63=Notatbane
+64=Flytt ned
+65=Flytt opp
+66=Opp et nivå
+67=Ned et nivå
+68=Sammentrekk alle
+69=Utvid alle
+168=Sorter notater (samme nivå)
+169=stigende
+170=fallende
+
+; ++ Text Menu ++
+
+70=Klipp ut
+71=Kopier
+72=Lim inn
+73=Merk alt
+74=Store bokstaver
+75=Små bokstaver
+76=Angre
+77=Annuler angre
+78=Dato,Klokkeslett
+79=Notat-lenke
+80=Fil-lenke..
+
+; ++ New button (4 alternatives, semicolon separated)
+
+81=Ny >;Lim inn >;Fra fil;Importer >
+
+; ++ New/insert mode menu ++ 
+
+82=Nytt notat
+83=Lim inn:
+84=Notat fra &tekstfil
+85=Importer notat
+
+; ++ Button ToolTips ++
+
+86=Velg innsettingsmodus/kilde
+87=Legg til notat etter (høyreklikk: før)
+88=Legg til som undernotat
+89=Klipp ut notat (for å sette inn/legge til annet sted)
+90=For å flytte $: Velg mål, så sett inn/legg til
+91=Slett notat
+92=Flytt opp
+93=Flytt ned
+94=Til høyere nivå som neste notat
+95=Til undernivå til foregående notat
+96=Sammentrekk ubenyttede notater (høyreklikk - utvid alle)
+97=Søk
+98=Søk neste ned (høyreklikk: opp)
+99=Tekstbrytning
+
+; ++ Generic dialog box ++
+
+101=Feil
+102=Advarsel
+103=Info
+104=Ok
+105=Avbryt
+
+; ++ Window: File group request ++
+
+106=MemPad filgruppe (type):
+107=Fjern ubenyttede INI-filer
+
+; ++ Window: Encryption ++
+
+108=kompatibel
+109=Passord:
+110=Gjenta:
+111=Kryptering deaktivert
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Ikke nok minne
+113=Kryptering feilet
+114=Merk: Om filen ikke er kryptert,
+115=har du kanskje forsøkt å laste et ugyldig filformat.
+116=Dette er ikke en gyldig MemPad-fil
+117=Kryptering feilet
+118=
+
+; ++ Window Export ++
+
+119=Eksporter til:
+120=Tittel-dekorasjon (Dollar som tittel-jokertegn)
+121=Nivåsymbol (multi)
+122=Åpne filen
+123=etter filtype
+124=med program:
+
+; ++ Message: Diary ++
+
+125=Opprett først et notat
+
+; ++ Window: Search ++
+
+126=Behold åpen
+127=I tekst
+128=I indeks
+129=Skill mellom store/små bokst.
+130=Hele ord
+131=Finn:
+132=Tilbakestill
+133=Fra topp 
+134=Innen notat
+135=Ned
+136=Opp
+137=Erstatt
+138=Med:
+139=Auto-søk neste
+140=Ingen (flere) treff
+
+; ++ Dialog: Files ++
+
+141=Lagre fil
+142=Filnavn:
+143=Fil eksisterer! Overskrive?
+144=Kan ikke opprette fil
+145=Kan ikke skrive til fil
+146=
+147=Fortsette uten å lagre?
+148=Åpne fil
+149=Lagre endringer?
+150=Program
+
+; ++ Dialog: Backup ++
+
+151=Kan ikke lage sikkerhetskopi
+152=Det er ingen sikkerhetskopi-fil
+153=Dette vil gjenopprette siste sikkerhetskopi
+154=Kan ikke gjenopprette sikkerhetskopi
+155=Slette sikkerhetskopi også?
+
+; ++ Dialog: Reload ++
+
+156=Dette vil gjeninnlaste alle notater fra filen
+157=Kan ikke gjeninnlaste fil
+
+; ++ Page Handling ++
+
+158=Klikk [+] knapp (Alt+Insert) for å opprette et notat
+159=Opprett fil-lenke
+160=Slette dette notat med alle undernotater?
+161=Slette dette notat?
+162=Sett inn en tekstfil
+163=Kan ikke laste notat
+
+; ++ Window: Hotkey ++
+
+164=Tastekombinasjon til å aktivere/minimere MemPad
+165=Backspace deaktiverer tastesnarvei
+166=Ikke akseptert
+

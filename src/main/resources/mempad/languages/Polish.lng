@@ -1,0 +1,233 @@
+;
+; MemPad 3.40 Polish Language File ver. 0.90
+; Translated from English by Jacek ¯ebrowski
+;
+
+; ++ Main Menu ++
+
+01=Nowe okno
+02=Dla '$' plików
+03=Dla innej grupy plików 
+04=Folder danych
+167=Jêzyk
+05=Otwórz (zewn.)
+100=Szybki start 
+06=Wyjœcie 
+
+07=Plik
+08=Otwórz...
+09=Ostatni [F7]
+10=Nowy
+11=Tylko do odczytu?
+12=Zaszyfruj
+13=Zapisz [Ctrl+S]
+14=Za³aduj powtórnie
+15=Odzyskaj z archiwum
+
+16=Strona
+17=Pocz¹tek wyszukiwania
+18=Szukaj nastêpnego (w dó³)
+19=Szukaj nastêpnego (w górê)
+20=Strona pamiêci
+21=Skocz w ty³
+22=Skocz w przód
+23=Ulubione
+24=Przyporz¹dkuj stronê
+25=Wy³¹cz
+26=Zablokuj stronê?
+27=Start terminarza
+28=T³o dla wêz³ow
+29=Wybierz kolor
+30=Skasuj color
+
+31=Eksport
+32=Pojedyñcza strona
+33=Wêze³ 
+34=Wszystkie
+35=Powtórny import
+
+36=Ustawienia
+37=Czcionka
+38=Tekst
+39=Drzewo
+40=T³o
+41=T³o w obszarze tekstu
+42=T³o w obszarze drzewa
+43=T³o ca³oœci
+44=Pasek narzêdzi?
+45=Drzewo? [Ctrl+Win]
+46=Klawisz skrótu...
+47=Minimalizuj do zasobnika?
+48=Wyjœcie przez ESC?
+49=Minializuj przez ESC?
+50=Okno zawsze na wierzchu?
+51=Strona zablokowana domyœlnie?
+52=Zapisz samoczynnie? (co $ min)
+53=Bez kopii bezpieczeñstwa?
+
+54=Pomoc
+55=Informacje o programie
+56=* * *
+
+; ++ Index Menu ++
+
+57=Dodaj jako nastêpny
+58=Dodaj jako poprzedni
+59=Dodaj jako podrzêdny
+60=Usuñ
+61=Wytnij 
+62=Zmieñ nazwê
+63=Œcie¿ka do strony
+64=Przesuñ w dó³
+65=Przesuñ w góre
+66=Poziom w górê
+67=Poziom w dó³
+68=Zwiñ wszystkie
+69=Rozwiñ wszystkie
+168=Sortuj wêz³y
+169=rosn¹co
+170=malej¹co
+
+; ++ Text Menu ++
+
+70=Wytnij
+71=Kopiuj 
+72=Wklej
+73=Zaznacz wszystkie
+74=Du¿e litery
+75=Ma³e litery
+76=Cofnij
+77=Przywróæ
+78=Data, czas
+79=Odsy³acz do strony
+80=Odsy³acz do pliku
+
+; ++ New button (4 alternatives, semicolon separated)
+
+81=Nowy >;Wklej >;Z pliku;Import >
+
+; ++ New/insert mode menu ++ 
+
+82=Nowa strona
+83=Wklej:
+84=Strona a plik tekstowy
+85=Importuj stronê lub wêze³
+
+; ++ Button ToolTips ++
+
+86=Wybierz sposób wstawiania
+87=Dodaj jako nastêpny 
+88=Dodaj jako podrzêdny
+89=Wytnij stronê/wêze³ aby wstawiæ gdzie indziej
+90=przesuñ $: wybierz docelowy, póŸniej wstaw
+91=Usuñ stronê/wêze³ 
+92=Przesuñ w górê
+93=Przesuñ w dó³
+94=Bêdzie nastêpny na poziomie wy¿ej  
+95=Bêdzie podrzêdny dla poprzedniego
+96=Zwiñ wêz³y (prawy klik aby rozwin¹æ) 
+97=Start wyszukiwania
+98=Poszukuj nastêpnego w dó³
+99=Zawijanie wyrazów
+
+; ++ Generic dialog box ++
+
+101=B³¹d
+102=Ostrze¿enie
+103=Informacja
+104=OK
+105=Zrezygnuj
+
+; ++ Window: File group request ++
+
+106=MemPad groupa plików (typ):
+107=usuñ nieu¿ywane pliki INI
+
+; ++ Window: Encryption ++
+
+108=Zgodny
+109=Has³o:
+110=Powtórz:
+111=Szyfrowanie wy³¹czone
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Za ma³o pamiêci
+113=Odszyfowanie nieudane
+114=Uwaga: Je¿eli plik nie jest zaszyfrowany, to
+115=Próba zaladowanie niew³aœciwego formatu pliku.
+116=To nie jest plik MemPada
+117=Zaszyfrowanie nieudane
+118=
+
+; ++ Window Export ++
+
+119=Eksportuj do:
+120=Ozdoba tytu³u (Dollar)
+121=Symbol poziomu (wielokrotny)
+122=Otwórz plik
+123=przez rozszerzenie
+124=Z programem:
+
+; ++ Message: Diary ++
+
+125=Najpierw utwórz stronê
+
+; ++ Window: Search ++
+
+126=Trzymaj otwarte
+127=W tekœcie
+128=W drzewie
+129=Uwzglêdnij wielkoœæ liter
+130=Sprawdzaj ca³e s³owa
+131=ZnajdŸ:
+132=Resetuj
+133=Od góry 
+134=W wêz³ach
+135=W dó³
+136=W górê
+137=Zast¹p
+138=przez:
+139=Szukaj dalej
+140=Nie znaleziono
+
+; ++ Dialog: Files ++
+
+141=Zapisz plik
+142=Nazwa pliku:
+143=Plik istnieje! Nadpisaæ?
+144=Nie mogê utworzyæ pliku
+145=Nie mogê pisaæ do pliku 
+146=
+147=Kontynuowac bez zapisania?
+148=Otwórz plik
+149=Zachowaæ zmiany?
+150=Program
+
+; ++ Dialog: Backup ++
+
+151=Nie mogê zrobiæ backupu
+152=Nie ma pliku backupu
+153=Bêdzie odtworzony ostatni backup
+154=Nie mogê odtworzyæ backupu
+155=Czy usun¹æ plik backupu?
+
+; ++ Dialog: Reload ++
+
+156=Bêd¹ odœwie¿one wszystkie strony z pliku
+157=Nie mogê odœwie¿yæ pliku
+
+; ++ Page Handling ++
+
+158=Kliknij [+] przycisk [Alt+Insert] aby utworzyæ stronê
+159=Utwórz odnoœnik do pliku 
+160=Usuñ ten wêze³ z podrzêdnymi?
+161=Usuñ tê stronê?
+162=Wstaw plik tekstowy
+163=Nie mogê za³adowaæ strony
+
+; ++ Window: Hotkey ++
+
+164=Kombinacja klawiszy do przywo³ania/minimalizacji MemPada
+165=Cofanie kasuje skrót
+166=Nie akceptowane

@@ -1,0 +1,3 @@
+TheFreeDictionary;http://www.tfd.com/$
+WordWeb;http://www.wordwebonline.com/search.pl?w=$
+English-Spanish;http://www.wordreference.com/es/translation.asp?tranword=$

@@ -1,0 +1,11 @@
+First test item
+Second test item^with line break
+
+$dddd, d mmmm yyyy
+$dd.mm.yyyy
+$mm/dd/yyyy
+
+%hh:mm:ss
+%h:mm tt
+
+$dddd, d mmmm yyyy - %hh:mm^

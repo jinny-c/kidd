@@ -1,0 +1,228 @@
+; ++ Hauptmenü ++
+
+01=Neues Fenster
+02=für '$'-Dateien
+03=für andere Dateigruppe..
+04=Datenordner
+167=Sprache
+05=Öffnen (extern)..
+100=Schnellstart..
+06=Beenden
+
+07=Datei
+08=Öffnen..
+09=Vorige [F7]
+10=Neu
+11=Nu&r lesen?
+12=V&erschlüsseln?
+13=Speichern [Ctrl+S]
+14=Erneut &laden
+15=Vom &Backup laden
+
+16=Seite
+17=Suche: Start
+18=Weiter (abwärts)
+19=Weiter (aufwärts)
+20=Seitenspeicher
+21=Sprung zurück
+22=Sprung vorwärts
+23=Favoriten
+24=Diese Seite zuweisen
+25=Funktion deaktivieren
+26=Seite sperren?
+27=Tagebuch-Eintrag
+28=Hintergrundfarbe
+29=Wählen
+30=Zurücksetzen
+
+31=E&xport
+32=Einzelne Seite
+33=Knoten (Struktur)
+34=Alles
+35=Re-Import Seite
+
+36=Einstellungen
+37=Schrift
+38=Text
+39=Index
+40=Hintergrund
+41=Text (Standard)
+42=Index
+43=beides
+44=Toolbar?
+45=Index?  [Ctrl+Win]
+46=Hotkey..
+47=Minimieren zum Infobereich?
+48=Bei ESC beenden?
+49=Bei ESC minimieren?
+50=Fenster obenauf halten?
+51=Seitensperre als Standard?
+52=Auto-Sichern? (alle $ Min)
+53=Keine Backups?
+
+54=Hilfe
+55=Info
+56=Instanz
+
+; ++ Index Menü ++
+
+57=Anfügen: dahinter
+58=Einfügen: davor
+59=Einfügen als Kind
+60=Löschen
+61=Zu verschieben
+62=Umbenennen
+63=Seitenpfad merken
+64=Abwärts verschieben
+65=Aufwärts verschieben
+66=In Eltern-Ebene
+67=Als Kind davor
+68=Alles zusammenklappen
+69=Alles expandieren
+168=Sortierung (Ebene)
+169=aufsteigend
+170=absteigend
+
+; ++ Text Menü ++
+
+70=Ausschneiden
+71=Kopieren
+72=Einfügen
+73=Alles markieren
+74=Großbuchstaben
+75=Kleinbuchstaben
+76=Rückgängig
+77=Redo 
+78=Datum,Zeit
+79=Seiten-Link
+80=Datei-Link..
+
+; ++ Neu Button (4 Alternativen, SemiKolon getrennt)
+
+81=Neu >;Einfg. >;Aus Datei;Import >
+
+; ++ New/insert mode menu ++ 
+
+82=Neue Seite
+83=Einfügen:
+84=Seite aus Textdatei
+85=Import Seite,Knoten
+
+; ++ Button ToolTips ++
+
+86=Einfüge-Modus, -Quelle wählen
+87=Dahinter einfügen (Rechtsklick: davor)
+88=Als Kind einfügen
+89=Ausschneiden (um anderswo einzufügen)
+90=Um $ zu verschieben: Ziel wählen, dann ein-/anfügen
+91=Löschen Seite,Knoten
+92=Aufwärts verschieben
+93=Abwärts verschieben
+94=In höhere Ebene verschieben
+95=Als Kind in vorangehenden Knoten versch.
+96=Unbenutzte Knoten zusammenklappen (Rechtsklick: alles expandieren)
+97=Suchen: Start
+98=Suchen: Weiter (Rechtsklick: aufwärts)
+99=Zeilenumbruch
+
+; ++ Generic dialog box ++
+
+101=Fehler
+102=Warnung
+103=Info
+104=Ok
+105=Abbrechen
+
+; ++ Window: File group request ++
+
+106=MemPad Dateigruppe (Typ):
+107=Unbenutzte INI-Dateien entfernen
+
+; ++ Window: Encryption ++
+
+108=kompatibel
+109=Passwort:
+110=Wiederholen:
+111=Verschlüsselung nicht aktiv
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Nicht genug Speicher
+113=Entschlüsselung fehlgeschlagen
+114=Hinweis: Wenn die Datei nicht verschlüsselt war,
+115=liegt wahrscheinlich ein ungültiges Dateiformat vor.
+116=Dies ist keine gültige MemPad-Datei
+117=Verschlüsselung fehlgeschlagen
+118=
+
+; ++ Window Export ++
+
+119=Export in Datei:
+120=Titel-Dekoration (Dollar als Titel Platzhalter)
+121=Symbol für Ebene (mehrfach)
+122=Datei öffnen
+123=per Dateityp
+124=mit Programm:
+
+; ++ Message: Diary ++
+
+125=Erst Knoten (Seite) anlegen:
+
+; ++ Window: Search ++
+
+126=Offen lassen
+127=Im Text
+128=Im Index
+129=Groß/klein beachten
+130=Ganzes Wort
+131=Finde:
+132=Zurücksetzen
+133=Ab Anfang 
+134=Innerhalb Knoten
+135=Abwärts
+136=Auf
+137=Ersetzen
+138=Mit:
+139=Auto Weitersuche
+140=Keine (weiteren) Funde
+
+; ++ Dialog: Files ++
+
+141=Datei speichern
+142=Dateiname:
+143=Datei existiert! Überschreiben?
+144=Kann Datei nicht erstellen
+145=Kann nicht in Datei schreiben
+146=
+147=Weiter ohne zu speichern?
+148=Datei öffnen
+149=Änderungen speichern?
+150=Programm
+
+; ++ Dialog: Backup ++
+
+151=Kann Backup nicht erstellen
+152=Kein Backup vorhanden
+153=Das letzte Backup wird übernommen
+154=Kann Backup nicht übernehmen
+155=Backup auch löschen?
+
+; ++ Dialog: Reload ++
+
+156=Alle Seiten werden erneut aus der Datei geladen
+157=Erneutes Laden nicht möglich
+
+; ++ Page Handling ++
+
+158=Klick auf [+] Button (Alt+Insert) für erste Seite
+159=Datei-Verknüpfung erstellen
+160=Knoten mit allen Unterseiten löschen?
+161=Diese Seite löschen?
+162=Eine Textdatei einfügen
+163=Kann Seite nicht laden
+
+; ++ Window: Hotkey ++
+
+164=Tastenkombination zum Aktivieren/Minimieren von MemPad
+165=Rückschritt-Taste für "keine" Belegung
+166=Nicht angenommen

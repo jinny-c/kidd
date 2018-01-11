@@ -1,0 +1,236 @@
+;Portuguese (Portugal)
+;Traduzido por m1da5@hotmail.com
+;Based on pt-BR by MCHAL.110mb.com
+; ++ Main Menu ++
+
+01=&Nova instância
+02=para &ficheiros '$'
+03=para novo &tipo de ficheiro...
+04=Abrir &pasta de origem
+05=Abrir &ficheiro...
+06=Sai&r
+
+07=&Ficheiro
+08=&Abrir...
+09=Anterior 	F7
+10=&Novo
+11=Só de leitu&ra?
+12=&Encriptar?
+13=Gravar 	Ctrl+S
+14=Recarre&gar
+15=Restaurar &backup
+
+16=&Página
+17=Procurar
+18=Procurar abaixo
+19=Procurar acima
+20=Memorizar Página
+21=Voltar
+22=Avançar
+23=Fa&voritos
+24=&Página corrente
+25=&Desactivar
+26=Impedir edição?
+27=Entrada de diário
+28=&Fundo da lista/página actual
+29=Selecionar &cor
+30=&Repor cor original
+
+31=&Exportar
+32=&Página
+33=&Lista
+34=&Tudo
+35=Re-importar página
+
+36=&Configurar
+37=Fon&te
+38=&Texto
+39=&Lista
+40=&Fundo
+41=&Texto
+42=&Lista
+43=&Ambos
+44=Barra de ferramentas?
+45=Exibir lista? 	Ctrl+Win
+46=Atalho de teclado...
+47=Minimizar para Área de &Notificação?
+48=Fecha&r com ESC?
+49=&Minimizar com ESC?
+50=MemPad sempre visível?
+51=&Bloquear páginas por defeito?
+52=&Auto-gravação? (cada $')
+53=Desactivar &BACKUP?
+
+54=Ajuda
+55=&Acerca
+56=&Sessão
+
+; ++ Index Menu ++
+
+57=Adicionar depois
+58=Adicionar antes
+59=Adicionar como sub-página
+60=Apagar
+61=Cortar
+62=Renomear
+63=Copiar caminho da página
+64=Descer
+65=Subir
+66=Tornar principal
+67=Subordinar
+68=Fechar todas
+69=Abrir todas
+
+; ++ Text Menu ++
+
+70=Cortar
+71=Copiar
+72=Colar
+73=Selecionar tudo
+74=Caixa ALTA
+75=Caixa baixa
+76=Desfazer
+77=Refazer
+78=Data, Hora
+79=Vincular à página...
+80=Vincular a ficheiro...
+
+; ++ New button (4 alternatives, semicolon separated)
+
+81=Nova >;Colar >;De ficheiro;Importar >
+
+; ++ New/insert mode menu ++ 
+
+82=Nova página
+83=Colar:
+84=Página com ficheiro de &texto
+85=Importar página/lista
+
+; ++ Button ToolTips ++
+
+86=Escolher modo/origem da inserção
+87=Adicionar a seguir (botão direito: antes)
+88=Adicionar sub-página
+89=Cortar página/lista
+90=Para mover $: escolha destino e insira...
+91=Apagar páginas/sub-lista
+92=Mover para cima
+93=Mover para baixo
+94=Mover para nível anterior
+95=Subordinar a anterior
+96=Colapsar (botão direito: expandir)
+97=Procurar
+98=Procurar seguinte (botão direito: anterior)
+99=Translinear
+
+; ++ Main Menu: RELOCATED! ++
+
+100=Execução rápida...
+
+; ++ Generic dialog box ++
+
+101=Erro!
+102=Atenção!
+103=Informação
+104=OK
+105=Cancelar
+
+; ++ Window: File group request ++
+
+106=Extensão para ficheiros MemPad:
+107=Apagar ficheiros INI não utilizados
+
+; ++ Window: Encryption ++
+
+108=compatível
+109=PASSWORD:
+110=Repetir:
+111=Encriptação desactivada
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Memória insuficiente
+113=Desencriptação falhou!
+114=Nota: Se o ficheiro não estiver encriptado,
+115=pode ter tentado abrir um ficheiro de formato inválido.
+116=Ficheiro inválido!
+117=Falha na encriptação!
+118=
+; ++ Window Export ++
+
+119=Exportar para:
+120=Decoração do título ('$' como símbolo)
+121=Símbolo de subordinação (múltiplos)
+122=Abrir ficheiro
+123=por extensão
+124=com o programa:
+
+; ++ Message: Diary ++
+
+125=Crie primeiro uma lista/página
+
+; ++ Window: Search ++
+
+126=Manter aberta
+127=No texto
+128=Na lista
+129=Respeitar capitalização
+130=Respeitar expressão
+131=Procurar:
+132=Re-iniciar
+133=Do topo
+134=Na estrutura actual
+135=Abaixo
+136=Acima
+137=Substituir
+138=Com:
+139=Auto-localizar seguinte
+140=Nenhuma ocorrência encontrada!
+
+; ++ Dialog: Files ++
+
+141=Gravar ficheiro
+142=Nome do ficheiro:
+143=Ficheiro já existe! Substituir?
+144=Criação do ficheiro falhou!
+145=Gravação do ficheiro falhou!
+146=
+147=Continuar sem gravar?
+148=Abrir ficheiro
+149=Gravar alterações?
+150=Programa
+
+; ++ Dialog: Backup ++
+
+151=BACKUP falhou!
+152=Ficheiro BACKUP inexistente!
+153=Restaurar último BACKUP?
+154=Restauração do BACKUP falhou!
+155=Apagar também o BACKUP?
+
+; ++ Dialog: Reload ++
+
+156=Recarregar todas as páginas do ficheiro
+157=Recarga do ficheiro falhou!
+
+; ++ Page Handling ++
+
+158=Clicar botão (+) para criar página   Alt+Insert
+159=Criar atalho de ficheiro
+160=Apagar página (e sub-páginas)?
+161=Apagar página?
+162=Inserir ficheiro de texto
+163=Abertura da página falhou!
+
+; ++ Window: Hotkey ++
+
+164=Atalho de teclado do MemPad
+165=Deixe o campo vazio para inibir atalho
+166=Atalho inválido! (em utilização?)
+
+; ++ Main Menu: RELOCATED! ++
+
+167=Idioma
+168=Ordenar lista actual (sub-páginas)
+169=Ordem crescente
+170=Ordem decrescente

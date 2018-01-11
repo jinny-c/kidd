@@ -1,0 +1,225 @@
+; ++ Huvudmeny ++
+
+01=Nytt fönster
+02=för '$' fil
+03=för annan fil-grupp..
+04=Data mapp
+167=Språk
+05=Öppna (extern)..
+100=SnabbÖppna..
+06=Avsluta
+
+07=Fil
+08=Öppna..
+09=Tidigare (F7)
+10=Ny
+11=Skrivskyddad?
+12=Kryptera?
+13=Spara (Ctrl+S)
+14=Ladda &om
+15=Återställ &backup
+
+16=Sida
+17=Sök start
+18=Sök nästa (ner)
+19=Sök nästa (upp)
+20=SidMinne
+21=Hoppa tillbaka
+22=Hoppa fram
+23=Favoriter
+24=Anvisa denna sida
+25=Ta bort
+26=Lås sida?
+27=DagboksNotering
+28=Nod bakgrund
+29=Välj färg
+30=Återställ färg
+
+31=Exportera
+32=En sida
+33=Nod (struktur)
+34=Allt
+35=ÅterImportera sida
+
+36=Inställningar
+37=Typsnitt
+38=Text
+39=Index
+40=Bakgrund
+41=Text (standard)
+42=Index
+43=Båda
+44=Verkygsfält?
+45=Index?  [Ctrl+Win]
+46=Hotkey..
+47=Minimera till &SystemFältet?
+48=Avsluta vid ESC?
+49=Minimera vid ESC?
+50=Behåll fönstret överst?
+51=Sidor &låsta som standard?
+52=Auto spara? (var $ min)
+53=Ingen backup?
+
+54=Hjälp
+55=Info
+56=Sökväg filer
+
+; ++ Index Meny ++
+
+57=Ny efter
+58=Ny före
+59=Ny nivån under
+60=Ta bort
+61=Klipp ut (flytta)
+62=Byt namn
+63=Sidans sökväg
+64=Flytta ner
+65=Flytta upp
+66=Upp en nivå
+67=Ner en nivå
+68=Komprimera alla
+69=Expandera alla
+
+; ++ Text Meny ++
+
+70=Klipp ut
+71=Kopiera
+72=Klistra in
+73=Markera allt
+74=Versaler
+75=Gemena
+76=Ångra
+77=Gör om
+78=Datum,Tid
+79=Sid länk
+80=Fil länk..
+
+; ++ Ny knapp (4 alternativ, semicolon separerad)
+
+81=Ny >;Klistra in >;Från Fil;Importera >
+
+; ++ Ny/Sätt in lägesmeny ++ 
+
+82=Ny sida
+83=Klistra in:
+84=Sida från en &text fil
+85=Importera sida,nod
+
+; ++ Knapp beskrivningar ++
+
+86=Välj infogningsläge/källa
+87=Lägg till efter (höger klick: före)
+88=Lägg till nivå under
+89=Klipp ut sida/nod (infoga/på annan plats)
+90=Flytta $: välj mål, infoga sedan/lägg till
+91=Ta bort sida/nod
+92=Flytta upp
+93=Flytta ner
+94=Till högre nivå
+95=Till lägre nivå
+96=Komprimera oanvända noder (högerklicka för att exp. alla)
+97=Sök start
+98=Sök nästa nedåt (höger klicka: upp)
+99=Radbrytning
+
+; ++ Allmän dialogruta ++
+
+101=Fel
+102=Varning
+103=Info
+104=Ok
+105=Avbryt
+
+; ++ Fönster: Fil gruppsbegäran ++
+
+106=MemPad fil grupp (typ):
+107=Ta bort oanvända INI filer
+
+; ++ Fönster: Kryptering ++
+
+108=Kompatibel
+109=Lösenord:
+110=Upprepa:
+111=Kryptering förhindrad
+
+; ++ Dialog: Kryptering, läsa/skriva ++
+
+112=Inte tillräckligt med minne
+113=Kryptering misslyckades
+114=Anm: Om filen inte är krypterad,
+115=Du kanske har försökt att ladda ett ogiltigt filformat.
+116=Detta är inte ett giltig MemPad fil
+117=Kryptering misslyckades
+118=
+
+; ++ Fönster Export ++
+
+119=Exportera till:
+120=Titel symbol (Dollar som titelsymbol)
+121=Nivå symbol (multipla)
+122=Öppna filen
+123=Efter format
+124=Med program:
+
+; ++ Meddelande: Dagbok ++
+
+125=Skapa först en nod (sida)
+
+; ++ Fönster: Sök ++
+
+126=Behåll öppen
+127=I Texten
+128=I Index
+129=Skiftläge
+130=Hela ord
+131=Hitta:
+132=Återställ
+133=Från toppen 
+134=I Noden
+135=Ner
+136=Upp
+137=Ersätt
+138=Med
+139=Automatisk sökning nästa
+140=Inga (fler) träffar
+
+; ++ Dialog: Filer ++
+
+141=Spara Fil
+142=Fil Namn:
+143=Fil existsterar! Skriva över?
+144=Kan inte skapa fil
+145=Kan inte skriva till fil
+146=
+147=Fortsätta utan att spara?
+148=Öppna fil
+149=Spara ändringar?
+150=Program
+
+; ++ Dialog: Backup ++
+
+151=Kan inte skapa backup
+152=Det finns ingen backup-fil
+153=Detta återställer den senaste backup-filen
+154=Kan inte återställa backup
+155=Ta bort även backup-fil?
+
+; ++ Dialog: Ladda om ++
+
+156=Detta kommer att ladda alla sidor från filen
+157=Kan inte ladda om filen
+
+; ++ Sid hantering ++
+
+158=Klicka [+] knapp (Alt+Insert) för att skapa en sida
+159=Skapa fil länk
+160=Ta bort denna nod med alla undersidor?
+161=Ta bort denna sida?
+162=Infoga en textfil
+163=Kan inte ladda sida
+
+; ++ Fönster: Hotkey ++
+
+164=Tangentkombinationen att aktivera/minimera MemPad
+165=Backspace inaktiverar hotkey
+166=Inte accepterad

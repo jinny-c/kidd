@@ -1,0 +1,24 @@
+MemPad File Format - in case you are interested
+
+New 3.++ format 
+
+Header string:
+
+    7 bytes:        constant "MeMpAd " (including one blank space)
+    followed by:    initial page to load (one or more char digits), terminated by zero byte
+    followed by:    Quick Page Path (if available), terminated by zero byte
+
+For each Page:
+
+    level:          byte binary 1..99 
+    Page title:     String (max 64 bytes) terminated by zero byte 
+                    Ver 3.31++
+                    If a TAB character is found, the rest of the string
+                    contains additional header information, currently the
+                    background color code ($nnnnnn) 
+    Page contents:  String terminated by zero byte 
+
+
+Note: If the "MeMpAd " signature at the beginning of the file is not found, Mempad assumes that this file is encrypted, and asks for the password. 
+
+* 23 Aug 2008

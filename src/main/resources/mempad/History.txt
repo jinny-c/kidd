@@ -1,0 +1,322 @@
+MemPad History 
+
+Version 3.41a - 29 November 2010 
+    New compilation; Kaspersky positive issue again.
+
+Version 3.41 - 25 November 2010 
+    Hotkey (internal changes)
+    Bugfix: case insensitive search in index 
+    PB version 4.51
+    Character that replaces space in file links (default comma) can be defined
+      in INI file; example: LinkSpace=>
+
+Version 3.40 - 16 February 2010 
+    New index sort: sorting siblings (nodes on same level with current node)
+      Index menu; Alt F12: sort ascending, Alt+Shift F12: descending 
+    Seach window remains active (unless string found in index)
+    New: Language support for user interface; see file: languages\~languages.txt
+    New: Main menu: MemPad / Language (changing language requires restart)
+    Hotkey assignment handling (window) changed
+    Search window a little larger to handle different languages
+    INI file tweak: TextMargin (see Help: Tweaks)
+    Bugfix: empty page somtimes showed previously viewed page 
+    Bugfix: Launching issue if not full path supplied
+    Bugfix: aborting node background color selection
+    Bugfix: refresh issue when replacing with nothing
+    Window position also saved, if window not visible when MemPad closed
+    
+Version 3.33.1 - 07 August 2009
+    Bugfix: paste problem (different source font)
+
+Version 3.33 - 02 August 2009
+    Search: 
+         internal handling changed (supports Chinese now) 
+         new option: whole word
+    Launcher and context menu: 
+         Submenus (one level) supported
+         Launching a program without path: Windows' PATH variable applied
+         Max number of launch items is no longer limited
+    Internal page links:
+         Context menu "Page Link (Ctrl+O)" shows index link to insert 
+         Auto saving index path (manually by ALT+O) upon new node and name change
+         Saved index path remains for multiple use
+    Local file links:
+         New: Insert file links (browse or drag&drop)
+         Multiple file links by drag&drop
+    Set tab stops:
+         Internal calculation improved 
+         +++ attn: your individual tab width settings may be lost +++
+         Ctrl+Alt+T as alternative key combination for Windows Vista 
+    Export: parameters all saved (INI file)
+    Moving nodes: internal handling improved; smoother index update 
+    Line number display (optional): INI file item LineNumber=1
+    Option "Extended page memory" removed (now always "extended")
+    Message boxes now centered in MemPad window (not screen centered)
+    ++++ for more details see MemPad help ++++
+
+Version 3.32 - 18 November 2008
+    Bugfix: buffer overflow if too many background colors
+    Bugfix: select background color
+    Launching and text links: supporting *.cpl, *.scr ..
+    Crypting XP,Vista: "Strong Cryptographic Provider" fixed (not by default)
+    New ini file handler (internal) 
+
+Version 3.31 - 03 September 2008
+    File handling:    
+        Quick switch: right mouse click in right toolbar space for file list 
+        File/Open menu handling changed (auto submenu)
+        File/Previous shows name; shortcut: F7
+        File/Previous name restored from previous session 
+        Auto-save when minimizing to SystemTray (if auto-save is active)
+        Menu "New window" now supports changing/creating file group (extension) 
+    Favorites page: 
+        quick access by left mouse click in index space, Alt+Q
+        Favorites assignment: see main menu / page     
+        Important: Mempad files with a "Favorites page" cannot be opened with
+        older MemPad versions (unless you first disable the Favorites for this
+        file in version 3.31).
+    Node background color (menu: page / node background), see help
+         MemPad files using this new feature will continue to work with older 
+         MemPad versions, however, a color code will show in the index titles
+    Hide/show index pane: Ctrl + Windows key, settings menu (Win98: Ctrl+1)
+    Search: now auto-reset ("from top" ..) when search string is changed
+    Mouse wheel: focus auto change behaviour improved
+    Custom program icon (SysTray): INI file, [main] ProgIcon = (path)
+    Tree indent width: INI file, [main] TreeIndent = (pixels)
+    Page link keyword, alternative to "outlook:" is "\\see:"
+        Page link keyword, replace "see": INI file, [main] see = (word)
+    Page link: backslashes as well as slashes accepted
+
+Version 3.30 - 07 December 2007 
+    Hotkey brings MemPad to the foreground - see Help:Program/Hotkey
+    Page memory: browser-like back/forw. buttons; extended page memory option
+    New mini launcher (chevron tool button, popup menu)
+    New menu in SystemTray (right click) incl. launcher menu
+    Background color separately for text, index
+    Search window redesigned; option to keep window open; case sensitive search
+    Search & Replace
+    New modification flag (asterisk)
+    Lookup feature: (local) programs can be launched as well
+    Initial page as command parameter: index path supported
+    Encryption: Win98 compatible checkbox now in password window
+    Auto save: interval can be changed in INI file
+    Bugfix, Import: last line got lost sometimes
+
+Version 3.22 -  17 September 2007 
+    New Features: 
+        Configurable Web look up (dictionary etc.), see help: Editing/Web Lookup 
+        Get Index Path (Index context menu), Insert Outlook Link (Edit context menu)
+        .. to insert an internal page link to previously designated page 
+        Editing: convert to upper/lower case (Alt+U,L) 
+        Instance Info (Menu/?) with paths 
+    Improvements:
+        Large pages are loaded (displayed) much faster
+        Optional search in index tree 
+        Diary: Day node with day of week (short), i.e. "26 Sun"  
+        Internal links: trailing slash expands target node 
+        F5: custom date/time format thru INI file: F5format = (as in menu files) 
+        Custom insert menus: Caret character (^) for line break
+        Custom insert menus: Date/time tokens are no longer case sensitive
+        Improved handling when trying to load an invalid file format
+        Now supported: Two instances with same filename in diffenrent directories 
+        Internet and file links: on double click (launch) the full link is marked 
+        Index editing can be cancelled by ESC now
+        Help: extra page "Keyboard shortcuts"; other improvements..
+    Changes:
+        Internet links: case preserved
+        New subdirectory "examples"; please delete old "InsTxt.zip" ++++++++++
+        Shortcut Alt+L for default lock option removed (pls. use Alt SL) 
+    Bugfixes: 
+        Node to paste (move) could not be changed directly
+        New window failed if there was only one Mempad file 
+        Auto save "off" was not effective immediately 
+        Other minor issues
+
+Version 3.21 -  08 August 2007 
+    Diary support, see Help: Page/Diary Entry
+    Search window redesigned 
+    Memory stack now can save multiple positions within a page
+    Bugfix: Focus restored when window restored from minimized 
+    Auto change focus to text pane when scrool weel rotated over text
+    Function: Expand all (right click on Collapse button, or Alt+Shift+C)
+    General focus control improved 
+    Bugfix: Menu key (context menu) did not work if mouse cursor outside text pane
+    Redo function
+    Multi line indent: insert/remove Tabs 
+
+Version 3.20  -  25 May 2007       -      Pls. read Help file for details
+    New full width Toolbar 
+    New Move buttons: To parent level as next node, To child level of preceding node  
+    Auto Save option (every 4-5 minutes) 
+    Set Tab size (width) by Ctrl+Alt+TAB (at intended first tab position) 
+    Custom Insert Context Menu: to select words from file 
+        Right mouse click + Shift or Ctrl key
+        offers lines from InsCtrl.txt or InsShift.txt as context menu for insert 
+        Tokens for date and time 
+    Search backwards, search within node 
+    Tab key blocked in text, when anything is marked
+    Lock Editing: Option to lock all pages, button to lock/unlock the current page.
+    Page memory stack: new "remember!" function ("M" button), more.. 
+    INI file statement: [Export] section, TitleLNfeed = 0|1 (empty line under title: N|Y) 
+    Internal improvements, bugfixes
+
+Version 3.12 - 10 December 2006
+    Bugfix: Import empty page (import file required two empty lines)
+    "Saved to file": visual confirmation
+
+Version 3.11 - 15 November 2006
+    Bugfix  
+
+Version 3.10 - 14 November 2006
+    New "!" button to pre-select Insert Page mode (Alt-1 or Alt-!) 
+    Plus buttons reduced to two, "Insert before" available with Shift
+    Hotkeys ALT+Insert, Alt+Shift+Insert; Plus (numeric pad) alternative to Insert
+    Context menu modified
+    Page link by outlook:page (has nothing to do with M$ Outlook); see Help 
+    Return stack (Ctrl or Alt +"R") to be used after jump by page link or search 
+    Help file revised, new structure
+    Added: function to collapse all nodes except path to current page
+    Bugfix: Flush internal cache when file saved
+
+Version 3.04 - 01 October 2006
+    Option: Minimize to System Tray 
+    Save data on Windows Shutdown 
+
+Version 3.03 - 01 September 2006
+    Bugfix: Export title decoration
+    New Info (About) window
+
+Version 3.02 - 25 August 2006
+    Internal: new INI file handler to speed use on USB sticks
+    
+Version 3.01 - 18 June 2006
+    Bugfix: delete the only/last page (empty MemPad)
+
+Version 3.0 - 02 June 2006
+    Pages no longer limited to 60Kb 
+    Page index structure up to 100 levels deep
+	Move (cut&paste) index structure 
+	Page insert functions: before, as next (same level) or child (new level)
+	Insert page with text from a file
+	Export to text file and import (insert) preserving index structure 	
+	New buttons with images, new insert menu 
+    Crypting option to allow data exchange between Win98 and newer systems
+    
+Version 2.51 - 14 February 2006
+    Bugfix: Window dimensions were not saved correctly
+
+Version 2.50 - 30 January 2006
+    File handling: Name for new MemPad file is asked later, when saved.
+    Empty MemPad (no index) is possible (when new file or all pages deleted). 
+    Closing empty MemPad: if file exists, it can be deleted (prompt).
+    
+    Separate menu "MemPad"; new Window opens empty
+    First MemPad use: prompt for file extension (default "lst") 
+
+    If MemPad is started without command parameters (on flash drive, for example),
+    the file extension is taken from the INI file name (e.g. if "MemFOO.ini" 
+    is found, the extension "FOO" instead of "LST" is assumed).
+
+    Links: file:///c:\download now also works with 1..3 slashes.
+    File links with variables supported, like file:%userprofile%\desktop 
+
+    Separate font for index pane 
+    Bugfix: input window did not block main window 
+    Restore feature: either from current file or from backup file 
+    New page import function
+    New function: Return after search 
+    User interface for export title decorations
+
+Version 2.45 - 05 October 2005
+    Problem with TAB key solved:
+    Ctrl+TAB switches from index to text and back.
+    TAB in index pane also jumps to text, 
+    however, TAB in Text pane inserts a TAB code (TAB space). 
+
+Version 2.44 - 30 September 2005
+    XP skin support, some cosmetic changes
+
+Version 2.43 - 18 February 2005
+    Export to text file, optionally open [with], see Help / Export 
+	This offers an easy way to print MemPad pages through your
+	favorite editor or any other tool. 
+
+Version 2.42 - 07 February 2005
+	Encryption / password protection supported,
+	see Help: File/Encrypt
+
+Version 2.41 2 December 2004
+    Bugfix: Copy (clipboard) was triggered by TAB
+    
+Version 2.40 2 December 2004
+    Expanded nodes remain expanded when Insert/Delete/Move
+    Fixed: Problem keeping marked item visible (move, open file). 
+    Several instances of MemPad can be opened (with same file extension).
+    Trying to open a file that is already open, will put the other
+      MemPad window in the foreground instead.
+    Menu option: New Window 
+    Changed internal file handling; file remains open during session.
+	Shortcut to "stay on top": Alt+T
+    Icon changed 
+
+Version 2.34, November 2004
+    Find dialog: Start option as checkbox (keyboard works now)
+
+Version 2.33, August 2004
+    Search start (first page/cursor position): Status is saved      
+
+Version 2.32, August 2004
+    Bugfix: Help did not show if blank spaces in program path
+
+Version 2.31, June 2004
+    New compilation (smaller size)
+
+Version 2.30, June 2004
+    Index structure with 2 levels (see Help)
+    Ctrl+W to toggle word wrap mode
+    Option "No backups"
+    Minor improvements and fixes
+
+Version 2.21, April 2004
+    MRU problem fixed.
+
+Version 2.20, April 2004
+    New main menu, index context menu
+    Index control buttons can be hidden
+    File Open, New File, previous, Read-only handling
+    New handling of different directories, file extensions
+    Insert date/time, 
+    Embedded links: special handling for local files
+    New INI file naming ("mem" + file type + ".ini")
+    Help as MemPad file (pls. remove old HTML files)
+    Various minor improvements and fixes.
+
+Version 2.11, September 2003
+    Optional second command parameter: initial page (by title)
+
+Version 2.10, August 2003
+    Added: Search function, more keyboard shortcuts
+    Changed: Page index input/editing, Button shortcuts now with ALT key
+    Improved: Index handling (scrolling)
+
+Version 2.03, July 2003
+    Focus in window preserved when (re)activated
+
+Version 2.02, July 2003
+    Resizing Window does not change Index width 
+
+Version 2.01, July 2003
+    Window can be maximized 
+
+Version 2.00, June 2003
+    Internet Links clickable
+    Word Wrap toggle
+
+Version 1.37, April 2003
+    Bugfix: Page size was limited to 32 Kb; now 60 Kb.
+    Page truncated if too large, error message.
+
+Version 1.36, April 2003
+    New in the Options Menu: Save (always including backup).
+    Internal file handling changed.
+

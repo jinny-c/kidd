@@ -1,0 +1,234 @@
+;Lenguaje: Español Argentina
+;Traductor: Mario Guillermo Macri
+; Hecho con Notepad++
+
+
+; ++ Menú principal++
+
+01=Nueva ventana
+02=Para '$' archivos
+03=Para otro grupo de archivos...
+04=Carpeta de datos
+167=Lenguaje
+05=Abrir (externo)...
+100=Inicio rápido...
+06=Salir
+
+07=Archivo
+08=Abrir...
+09=Previo (F7)
+10=Nuevo
+11=Solo lectura?
+12=Encriptar?
+13=Guardar (Ctrl+S)
+14=Recargar
+15=Restaurar respaldo
+
+16=Página
+17=Buscar del inicio
+18=Buscar siguiente (abajo)
+19=Buscar siguiente (arriba)
+20=Memorizar página
+21=Saltar atrás
+22=Saltar adelante
+23=Favoritos
+24=Asignar esta página
+25=Deshabilitar
+26=Bloquear página?
+27=Entrada de diario
+28=Fondo del nodo
+29=Seleccionar color
+30=Reiniciar color
+
+31=Exportar
+32=Página simple
+33=Nodo (estructura)
+34=Todo
+35=Importar página nuevamente
+
+36=Ajustes
+37=Fuente
+38=Texto
+39=Índice
+40=Fondo
+41=Texto (por defecto)
+42=Índice
+43=Ambos
+44=Barra de herramientas?
+45=Índice?  [Ctrl+Win]
+46=Combinación de teclas...
+47=Minimizar a la bandeja?
+48=Salir con ESC?
+49=Minimizar con ESC?
+50=Ventana al tope?
+51=Páginas bloqueadas por defecto?
+52=Auto-guardar? (cada $ min)
+53=Sin respaldos
+
+54=Ayuda
+55=Información
+56=Instancia
+
+; ++ Menú del índice ++
+
+57=Añadir como siguiente
+58=Insertar antes
+59=Añadir como hijo
+60=Borrar
+61=Cortar (para mover)
+62=Renombrar
+63=Obtener el camino de la página
+64=Mover abajo
+65=Mover arriba
+66=Al nivel superior
+67=Al nivel inferior
+68=Colapsar todo
+69=Expandir todo
+168=Ordenar nodos (hermanos)
+169=Ascendiente
+170=Descendiente
+
+; ++ Menú de texto ++
+
+70=Cortar
+71=Copiar
+72=Pegar
+73=Marcar todo
+74=Mayúscula
+75=Minúscula
+76=Deshacer
+77=Rehacer
+78=Fecha,hora
+79=Enlace de la página...
+80=Enlace del archivo...
+
+; ++ Botón nuevo (4 alternativas, separado por ;)
+
+81=Nuevo >;Pegar >;De archivo;Importar >
+
+; ++  menú Nuevo/modo insertar ++ 
+
+82=Nueva página
+83=Pegar:
+84=Pagina de archivo de texto
+85=Importar página o nodo
+
+; ++ Indicaciones de los botones ++
+
+86=Selecciona modo insertar/fuente
+87=Añade como siguiente (click derecho: antes)
+88=Añade como hijo
+89=Cortar página/nodo (para insertar/agregar en cualquier parte)
+90=Para mover $: seleccionar objetivo, luego insertar/agregar
+91=Borrar página/nodo
+92=Mueve arriba
+93=Mueve abajo
+94=Al primer nivel como próximo nodo
+95=Al nivel hijo del nodo precedente
+96=Colapsar nodos sin uso (click derecho para expandir todo)
+97=Buscar desde el inicio
+98=Buscar próximo abajo (click derecho: arriba)
+99=Encuadrar reglones
+
+; ++ Caja de diálogo genérico++
+
+101=Error
+102=Advertencia
+103=Información
+104=Ok
+105=Cancelar
+
+; ++ Ventana: Solicitud grupo de archivos ++
+
+106=Grupo de archivos de MemPad (tipo):
+107=Remover archivos INI sin uso
+
+; ++ Ventana: Encriptación ++
+
+108=Compatible
+109=Password:
+110=Repetir:
+111=Encriptación deshabilitada
+
+; ++ Dialogo: Encriptación, leer/escribir ++
+
+112=Memoria insuficiente
+113=La desencriptación falló
+114=Nota: Si el archivo no esta encriptado,
+115=puede haber tratado de abrir un formato inválido.
+116=Este no es un archivo válido de MemPad
+117=La encriptación falló
+118=
+
+; ++ Ventana de exportación ++
+
+119=Exportar a:
+120=Título  (Dolar como símbolo de título)
+121=Símbolo de nivel (múltiple)
+122=Abrir el archivo
+123=Por extensión
+124=Con un programa:
+
+; ++ Mensaje: Diario ++
+
+125=Primero crear un nodo (página)
+
+; ++ Ventana: Búsqueda ++
+
+126=Mantener abierta
+127=En texto
+128=En índice
+129=Ajustar Mayúsculas/minúsculas
+130=Palabra completa
+131=Encontrar:
+132=Reiniciar
+133=Desde arriba 
+134=Dentro del nodo
+135=Abajo
+136=Arriba
+137=Reemplazar
+138=Con:
+139=Buscar siguiente
+140=No se encontraron más 
+
+; ++ Diálogo: Archivos ++
+
+141=Salvar archivo
+142=Nombre:
+143=El archivo existe! : ¿Sobreescribir?
+144=No se puede crear el archivo
+145=No se puede escribir el archivo
+146=
+147=Proceder sin guardar?
+148=Abrir archivo
+149=Salvar cambios?
+150=Programa
+
+; ++ Diálogo: Backup ++
+
+151=No se puede crear el respaldo
+152=No hay archivo de respaldo
+153=Esto restaurará el último respaldo
+154=No se puede restaurar el respaldo
+155=Borrar el respaldo también?
+
+; ++ Diálogo: Recargar ++
+
+156=Esto recargara todas las páginas desde el archivo
+157=No se puede recargar el archivo
+
+; ++ Manejo de página ++
+
+158=Click [+]  (Alt+Insert) para crear una página
+159=Crear link al archivo
+160=Borrar este nodo con todos los hijos?
+161=Borrar esta página?
+162=Insertar archivo de texto
+163=No se puede cargar la página
+
+; ++ Ventana: combinación de teclas ++
+
+164=Combinación de teclas para activar/minimizar MemPad
+165=Tecla de retroceso deshabilita las combinaciones de teclas
+166=No aceptada
+

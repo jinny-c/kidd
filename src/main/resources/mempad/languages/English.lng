@@ -1,0 +1,229 @@
+; ++ Main Menu ++
+
+01=New window
+02=for '$' files
+03=for other file group..
+04=Data folder
+167=Language
+05=Open (external)..
+100=Quick Launch..
+06=Exit
+
+07=File
+08=Open..
+09=Previous (F7)
+10=New
+11=Read only?
+12=Encrypt?
+13=Save (Ctrl+S)
+14=Re&load
+15=Restore &backup
+
+16=Page
+17=Search start
+18=Search next (down)
+19=Search next (up)
+20=Page Memory
+21=Jump back
+22=Jump forw.
+23=Favorites
+24=Assign this page
+25=Disable
+26=Lock page?
+27=Diary entry
+28=Node background
+29=Select color
+30=Reset color
+
+31=Export
+32=Single page
+33=Node (structure)
+34=All
+35=Re-import page
+
+36=Settings
+37=Font
+38=Text
+39=Index
+40=Background
+41=Text (default)
+42=Index
+43=both
+44=Toolbar?
+45=Index?  [Ctrl+Win]
+46=Hotkey..
+47=Minimize to &System Tray?
+48=Exit on ESC?
+49=Minimize on ESC?
+50=Keep window on top?
+51=Pages &locked by default?
+52=Auto save? (every $ min)
+53=No backups?
+
+54=Help
+55=Info
+56=Instance
+
+; ++ Index Menu ++
+
+57=Add as next
+58=Insert before
+59=Add as child
+60=Delete
+61=Cut (to move)
+62=Rename
+63=Get page path
+64=Move down
+65=Move up
+66=To Parent level
+67=To Child level
+68=Collapse all
+69=Expand all
+168=Sort nodes (siblings)
+169=ascending
+170=descending
+
+; ++ Text Menu ++
+
+70=Cut
+71=Copy
+72=Paste
+73=Mark all
+74=Upper case
+75=Lower case
+76=Undo
+77=Redo
+78=Date,Time
+79=Page link
+80=File link..
+
+; ++ New button (4 alternatives, semicolon separated)
+
+81=New >;Paste >;From File;Import >
+
+; ++ New/insert mode menu ++ 
+
+82=New Page
+83=Paste:
+84=Page from a &text file
+85=Import page or node
+
+; ++ Button ToolTips ++
+
+86=Select insert mode/source
+87=Add as next (right click: before)
+88=Add as child
+89=Cut page/node (to insert/add elsewhere)
+90=To move $: select target, then insert/add
+91=Delete page/node
+92=Move up
+93=Move down
+94=To parent level as next node
+95=To child level of preceding node
+96=Collapse unused nodes (right click to expand all)
+97=Search start
+98=Search next down (right click: up)
+99=Word wrap
+
+; ++ Generic dialog box ++
+
+101=Error
+102=Warning
+103=Info
+104=Ok
+105=Cancel
+
+; ++ Window: File group request ++
+
+106=MemPad file group (type):
+107=Remove unused INI files
+
+; ++ Window: Encryption ++
+
+108=compatible
+109=Password:
+110=Repeat:
+111=Encryption disabled
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Not enough memory
+113=Decryption failed
+114=Note: If the file is not encrypted,
+115=you may have tried to load an invalid file format.
+116=This is not a valid MemPad file
+117=Encryption failed
+118=
+
+; ++ Window Export ++
+
+119=Export to:
+120=Title decoration (Dollar as title token)
+121=Level symbol (multiple)
+122=Open the file
+123=by extension
+124=with program:
+
+; ++ Message: Diary ++
+
+125=First create a node (page)
+
+; ++ Window: Search ++
+
+126=Keep Open
+127=In Text
+128=In Index
+129=Match case
+130=Whole word
+131=Find:
+132=Reset
+133=From Top 
+134=Within Node
+135=Down
+136=Up
+137=Replace
+138=With:
+139=Auto search next
+140=No (more) matches
+
+; ++ Dialog: Files ++
+
+141=Save File
+142=File Name:
+143=File exists! Overwrite?
+144=Cannot create file
+145=Cannot write to file
+146=
+147=Proceed without saving?
+148=Open File
+149=Save changes?
+150=Program
+
+; ++ Dialog: Backup ++
+
+151=Cannot make Backup
+152=There is no backup file
+153=This will restore the last backup
+154=Cannot restore Backup
+155=Delete backup as well?
+
+; ++ Dialog: Reload ++
+
+156=This will reload all pages from the file
+157=Cannot reload file
+
+; ++ Page Handling ++
+
+158=Click [+] button (Alt+Insert) to create a page
+159=Create file link
+160=Delete this node with all child pages?
+161=Delete this page?
+162=Insert a text file
+163=Cannot load page
+
+; ++ Window: Hotkey ++
+
+164=Key combination to activate/minimize MemPad
+165=Backspace disables hotkey
+166=Not accepted
+

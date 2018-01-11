@@ -1,0 +1,233 @@
+;Lingua: italiano
+;Traduzione: Andrea Carrarini
+; Scritto con Notepad2
+
+; ++ Main Menu ++
+
+01=Nuova Finestra
+02=per files '$'
+03=per un altro gruppo di files ..
+04=Apri cartella dati
+167=Lingue
+05=Apri (con un editor esterno)..
+100=Quick Launch..
+06=Uscita
+
+07=File
+08=Apri..
+09=Precedente (F7)
+10=Nuovo
+11=Solo lettura?
+12=Crittografare?
+13=Salva (Ctrl+S)
+14=Ri&apri
+15=Ripristina &backup
+
+16=Pagina
+17=Cerca
+18=Cerca ancora (verso il basso)
+19=Cerca ancora (verso l'alto)
+20=Page Memory
+21=Vai indietro
+22=Vai avanti
+23=Preferiti
+24=Assegna questa pagina
+25=Disabilita
+26=Blocca la pagina?
+27=Inserisci nota del diario
+28=Colore dello sfondo
+29=Seleziona un colore
+30=Rispristina il colore predefinito
+
+31=Esporta
+32=Pagina singola
+33=Nodo (Struttura)
+34=Tutto
+35=Re-importa pagina
+
+36=Opzioni
+37=Font
+38=Testo
+39=Indice
+40=Sfondo
+41=Testo (default)
+42=Indice
+43=Entrambi
+44=Toolbar?
+45=Indice?  [Ctrl+Win]
+46=Hotkey..
+47=Minimizza nella &System Tray?
+48=Uscita con ESC?
+49=Minimizza con ESC?
+50=Mantieni la finestra in primo piano?
+51=Pagina &bloccata a default?
+52=Auto salvataggio? (Ogni $ min)
+53=Nessun backup?
+
+54=Aiuto
+55=Informazioni
+56=Istanza
+
+; ++ Index Menu ++
+
+57=Inserisci come successivo
+58=Inserisci come seguente
+59=Aggiungi ramo figlio
+60=Cancella
+61=Taglia (per spostare)
+62=Rinomina
+63=Prendi il path della pagina
+64=Sposta in basso
+65=Sposta in alto
+66=Al livello padre
+67=Al livello figlio
+68=Riduci tutto
+69=Espandi tutto
+168=Ordina i nodi (fratelli)
+169=Crescente
+170=Discendente
+
+; ++ Text Menu ++
+
+70=Taglia
+71=Copia
+72=Incolla
+73=Seleziona tutto
+74=Maiuscolo
+75=Minuscolo
+76=Annulla
+77=Ripristina
+78=Data,Ora
+79=Link pagina
+80=Link file..
+
+; ++ New button (4 alternatives, semicolon separated)
+
+81=Nuovo >;Incolla >;Da file;Importa >
+
+; ++ New/insert mode menu ++ 
+
+82=Nuova pagina
+83=Incolla:
+84=Pagina da un file di &testo 
+85=Importa una pagina o un nodo
+
+; ++ Button ToolTips ++
+
+86=Seleziona il modo di inserimento/sorgente
+87=Inserisci come successivo (click destro: prima)
+88=Aggiungi ramo figlio
+89=Taglia pagina/nodo
+90=Per spostare $: seleziona la destinazione, quindi inserisci/aggiungi
+91=Cancella pagina/nodo
+92=Sposta in alto
+93=Sposta in basso
+94=Al livello precedende come nodo successivo
+95=Al livello figlio del nodo precedente
+96=Riduci nodi non in uso (click destro per espanderli to expand all)
+97=Inizio Ricerca
+98=Cerca ancora verso il basso (con il pulsante destro: in alto)
+99=A capo automatico
+
+; ++ Generic dialog box ++
+
+101=Errore
+102=Warning
+103=Informazioni
+104=Ok
+105=Annulla
+
+; ++ Window: File group request ++
+
+106=File di gruppo di Mempad (tipo di file):
+107=Rimuovi i file non usati
+
+; ++ Window: Encryption ++
+
+108=Compatibile
+109=Password:
+110=Ripeti:
+111=Crittografia disabilitata
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Non c'è memoria disponibile per completare l'operazione
+113=Decriptazione fallita
+114=Nota: Se il file non è crittato,
+115=Stai cercando di caricare un file in un formato errato.
+Questo non è un file MemPad valido.
+117=Crittografia fallita
+118=
+
+; ++ Window Export ++
+
+119=Esporta in:
+120=Decorazioni per il tiyolo (Il dollaro come titolo token)
+121=Simbolo di livello (multipli)
+122=Apri il file
+123=per estensione
+124=con il programma:
+
+; ++ Message: Diary ++
+
+125=Prima devi creare un nodo (pagina)
+
+; ++ Window: Search ++
+
+126=Mantieni aperto
+127=Nel testo
+128=Nell'indice
+129=Maiuscole/Minuscole
+130=Parola esatta
+131=Trova:
+132=Trova ancora
+133=Dall'inizio
+134=All'interno del nodo
+135=Verso il basso
+136=Verso l'alto
+137=Sostituisci
+138=Con:
+139=Trova automaticamente il successivo
+140=Nessun nuovo riscontro
+
+; ++ Dialog: Files ++
+
+141=Salva il file
+142=Nome del file:
+143=Il file esiste! Lo sostituisco?
+144=Non posso creare il file
+145=Non riesco a scrivere il file
+146=
+147=Continuo senza salvare?
+148=Apri file
+149=Salvo i cambiamenti?
+150=Programma
+
+; ++ Dialog: Backup ++
+
+151=Non riesco a fare il Backup
+152=Non esiste il backup per questo file
+153=Questo ripristinerà l'ultimo Backup
+154=Non posso ripristinare il Backup
+155=Rimuovo anche il Backup?
+
+; ++ Dialog: Reload ++
+
+156=Questo ricaricherà tutte le pagine dal file
+157=Non posso ricaricare il file
+
+; ++ Page Handling ++
+
+158=Clicca [+] bottone (Alt+Insert) per creare una pagina
+159=Crea un link ad un file
+160=Cancello il nodo con tutte le pagine figlio?
+161=Cancello questa pagina?
+162=Inserisci un file di testo
+163=Non posso caricare la pagina
+
+; ++ Window: Hotkey ++
+
+164=Combinazioni di tasti per attivare/minimizzare MemPad
+165=Backspace disabilita hotkey
+166=Non accettato
+

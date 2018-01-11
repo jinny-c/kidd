@@ -1,0 +1,229 @@
+;Portuguese (Brazil)
+;Traduzido por MCHAL.110mb.com
+; ++ Main Menu ++
+
+01=Nova janela
+02=de arquivos '$'
+03=de outro grupo de arquivos...
+04=Pasta de dados
+167=Idioma
+05=Abrir (externo)...
+100=Reabertura expressa...
+06=Fechar o programa
+
+07=Arquivo
+08=Abrir...
+09=Anterior (F7)
+10=Novo
+11=Somente-leitura?
+12=Cifrar (proteger)?
+13=Salvar (Ctrl+S)
+14=Recarre&gar
+15=Restaurar &backup
+
+16=Página
+17=Localizar
+18=Localizar seguinte (abaixo)
+19=Localizar seguinte (acima)
+20=Memorizar Página
+21=Voltar
+22=Avançar
+23=Favoritas
+24=Incluir a página atual
+25=Desativar
+26=Bloquear edição?
+27=Entrada de diário
+28=Fundo da lista/página atual
+29=Escolher a cor
+30=Restaurar a cor original
+
+31=Exportar
+32=Página única
+33=Lista de Páginas
+34=Tudo
+35=Reimportar página
+
+36=Configurar
+37=Fonte
+38=Do texto
+39=Da Lista de Páginas
+40=Fundo
+41=Do texto (padrão)
+42=Da Lista de Páginas
+43=De ambos
+44=Barra de Ferramentas?
+45=Exibir a Lista?  [Ctrl+Win]
+46=Teclas de atalho...
+47=Minimizar na Área de &Notificação?
+48=Fechar com ESC?
+49=Minimizar com ESC?
+50=Manter a janela sempre na frente?
+51=Página b&loqueada por padrão?
+52=Salvar automaticamente? (a cada $ mins.)
+53=Fazer backups?
+
+54=Ajuda
+55=Informação
+56=Sessão
+
+; ++ Index Menu ++
+
+57=Adicionar página depois
+58=Adicionar página antes
+59=Adicionar como subpágina
+60=Apagar
+61=Recortar (para mover)
+62=Renomear
+63=Copiar o endereço da página
+64=Descer
+65=Subir
+66=Tornar principal
+67=Subordinar
+68=Fechar todas
+69=Abrir todas
+168=Ordenar a lista atual (subpáginas)
+169=Em ordem crescente
+170=Em ordem decrescente
+
+; ++ Text Menu ++
+
+70=Recortar
+71=Copiar
+72=Colar
+73=Selecionar tudo
+74=Caixa ALTA
+75=Caixa baixa
+76=Desfazer
+77=Refazer
+78=Data, Hora
+79=Vincular a página...
+80=Vincular a arquivo...
+
+; ++ New button (4 alternatives, semicolon separated)
+
+81=Nova >;Colar >;De arquivo;Importar >
+
+; ++ New/insert mode menu ++ 
+
+82=Nova página
+83=Colar:
+84=Página com &texto de arquivo
+85=Importar página ou lista
+
+; ++ Button ToolTips ++
+
+86=Escolher modo/origem da inserção
+87=Adicionar como seguinte (clique direito: antes)
+88=Adicionar como subpágina
+89=Recortar página/lista (para inserir/adicionar alhures)
+90=Para mover $: escolha o destino e insira/adicione
+91=Apagar páginas/sublista
+92=Subir
+93=Descer
+94=Como principal após a atual
+95=Como sublista antes da principal atual
+96=Fechar listas não-usadas (clique direito para abrir todas)
+97=Localizar
+98=Localizar seguinte abaixo (clique direito: acima)
+99=Quebrar linha de página
+
+; ++ Generic dialog box ++
+
+101=Erro!
+102=Atenção!
+103=Informação
+104=Ok
+105=Cancelar
+
+; ++ Window: File group request ++
+
+106=Grupo de arquivos do MemPad file group (tipo):
+107=Apagar arquivos INI não-usados
+
+; ++ Window: Encryption ++
+
+108=compatível
+109=Senha:
+110=Repetir:
+111=Cifragem desativada
+
+; ++ Dialog: Encryption, read/write ++
+
+112=Memória insuficiente
+113=Tentativa de decifragem falhou!
+114=Nota: Se o arquivo não estiver cifrado,
+115=você pode ter tentado abrir um formato de arquivo inválido.
+116=Este não é um arquivo MemPad válido!
+117=Falha na tentativa de cifragem!
+
+; ++ Window Export ++
+
+119=Exportar como:
+120=Decoração do título (dólar como símbolo)
+121=Símbolo de subordinação (múltiplos)
+122=Abrir arquivo
+123=por extensão
+124=como o programa:
+
+; ++ Message: Diary ++
+
+125=Primeiro, crie uma lista (página)
+
+; ++ Window: Search ++
+
+126=Manter aberta
+127=No texto
+128=Na Lista
+129=Observar o cORpO de LEtRa
+130=Só termo/expressão inteiros
+131=Localizar:
+132=Restaurar
+133=Do início
+134=Na lista atual
+135=Abaixo
+136=Acima
+137=Substituir
+138=Por:
+139=Autolocalizar seguinte
+140=Não achei (mais) nenhuma ocorrência!
+
+; ++ Dialog: Files ++
+
+141=Salvar arquivo
+142=Nome do arquivo:
+143=O arquivo já exite? Devo substituí-lo?
+144=Não foi possível criar o arquivo!
+145=Não foi possível gravar no arquivo!
+147=Prossigo sem salvar?
+148=Abrir arquivo
+149=Devo salvar as alterações?
+150=Programa
+
+; ++ Dialog: Backup ++
+
+151=Não foi possível fazer o backup!
+152=Não existe backup!
+153=Isto restaurará o último backup
+154=Não foi possível restaurar o backup!
+155=Devo apagar o backup também?
+
+; ++ Dialog: Reload ++
+
+156=Isto recarregará todas as páginas do arquivo
+157=Não foi possível recarregar o arquivo!
+
+; ++ Page Handling ++
+
+158=Clique no botão [+] (Alt+Insert) para criar página
+159=Criar remissão de arquivo
+160=Quer mesmo apagar esta página e todas as subpáginas?
+161=Quer mesmo apagar esta página?
+162=Inserir um arquivo de texto
+163=Não foi possível carregar a página
+
+; ++ Window: Hotkey ++
+
+164=Grupo de teclas para exibir/minimizar o MemPad
+165=Backspace desativa o uso do atalho
+166=Inválido! Pode estar sendo usado por outro programa!
+
