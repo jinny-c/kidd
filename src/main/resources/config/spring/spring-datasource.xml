@@ -18,11 +18,12 @@
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<!-- hpdb_10.148.181.173 
 		<property name="url" value="jdbc:oracle:thin:@10.148.181.247:1521:hpdb17" />
-		-->
-		<!-- hpdb_10.148.181.172 -->
+		hpdb_10.148.181.172
 		<property name="url" value="jdbc:oracle:thin:@10.148.181.169:1521:hpdb45" />
-		<property name="username" value="hpay" />
-		<property name="password" value="handpay" />
+		-->
+		<property name="url" value="jdbc:mysql://localhost:3306/mysql" />
+		<property name="username" value="root" />
+		<property name="password" value="122333" />
 	</bean>
 	<!-- <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg>

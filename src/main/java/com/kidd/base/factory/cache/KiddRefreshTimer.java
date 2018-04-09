@@ -21,7 +21,7 @@ public class KiddRefreshTimer {
 	/** 日志 */
 	private static Logger log = LoggerFactory.getLogger(KiddRefreshTimer.class);
 
-	private static final int PERIOD = 4; //刷新周期，单位：分钟
+	private static final int PERIOD = 24*60; //刷新周期，单位：分钟
 
 	private IKiddRefreshService kiddRefreshServiceImpl;
 
