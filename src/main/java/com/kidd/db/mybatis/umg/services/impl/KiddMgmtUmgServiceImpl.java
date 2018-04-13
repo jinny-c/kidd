@@ -18,7 +18,7 @@ import com.kidd.db.mybatis.umg.services.IKiddMgmtUmgService;
 import com.kidd.db.mybatis.umg.services.bean.KiddMerchRecommendBean;
 import com.kidd.db.mybatis.umg.services.bean.KiddUserInfoBean;
 
-@Service(value = "kiddMgmtUmgService")
+//@Service(value = "kiddMgmtUmgService")
 public class KiddMgmtUmgServiceImpl implements IKiddMgmtUmgService {
 	private static Logger log = LoggerFactory.getLogger(KiddMgmtUmgServiceImpl.class);
     @Autowired

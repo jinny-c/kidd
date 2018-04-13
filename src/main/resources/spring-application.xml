@@ -8,6 +8,8 @@
     default-autowire="byName">
 	
 	<import resource="classpath:config/spring/spring-mvc-context.xml"/>
-	<import resource="classpath:config/spring/spring-datasource.xml"/>
+	
+	<!-- DB配置 -->
+	<!-- <import resource="classpath:config/spring/spring-datasource.xml"/> -->
 	
 </beans>

@@ -53,8 +53,8 @@ public class KiddWapUserController extends KiddBaseController{
 	/* Slf4j */
 	private static Logger log = LoggerFactory.getLogger(KiddWapUserController.class);
 	
-	@Autowired
-	private IKiddMgmtUmgService kiddMgmtUmgService;
+	//@Autowired
+	//private IKiddMgmtUmgService kiddMgmtUmgService;
 	
 	// 验证码字符个数
     private static final int CODE_COUNT = 4;
@@ -110,15 +110,15 @@ public class KiddWapUserController extends KiddBaseController{
 			
 			KiddUserInfoBean reqBean = new KiddUserInfoBean();
 			reqBean.setUserName("userNameTest");
-			kiddMgmtUmgService.modifyUserInfo(reqBean);
-			kiddMgmtUmgService.queryUseInfoByPrimaryKey(reqBean);
+			//kiddMgmtUmgService.modifyUserInfo(reqBean);
+			//kiddMgmtUmgService.queryUseInfoByPrimaryKey(reqBean);
 			
 			//if(flag.equals(""));
 			if("".equals(flag));
-		} catch (KiddServiceException e) {
+		} /*catch (KiddServiceException e) {
 			// TODO: handle exception
 			log.info("index exception:", e);
-		} catch (Exception e) {
+		} */catch (Exception e) {
 			// TODO: handle exception
 			//log.error("index exception:", e);
 			log.info("index e.toString={},exception:", e,e);
