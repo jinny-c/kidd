@@ -125,6 +125,9 @@ function getVerficCode(wildcard) {
 				<li><a href="wap/user/toLogin.htm">toLogin</a></li>
 			</ul>
 			<ul>
+				<li><a href="wap/user/wapLogin.htm">login by wap</a></li>
+			</ul>
+			<ul>
 				<li><a href="wap/user/login.htm">login</a></li>
 			</ul>
 			<ul>

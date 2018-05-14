@@ -85,14 +85,14 @@ function validateName(name){
 //倒计时
 var _seconds=0;
 var _interval = {
-		_clear(_target){
+		_clear:function(_target){
 			_seconds=0;
 			_target.text('获取验证码');
 			_target.removeClass('deactive');
 			_target.removeAttr("disabled");
 			_window_int = window.clearInterval(_window_int);
 		},
-		_remaining(_target){
+		_remaining:function(_target){
 			_target.attr('disabled', 'disabled');
 			_target.addClass('deactive');
 	    	
@@ -119,13 +119,13 @@ function initCanvas(_date,_target,_func){
 		return ;
 	}
 	_canvas = {
-			_onclick(_func){
+			_onclick:function(_func){
 				mycanvas.onclick=function(e){
 					e.preventDefault(); // 阻止鼠标点击发生默认的行为
 					_func();
 				};
 			},
-			_change(_date){
+			_change:function(_date){
 				var _cxt = _target[0].getContext('2d');
 				_cxt.fillStyle = '#000';// 填充色
 				_cxt.fillRect(0, 0, 90, 40);
@@ -144,12 +144,12 @@ function initCanvas(_date,_target,_func){
 				_cxt.fillText(_date, 25, 25); // 把rand()生成的随机数文本填充到canvas中
 			},
 			/* 干扰线的随机x坐标值 */
-			_lineX(){
+			_lineX:function(){
 				var ranLineX=Math.floor(Math.random()*90);
 				return ranLineX;
 			},
 			/* 干扰线的随机y坐标值 */
-			_lineY(){
+			_lineY:function(){
 				var ranLineY=Math.floor(Math.random()*40);
 				return ranLineY;
 			}

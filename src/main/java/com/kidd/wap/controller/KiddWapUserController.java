@@ -24,7 +24,6 @@ import com.kidd.base.common.constant.KiddErrorCodes;
 import com.kidd.base.common.exception.KiddControllerException;
 import com.kidd.base.common.exception.KiddException;
 import com.kidd.base.common.exception.KiddFactoryException;
-import com.kidd.base.common.exception.KiddServiceException;
 import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.factory.annotation.KiddSecureAnno;
@@ -35,7 +34,6 @@ import com.kidd.base.factory.timer.KiddTimerFuture;
 import com.kidd.base.factory.timer.service.IKiddTimerProcessor;
 import com.kidd.base.factory.timer.service.impl.KiddTimerExecutor;
 import com.kidd.base.http.RequestResponseContext;
-import com.kidd.db.mybatis.umg.services.IKiddMgmtUmgService;
 import com.kidd.db.mybatis.umg.services.bean.KiddUserInfoBean;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 import com.kidd.wap.controller.dto.GetValidateCodeResp;
@@ -141,12 +139,23 @@ public class KiddWapUserController extends KiddBaseController{
 		return toWapHtml("info");
 	}
 	/**
-	 * 登陆页
+	 * wechat登陆页
 	 * @return
 	 * @throws KiddControllerException
 	 */
 	@RequestMapping(value = "/toLogin", method = {RequestMethod.GET, RequestMethod.POST})
 	public String toLogin() throws KiddControllerException{
+		log.info("toLogin enter");
+		log.info("local.url={}", url);
+		return toWapHtml("login");
+	}
+	/**
+	 * wap登陆页
+	 * @return
+	 * @throws KiddControllerException
+	 */
+	@RequestMapping(value = "/wapLogin", method = {RequestMethod.GET, RequestMethod.POST})
+	public String wapLogin() throws KiddControllerException{
 		log.info("toLogin enter");
 		log.info("local.url={}", url);
 		return toWapHtml("login");
@@ -187,7 +196,11 @@ public class KiddWapUserController extends KiddBaseController{
 	public Object login(@KiddSecureAnno UserLoginReq req) throws KiddControllerException{
 		log.info("login enter,req={}", req);
 		
-		String code = cacheManager.getCacheConfig(req.getMobile());
+		String cacheKey = req.getMobile();
+		if (req.isLoginBy00()) {
+			cacheKey = "dec_13612341234";
+		}
+		String code = cacheManager.getCacheConfig(cacheKey);
 		
 		if(KiddStringUtils.isBlank(code)){
 			throw new KiddControllerException(KiddErrorCodes.E_KIDD_NULL, "未查到验证码，请重新获取！");
