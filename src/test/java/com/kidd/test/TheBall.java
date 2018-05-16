@@ -6,11 +6,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TheBall {
-	private static final String[] BALL_POND = { "1", "2", "3", "4", "5", "6",
-			"7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17",
-			"18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28",
-			"29", "30", "31", "32", "33" };
-    
+	private static final String[] RED_BALL_POND = { "01", "02", "03", "04",
+			"05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15",
+			"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
+			"27", "28", "29", "30", "31", "32", "33" };
+	private static final String[] BLUE_BALL_POND = { "01", "02", "03", "04",
+			"05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15",
+			"16" };
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -23,22 +25,29 @@ public class TheBall {
 	}
 	
 	private static void getBall() {
-		List<String> ballList = new ArrayList<String>(Arrays.asList(BALL_POND));
-		int length = ballList.size();
+		List<String> redBall = new ArrayList<String>(
+				Arrays.asList(RED_BALL_POND));
+		int redLen = redBall.size();
 		SecureRandom random = new SecureRandom();
 		List<String> ball = new ArrayList<String>();
 		int count = 0;
 		int temp = 0;
 		do {
-			temp = random.nextInt(length);
-			ball.add(ballList.get(temp));
-			
-			ballList.remove(ballList.get(temp));
-			length = ballList.size();
+			temp = random.nextInt(redLen);
+			ball.add(redBall.get(temp));
+
+			redBall.remove(redBall.get(temp));
+			redLen = redBall.size();
 			count++;
 		} while (count < 6);
-		
-		System.out.println(ball);
+
+		System.out.println("red ball: " + ball);
+
+		List<String> blueBall = new ArrayList<String>(
+				Arrays.asList(BLUE_BALL_POND));
+		int blueLen = blueBall.size();
+
+		System.out.println("blue ball: " + blueBall.get(random.nextInt(blueLen)));
 	}
 	
 	private static void getBall2() {
