@@ -39,15 +39,20 @@ public class TheBall {
 			redBall.remove(redBall.get(temp));
 			redLen = redBall.size();
 			count++;
-		} while (count < 6);
+		} while (count < 5);
 
 		System.out.println("red ball: " + ball);
+		
+		count = 0;
+		do {
+			List<String> blueBall = new ArrayList<String>(
+					Arrays.asList(BLUE_BALL_POND));
+			int blueLen = blueBall.size();
 
-		List<String> blueBall = new ArrayList<String>(
-				Arrays.asList(BLUE_BALL_POND));
-		int blueLen = blueBall.size();
-
-		System.out.println("blue ball: " + blueBall.get(random.nextInt(blueLen)));
+			System.out.println("blue ball: " + blueBall.get(random.nextInt(blueLen)));
+			count++;
+		} while (count < 6);
+		
 	}
 	
 	private static void getBall2() {

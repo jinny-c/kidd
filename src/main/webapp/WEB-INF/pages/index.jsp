@@ -16,6 +16,7 @@
 
 <title>index</title>
 <script type="text/JavaScript" src="static/js/jquery-1.9.1.min.js"></script>
+<script type="text/JavaScript" src="static/js/util/tripledes.js"></script>
 
 <script type="text/javascript">
 
@@ -87,6 +88,16 @@ function getVerficCode(wildcard) {
 			$("#gripTablebody").append(tr);
 		});
 	}
+	function dotest() {
+		var data = $("#subTest").val();
+		alert(data);
+		var data1 = tripleDesEncrypt(data);
+		alert(data1);
+		alert(123);
+		var data2 = tripleDesDecrypt(data1);
+		alert(data2);
+		alert(456);
+	}
 </script>
 </head>
 <body>
@@ -98,6 +109,14 @@ function getVerficCode(wildcard) {
 	</div>
 
 	<div>
+		<div>
+			<a id="reg_btn" href="#" onclick="getVerficCode('imageCode')">getVerficCode/imageCode</a>
+			<br/>
+			<form>
+				<input type="text" value="测试3des加解密" id="subTest">
+				<input type="submit" value="测试3des加解密" onclick="dotest();">
+			</form>
+		</div>
 		<div>
 			<a id="reg_btn" href="#" onclick="getVerficCode('imageCode')">getVerficCode/imageCode</a>
 			<br/>
