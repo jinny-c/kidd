@@ -123,5 +123,18 @@ public class KiddStringUtils {
 		}
 		return flg;
 	}
+	
+	/**
+	 * 判断str是否包含other字符串，不区分大小写
+	 * @param str
+	 * @param other
+	 * @return
+	 */
+	public static boolean strIsContains(String str, String other) {
+		if (isBlank(str) || isBlank(other)) {
+			return false;
+		}
+		return !(str.toLowerCase().indexOf(other.toLowerCase()) < 0);
+	}
 
 }

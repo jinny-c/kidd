@@ -15,12 +15,14 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.kidd.base.common.constant.KiddConstants;
 import com.kidd.base.common.enums.KiddSymbolEnum;
+import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.http.RequestResponseContext;
 
 /**
@@ -28,8 +30,8 @@ import com.kidd.base.http.RequestResponseContext;
  * 
  */
 public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
-	private static final Logger logger = Logger
-			.getLogger(KiddServletRequestWrapper.class);
+	/* Slf4j */
+	private static Logger logger = LoggerFactory.getLogger(KiddServletRequestWrapper.class);
 
 	/**
 	 * 请求参数的Map
@@ -51,10 +53,14 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 			throws UnsupportedEncodingException {
 		super(request);
 		byte[] reqStr = getServletInputStream(request);
+		
+		String contentType = request.getHeader(KiddConstants.CONTENT_TYPE);
+		logger.info("KiddServletRequestWrapper start,contentType={}",contentType);
+		
 		if (null != reqStr) {
-			String contentType = request.getHeader("content-type");
 			this.requestData = new String(reqStr, KiddConstants.CHARSET_DEF);
-			if ("application/json".equals(contentType)) {
+			if (KiddStringUtils.strIsContains(KiddConstants.CONTENT_TYPE_JSON,
+					contentType)) {
 				this.requestParaMap = this.parseRequestJSONString(requestData);
 				this.requestParaList = this.parseRequestJSONStringPara(requestData);
 			}else{
@@ -84,7 +90,7 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 				readLen += len;
 			}
 		} catch (IOException e) {
-			logger.error(e, e);
+			logger.error("IOException", e);
 			throw new RuntimeException("读取客户端留信息错");
 		}
 
@@ -102,7 +108,6 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 	/**
 	 * 转换请求的内容，将请求信息放入Map中
 	 * 
-	 * @author lfjiang 2016年4月22日
 	 * @param requestData
 	 * @return
 	 * @throws UnsupportedEncodingException
@@ -147,7 +152,6 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 	/**
 	 * 微信小程序转换请求的内容，将请求信息放入Map中
 	 *
-	 * @author JerryWang
 	 * @param requestData
 	 * @return
 	 * @throws UnsupportedEncodingException
@@ -161,7 +165,7 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 			return map;
 		}
 		Set<String> keySet = jsonObject.keySet();
-		Iterator it = keySet.iterator();
+		Iterator<String> it = keySet.iterator();
 		while (it.hasNext()) {
 			String key = it.next().toString();
 			String value = jsonObject.getString(key);
@@ -194,8 +198,6 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 	/**
 	 * 转换请求内容,将请求信息放入Vector中
 	 * 
-	 * @author lfjiang 2016年4月22日
-	 * @param requestData
 	 * @return
 	 */
 	private Vector<String> parseRequestPara(String requestData) {
@@ -215,7 +217,6 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 	 * 转换请求内容,将请求信息放入Vector中
 	 * 微信小程序适用
 	 *
-	 * @author JerryWang
 	 * @param requestData
 	 * @return
 	 */
@@ -227,7 +228,7 @@ public class KiddServletRequestWrapper extends HttpServletRequestWrapper {
 			return list;
 		}
 		Set<String> keySet = jsonObject.keySet();
-		Iterator it = keySet.iterator();
+		Iterator<String> it = keySet.iterator();
 		while (it.hasNext()) {
 			String key = it.next().toString();
 			list.add(key);

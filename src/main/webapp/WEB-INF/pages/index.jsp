@@ -30,14 +30,27 @@ function getVerficCode(wildcard) {
 	var type = "json";
 	//type = "text";
 	//type = "jsonp";
+	var dataObj = {
+				"mobile" : "13612341234",
+				"channel" : "channel",
+				"clientChannel" : "clientChannel"
+			};
+	
+	if('exception'==wildcard){
+		dataObj = {
+				"channel" : "channel",
+				"clientChannel" : "clientChannel"
+			};
+	}
 	$.ajax({
 		url : _ctx + '/wap/user/getVerificationCode_'+wildcard+'.htm',
 		method : 'POST',
-		data : {
+		/* data : {
 			"mobile" : "13612341234",
 			"channel" : "channel",
 			"clientChannel" : "clientChannel"
-		},
+		}, */
+		data : dataObj,
 		dataType : type,
 		//dataType : 'json',
 		//dataType : 'text',
@@ -121,6 +134,8 @@ function getVerficCode(wildcard) {
 			<a id="reg_btn" href="#" onclick="getVerficCode('imageCode')">getVerficCode/imageCode</a>
 			<br/>
 			<a id="reg_btn" href="#" onclick="getVerficCode('wap')">getVerficCode/wap</a>
+			<br/>
+			<a id="reg_btn" href="#" onclick="getVerficCode('exception')">getVerficCode/exception</a>
 			<br/>
 			<a id="reg_btn" href="#" onclick="getVerficCode('other')">getVerficCode/other</a>
 			<br/>

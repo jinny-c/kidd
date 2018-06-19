@@ -14,12 +14,14 @@ public class KiddConstants {
 	public final static String CURRENT_USER = "userEntity";
 	public final static String OAUTH2_CODE = "code";
 	public final static String PUB_NO_ID = "pubId";
-	public final static String SCAN_SHARE_CODE_URI = "/scanShareCode.htm";
+	//public final static String SCAN_SHARE_CODE_URI = "/scanShareCode.htm";
 
 	/**
 	 * 通讯编码，默认:UTF-8
 	 */
 	public final static String CHARSET_DEF = "UTF-8";
+	
+	public final static String CHARSET_UTF = "UTF-8";
 	
 	public static String ATTR_REQUEST_DATA = "requestData";
 	/**
@@ -31,6 +33,12 @@ public class KiddConstants {
 	 */
 	public final static String CONTENT_TYPE_BINARY = "application/octet-stream";
 	
+	public final static String CONTENT_TYPE_JSON = "application/json; charset=UTF-8";
+	
+	public final static String CONTENT_TYPE_DEF = "application/x-www-form-urlencoded; charset=UTF-8";
+	
 	public static final String X_REQUESTED_WITH = "x-requested-with";
-	public static final String FIELD_USER_AGENT = "User-Agent";
+	
+	public static final String CONTENT_TYPE = "content-type";
+	//public static final String FIELD_USER_AGENT = "User-Agent";
 }

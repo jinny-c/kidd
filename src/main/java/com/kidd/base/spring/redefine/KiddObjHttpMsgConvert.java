@@ -16,6 +16,7 @@ import org.springframework.http.converter.AbstractHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 
+import com.kidd.base.common.constant.KiddConstants;
 import com.kidd.base.common.exception.KiddGlobalValidException;
 import com.kidd.base.common.serialize.KiddSerialTypeEnum;
 import com.kidd.base.common.utils.KiddObjectTypeUtils;
@@ -32,8 +33,6 @@ public class KiddObjHttpMsgConvert extends
 
 	@Autowired
 	private KiddSecureProcessor kiddSecureProcessor;
-
-	private static String CHARSET = "UTF-8";
 
 	public KiddObjHttpMsgConvert() {
 		/*this(new MediaType("text", "plain", Charset.forName("UTF-8")),
@@ -130,7 +129,7 @@ public class KiddObjHttpMsgConvert extends
 		//HINT 打印返回参数(JSON)
 		logger.info("serialType={},clientResponseData:={}", mste.serilalType(),
 				msg);
-		outputMessage.getBody().write(msg.getBytes(CHARSET));
+		outputMessage.getBody().write(msg.getBytes(KiddConstants.CHARSET_DEF));
 	}
 
 	/**

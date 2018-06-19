@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
+import com.kidd.base.common.constant.KiddConstants;
 import com.kidd.base.common.enums.KiddErrorCodeEnum;
 import com.kidd.base.common.exception.KiddGlobalValidException;
 import com.kidd.base.common.utils.KiddResponseUtils;
@@ -75,7 +76,8 @@ public class KiddSpringExceptionResolver extends SimpleMappingExceptionResolver 
 
 	private boolean isAjaxReq(HttpServletRequest request) {
 		// 判断是否为ajax请求
-		String requestType = request.getHeader("X-Requested-With");
+		String requestType = request.getHeader(KiddConstants.X_REQUESTED_WITH);
+		//String requestType = request.getHeader("X-Requested-With");
 		log.debug("requestType={}", requestType);
 		if (KiddStringUtils.isNotBlank(requestType)) {
 			return true;
