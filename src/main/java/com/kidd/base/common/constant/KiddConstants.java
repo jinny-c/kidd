@@ -20,6 +20,8 @@ public class KiddConstants {
 	 * 通讯编码，默认:UTF-8
 	 */
 	public final static String CHARSET_DEF = "UTF-8";
+	
+	public static String ATTR_REQUEST_DATA = "requestData";
 	/**
 	 * HTTP ContentType 取值 - 文本
 	 */

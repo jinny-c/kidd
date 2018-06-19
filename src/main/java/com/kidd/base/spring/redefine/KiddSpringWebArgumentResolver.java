@@ -64,7 +64,7 @@ public class KiddSpringWebArgumentResolver implements
 	public Object resolveArgument(MethodParameter parameter,
 			ModelAndViewContainer mavContainer, NativeWebRequest request,
 			WebDataBinderFactory binderFactory) throws Exception {
-		logger.info("KiddSpringWebArgumentResolver.resolveArgument start");
+		logger.info("KiddSpringWebArgumentResolver.resolveArgument start," + request.getHeader("content-type"));
 		
 		if (!kiddSecureProcessor.isSecure(parameter)) {
 			return WebArgumentResolver.UNRESOLVED;

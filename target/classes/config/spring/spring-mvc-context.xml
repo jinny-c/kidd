@@ -36,6 +36,7 @@
 	<!-- 对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
 	<context:component-scan base-package="com.kidd.db,com.kidd.base.factory,com.kidd.wap.controller,com.kidd.view.controller"/>
 	<!-- 对包进行扫描，实现注释驱动Bean定义，同时将bean自动注入容器中使用。即解决了@Controller标识的类的bean的注入和使用。 -->
+	
     <!--配置Spring MVC RequestMappingHandlerMapping -->
 	<mvc:annotation-driven>
 		<!-- RequestMappingHandlerAdapter.customArgumentResolvers -->

@@ -12,11 +12,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.kidd.base.common.constant.KiddConstants;
 import com.kidd.base.common.serialize.KiddSerialTypeEnum;
 import com.kidd.base.common.utils.KiddTraceLogUtil;
 import com.kidd.base.http.HttpHeader;
 import com.kidd.base.http.RequestResponseContext;
+import com.kidd.base.servlet.fiter.wrapper.KiddServletRequestWrapper;
 import com.kidd.base.servlet.traffic.KiddTrafficCounter;
 
 /**
@@ -53,6 +53,8 @@ public class InitFilter extends OncePerRequestFilter {
 				return;
 			}
 			initHeader(request);
+			//req数据过滤
+			request = new KiddServletRequestWrapper(request);
 			//response.setHeader("Access-Control-Allow-Origin", "*");
 			RequestResponseContext.setRequest(request);
 			RequestResponseContext.setResponse(response);
