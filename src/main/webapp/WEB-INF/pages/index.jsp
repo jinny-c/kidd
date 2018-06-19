@@ -123,6 +123,8 @@ function getVerficCode(wildcard) {
 			<a id="reg_btn" href="#" onclick="getVerficCode('wap')">getVerficCode/wap</a>
 			<br/>
 			<a id="reg_btn" href="#" onclick="getVerficCode('other')">getVerficCode/other</a>
+			<br/>
+			<a id="reg_btn" href="#" onclick="getVerficCode('others')">getVerficCode/others</a>
 			<table style="width: 100%">
 				<tbody id="gripTablebody">
 				</tbody>

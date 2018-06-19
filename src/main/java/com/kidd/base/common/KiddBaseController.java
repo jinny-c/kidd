@@ -62,18 +62,22 @@ public class KiddBaseController {
 	}
 	
 	
-	protected KiddModelAndView<RespSucc> toSucc() {
+	protected <E>KiddModelAndView<RespSucc<E>> toSucc() {
 		return KiddModelAndView.succ(getSerialType());
 	}
 	protected KiddModelAndView<RespErr> toErr(String code, String msg) {
 		return KiddModelAndView.err(getSerialType(), code, msg);
+	}
+	
+	protected <E> KiddModelAndView<RespSucc<E>> toSuccData(E data) {
+		return KiddModelAndView.succ(getSerialType(),data);
 	}
 
 	protected <T> KiddModelAndView<T> toData(T data) {
 		return new KiddModelAndView<T>(getSerialType(), data);
 	}
 	
-	protected KiddModelAndView<RespSucc> toRequestForward(String url)
+	protected <E>KiddModelAndView<RespSucc<E>> toRequestForward(String url)
 			throws KiddControllerException {
 		try {
 			log.info("toRequestForward start");

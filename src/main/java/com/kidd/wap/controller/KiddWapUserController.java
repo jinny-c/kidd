@@ -235,6 +235,9 @@ public class KiddWapUserController extends KiddBaseController{
 				if("wap".equals(wildcard)){
 					return toErr(KiddErrorCodes.E_KIDD_ERROR, asyncGetConfig());
 				}
+				if("other".equals(wildcard)){
+					return toSuccData(req);
+				}
 				return toErr(KiddErrorCodes.E_KIDD_ERROR, "没有定义的请求！");
 			}
 			SecureRandom random = new SecureRandom();

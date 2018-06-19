@@ -25,8 +25,15 @@ public class KiddModelAndView<T> implements Serializable {
 		return data;
 	}
 
-	public static KiddModelAndView<RespSucc> succ(KiddSerialTypeEnum te) {
+	/*public static KiddModelAndView<RespSucc> succ(KiddSerialTypeEnum te) {
 		return new KiddModelAndView<RespSucc>(te, new RespSucc());
+	}*/
+	public static <E>KiddModelAndView<RespSucc<E>> succ(KiddSerialTypeEnum te) {
+		return new KiddModelAndView<RespSucc<E>>(te, new RespSucc<E>());
+	}
+	
+	public static <E>KiddModelAndView<RespSucc<E>> succ(KiddSerialTypeEnum te,E data) {
+		return new KiddModelAndView<RespSucc<E>>(te, new RespSucc<E>(data));
 	}
 
 	public static KiddModelAndView<RespErr> err(KiddSerialTypeEnum te,
