@@ -69,12 +69,12 @@
 			<version>3.1.4.RELEASE</version>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 			<groupId>oracle</groupId>
 			<artifactId>ojdbc14</artifactId>
 			<version>10.2.0.1.0</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
+			<scope>provided</scope>
+		</dependency> -->
 		
 		<dependency>
 			<groupId>mysql</groupId>
