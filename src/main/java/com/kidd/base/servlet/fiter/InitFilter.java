@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.kidd.base.common.serialize.KiddSerialTypeEnum;
@@ -53,8 +54,11 @@ public class InitFilter extends OncePerRequestFilter {
 				return;
 			}
 			initHeader(request);
-			//req数据过滤
-			request = new KiddServletRequestWrapper(request);
+			
+			if (request.getMethod().equals(HttpMethod.POST.name())) {
+				// req数据过滤
+				request = new KiddServletRequestWrapper(request);
+			}
 			//response.setHeader("Access-Control-Allow-Origin", "*");
 			RequestResponseContext.setRequest(request);
 			RequestResponseContext.setResponse(response);
