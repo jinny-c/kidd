@@ -97,4 +97,8 @@ public class PropertiesUtil {
         }
         return props;
     }
+
+    public static void main(String[] args) {
+        System.out.println(ConfigRef.AP_APP_ID);
+    }
 }

@@ -15,18 +15,18 @@ public class SingletonTest {
 	private SingletonTest() {
 	}
 
-	private static synchronized void syncInit() {
-		if (instance == null) {
-			instance = new SingletonTest();
+		private static synchronized void syncInit() {
+			if (instance == null) {
+				instance = new SingletonTest();
+			}
 		}
-	}
 
-	public static SingletonTest getInstance() {
-		if (instance == null) {
-			syncInit();
+		public static SingletonTest getInstance() {
+			if (instance == null) {
+				syncInit();
+			}
+			return instance;
 		}
-		return instance;
-	}
 
 	public void updateProperties() {
 		SingletonTest shadow = new SingletonTest();
