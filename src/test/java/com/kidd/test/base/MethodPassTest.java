@@ -6,6 +6,7 @@ public class MethodPassTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		methodPass3();
 		TestBean tb = null;
 		methodPass1(tb);
 		System.out.println(tb);
@@ -35,7 +36,8 @@ public class MethodPassTest {
 		tb = null;
 		System.out.println(tb);
 	}
-	private static TestBean methodPass3(TestBean tb){
-		return null;
+	private static void methodPass3(){
+		//Ncpu
+		System.out.println(Runtime.getRuntime().availableProcessors());
 	}
 }
