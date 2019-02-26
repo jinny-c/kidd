@@ -74,7 +74,7 @@ public class TestThreadPool {
 				}
 			});
 		}
-
+		cachedThreadPool.shutdown();
 	}
 
 	private static void newPool2() {
@@ -105,6 +105,7 @@ public class TestThreadPool {
 			});
 
 		}
+		fixedThreadPool.shutdown();
 	}
 
 	private void newPool3() {
@@ -117,6 +118,7 @@ public class TestThreadPool {
 				System.out.println("delay 3 seconds");
 			}
 		}, 3, TimeUnit.SECONDS);
+		scheduledThreadPool.shutdown();
 	}
 
 	private void newPool3_1() {
@@ -129,6 +131,7 @@ public class TestThreadPool {
 			}
 		}, 1, 3, TimeUnit.SECONDS);
 		// 表示延迟1秒后每3秒执行一次
+		scheduledThreadPool.shutdown();
 	}
 
 	private void newPool4() {
@@ -148,5 +151,6 @@ public class TestThreadPool {
 				}
 			});
 		}
+		singleThreadExecutor.shutdown();
 	}
 }
