@@ -1,5 +1,7 @@
 package com.kidd.test.thread;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -7,10 +9,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class TestThreadPool {
 	public static void main(String[] args) {
-		newPool1();
-		//newPool2();
+		//newPool1();
+		newPool2();
 	}
 
 	/**
@@ -83,13 +86,24 @@ public class TestThreadPool {
 			fixedThreadPool.execute(new Runnable() {
 				public void run() {
 					try {
-						System.out.println(index);
+						//System.out.println(index);
+						log.info("index={}",index);
+
+						if (index % 2 == 0) {
+							//System.out.println("stop!");
+							//throw new InterruptedException();
+							//(1)注释掉这一行将只有三个Thread!
+							throw  new RuntimeException("break!");
+						}
+						log.info("index1={}",index);
+
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
 			});
+
 		}
 	}
 
