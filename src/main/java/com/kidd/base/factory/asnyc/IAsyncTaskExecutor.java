@@ -15,7 +15,7 @@ public interface IAsyncTaskExecutor {
 	 * 
 	 * @param callBack
 	 * @return
-	 * @throws SupportException
+	 * @throws KiddException
 	 */
 	<T> T execute(AsyncTaskCallBack<T> callBack) throws KiddException;
 	
@@ -25,7 +25,7 @@ public interface IAsyncTaskExecutor {
 	 * 
 	 * @param callBack
 	 * @return
-	 * @throws SupportException
+	 * @throws KiddException
 	 */
 	<T> Future<T> executeTask(AsyncTaskCallBack<T> callBack) throws KiddException;
 	
@@ -33,7 +33,7 @@ public interface IAsyncTaskExecutor {
 	 * 执行异步调用——无返回值
 	 * 
 	 * @param callBack
-	 * @throws SupportException
+	 * @throws KiddException
 	 */
 	void exeWithoutResult(AsyncTaskCallBack<Object> callBack) throws KiddException;
 
@@ -49,7 +49,7 @@ public interface IAsyncTaskExecutor {
 		 * 执行业务调用
 		 * 
 		 * @return
-		 * @throws SupportException
+		 * @throws KiddException
 		 */
 		public T invork() throws KiddException;
 

@@ -34,6 +34,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -196,7 +197,7 @@
 			<version>1.12.2</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 	</dependencies>
 	
 	<build>
@@ -237,6 +238,28 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+<!--					<port>8080</port>-->
+<!--					<path>/kidd</path>-->
+					<uriEncoding>UTF-8</uriEncoding>
+					<server>tomcat7</server>
+
+				</configuration>
+			</plugin>
+
+<!--
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat8-maven-plugin</artifactId>
+				<version>3.0-r1655215</version>
+			</plugin>
+-->
+
 		</plugins>
 	</build>
 </project>

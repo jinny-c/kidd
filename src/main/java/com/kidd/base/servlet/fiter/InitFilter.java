@@ -1,24 +1,23 @@
 package com.kidd.base.servlet.fiter;
 
-import java.io.IOException;
+import com.kidd.base.common.serialize.KiddSerialTypeEnum;
+import com.kidd.base.common.utils.KiddStringUtils;
+import com.kidd.base.common.utils.KiddTraceLogUtil;
+import com.kidd.base.http.HttpHeader;
+import com.kidd.base.http.RequestResponseContext;
+import com.kidd.base.servlet.fiter.wrapper.KiddServletRequestWrapper;
+import com.kidd.base.servlet.traffic.KiddTrafficCounter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
-import org.springframework.web.filter.OncePerRequestFilter;
-
-import com.kidd.base.common.serialize.KiddSerialTypeEnum;
-import com.kidd.base.common.utils.KiddTraceLogUtil;
-import com.kidd.base.http.HttpHeader;
-import com.kidd.base.http.RequestResponseContext;
-import com.kidd.base.servlet.fiter.wrapper.KiddServletRequestWrapper;
-import com.kidd.base.servlet.traffic.KiddTrafficCounter;
+import java.io.IOException;
 
 /**
  * 初始化过滤器
@@ -94,7 +93,7 @@ public class InitFilter extends OncePerRequestFilter {
 	
 	private void initHeader(HttpServletRequest request) {
 		HttpHeader header = new HttpHeader();
-		header.setSessionId("sessionId");
+		header.setSessionId(KiddStringUtils.toDef(request.getHeader("sessionId"),"sessionId"));
 		header.setUniqueIdentifier("uniqueIdentifier");
 		header.setSignature("signature");
 		header.setDataType(KiddSerialTypeEnum.convert2Self("serilalType"));
@@ -102,7 +101,9 @@ public class InitFilter extends OncePerRequestFilter {
 		//TODO
 		//header.setUserAgent(request.getHeader(KiddConstants.FIELD_USER_AGENT));
 		//header.setXmlRequestedWith(request.getHeader(KiddConstants.X_REQUESTED_WITH));
-		
+
+		System.out.println("WWW-Authenticate=============" + request.getHeader("WWW-Authenticate "));
+
 		header.setVersion("version");
 		header.setImei("imei");
 		header.setMachineModel("machineModel");
