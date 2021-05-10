@@ -229,4 +229,36 @@ public class KiddCacheManager {
 			return value;
 		}
 	}
+
+	public static void main(String[] args) {
+		System.out.println("ssTT".hashCode());
+		System.out.println("sStt".hashCode());
+
+		Map<String,String> stm = new HashMap<>();
+		stm.put("st","1");
+		stm.put("sT","2");
+		stm.put("St","3");
+		stm.put("ST","4");
+		System.out.println(stm);
+
+		LoadingCache<String, Object> ch = CacheBuilder.newBuilder()
+				.refreshAfterWrite(4, TimeUnit.HOURS) // 默认4个小时过期
+				.build(new CacheLoader<String, Object>() {
+					@Override
+					public Object load(String key) throws Exception {
+						log.debug("LoadingCache start:key={}", key);
+						return cacheMap.get(key);
+					}
+				});
+
+		ch.put("st","1");
+		ch.put("sT","2");
+		ch.put("St","3");
+		ch.put("ST","4");
+
+		System.out.println(ch.getUnchecked("sT"));
+		System.out.println(ch.getUnchecked("ST"));
+
+
+	}
 }
