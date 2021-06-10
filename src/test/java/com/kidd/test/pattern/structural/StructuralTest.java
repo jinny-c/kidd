@@ -16,13 +16,7 @@ import com.kidd.test.pattern.structural.nine.Computer;
 import com.kidd.test.pattern.structural.seven.Decorator;
 import com.kidd.test.pattern.structural.seven.Source;
 import com.kidd.test.pattern.structural.seven.Sourceable;
-import com.kidd.test.pattern.structural.six.Adapter;
-import com.kidd.test.pattern.structural.six.Source6;
-import com.kidd.test.pattern.structural.six.SourceSub61;
-import com.kidd.test.pattern.structural.six.SourceSub62;
-import com.kidd.test.pattern.structural.six.Sourceable6;
-import com.kidd.test.pattern.structural.six.Targetable;
-import com.kidd.test.pattern.structural.six.Wrapper;
+import com.kidd.test.pattern.structural.six.*;
 import com.kidd.test.pattern.structural.ten.Bridge;
 import com.kidd.test.pattern.structural.ten.MyBridge;
 import com.kidd.test.pattern.structural.ten.SourceSub1;
@@ -65,6 +59,14 @@ public class StructuralTest {
 		source1.method2();
 		source2.method1();
 		source2.method2();
+		//abstract类 不能new 但是可以用匿名内部类来创建
+		Wrapper2 w2 = new Wrapper2() {
+			//重写
+			@Override
+			public void method2() {
+				System.out.println("StructuralTest.method2");
+			}
+		};
 	}
 
 	// 装饰模式（Decorator）
