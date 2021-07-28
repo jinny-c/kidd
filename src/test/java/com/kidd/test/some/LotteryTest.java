@@ -7,6 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
+/**
+ * @description 随机数 双色球
+ *
+ * @auth chaijd
+ * @date 2021/7/28
+ */
 @Slf4j
 public class LotteryTest {
     private static List<Integer> blue = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
