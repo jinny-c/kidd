@@ -26,6 +26,7 @@ public class MyJavaTest {
 		String sj = Joiner.on("&").withKeyValueSeparator("=").join(mp);
 		System.out.println(sj);
 
+		System.out.println(KiddFastJsonUtils.toStr(2234));
 		System.out.println(KiddFastJsonUtils.toStr("1234"));
 
 		Map<String,String> mp1 = new HashMap<>();
