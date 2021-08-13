@@ -19,7 +19,7 @@ public class BinaryProgramming {
     private static void experiment1() {
         //老鼠个数
         Integer mouse = 3;
-        //2的3次方 -1
+        //2的3次方 减1
         Integer bottledWater = (1 << 3) - 1;
 //        System.out.println(bottledWater);
 //        double power = Math.pow(2,3);
