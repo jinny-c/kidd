@@ -50,19 +50,25 @@ public class MyJavaTest {
 
     }
 
+
     static void regular() {
+        // regular.txt
         // https://zhuanlan.zhihu.com/p/59904349
-        String ss = "12";
+        String ss = "12345";
         //ss = null;
         //ss = "";
         //ss = "1.2";
         //ss = " ";
         //数字、非空
         Matcher m1 = Pattern.compile("^[1-9]\\d*$").matcher(ss);
+        System.out.println(m1.matches());
         //数字、空
         Matcher m2 = Pattern.compile("^$|^[1-9]\\d*$").matcher(ss);
-        System.out.println(m1.matches());
         System.out.println(m2.matches());
+
+        Matcher m3 = Pattern.compile("^[1-9]\\d{0,2}$").matcher(ss);
+        System.out.println(m3.matches());
+
 
     }
 }
