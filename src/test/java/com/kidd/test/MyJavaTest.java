@@ -10,6 +10,9 @@ import java.util.StringJoiner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * guava--Joiner、Splitter、MapJoinner、MapSplitter
+ */
 public class MyJavaTest {
 
     public static void main(String[] args) {
