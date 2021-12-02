@@ -57,10 +57,14 @@ public class StringHandling {
         log.info("val==>{}", spm.split(mpStr));
     }
 
-    private void checkTest(){
-        String ss = null;
-        Preconditions.checkNotNull(null,"不能为null");
-        Integer itg = 10;
-        Preconditions.checkArgument(itg > 0, "必须大于0", itg);
+    @Test
+    public void checkTest(){
+        String ss = "124";
+        Preconditions.checkNotNull(ss,"不能为null");
+        Integer itg = -10;
+
+        System.out.println(String.format("必须大于0, %s 错",itg));
+
+        Preconditions.checkArgument(itg > 0, "必须大于0, %s , %s", itg,"错了");
     }
 }
