@@ -7,7 +7,12 @@ import java.util.Map.Entry;
 
 import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.common.utils.ReadOrWriteFileUtil;
-
+/**
+ * @description 批量sql语句
+ *
+ * @auth chaijd
+ * @date 2021/12/24
+ */
 public class FileImportTest {
 
 	public static void main(String[] args) {

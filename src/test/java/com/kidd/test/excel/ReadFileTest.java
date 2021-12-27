@@ -7,7 +7,12 @@ import com.kidd.base.common.utils.readFile.JsonFileUtil;
 import com.kidd.base.common.utils.readFile.XmlFileUtil;
 import com.kidd.wap.controller.dto.GetValidateCodeReq;
 
-
+/**
+ * @description 解析文件
+ *
+ * @auth chaijd
+ * @date 2021/12/24
+ */
 public class ReadFileTest {
 
 	public static void main(String[] args) {

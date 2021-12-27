@@ -6,7 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import com.kidd.base.common.utils.ToStringUtils;
-
+/**
+ * @description bean的toString
+ *
+ * @auth chaijd
+ * @date 2021/12/24
+ */
 public class TestBean  implements Serializable {
 
 	private static final long serialVersionUID = 1L;

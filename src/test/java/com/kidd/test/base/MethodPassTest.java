@@ -2,6 +2,9 @@ package com.kidd.test.base;
 
 import com.kidd.test.bean.TestBean;
 
+/**
+ * 方法执行
+ */
 public class MethodPassTest {
 
 	public static void main(String[] args) {

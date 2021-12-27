@@ -7,6 +7,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.RandomAccess;
 
+/**
+ * @description list的历遍
+ *
+ * @auth chaijd
+ * @date 2021/12/24
+ */
 public class MyCollectionTest {
 
 	public static void main(String[] args) {
@@ -15,7 +21,7 @@ public class MyCollectionTest {
 	}
 	
 	public static void testList(){
-		LinkedList ll = new LinkedList();
+		LinkedList<String> ll = new LinkedList<>();
 		ll.add("123b");
 		ll.add("123a");
 		ll.add("123c");
