@@ -4,7 +4,12 @@ import java.security.SecureRandom;
 
 import com.kidd.wap.controller.enums.KiddWapWildcardEnum;
 
-
+/**
+ * @description 获取随机数
+ *
+ * @auth chaijd
+ * @date 2021/12/28
+ */
 public class TestMethod {
 
 	// 验证码字符个数

@@ -1,5 +1,10 @@
 package com.kidd.test.thread;
-
+/**
+ * @description 线程
+ *
+ * @auth chaijd
+ * @date 2021/12/28
+ */
 public class MyRunnableTe implements Runnable {
 
     private static Integer i = new Integer(0);

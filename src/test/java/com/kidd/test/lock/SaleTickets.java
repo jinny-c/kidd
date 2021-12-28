@@ -1,10 +1,30 @@
 package com.kidd.test.lock;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+/**
+ * @description 锁
+ *
+ * synchronized（关键字）跟Lock（对象）
+ *
+ * @auth chaijd
+ * @date 2021/12/28
+ */
 
+/*
+线程A和B都要获取对象O的锁定，假设A获取了对象O锁，B将等待A释放对O的锁定，
+如果使用 synchronized ，如果A不释放，B将一直等下去，不能被中断
+如果 使用ReentrantLock，如果A不释放，可以使B在等待了足够长的时间以后，中断等待，而干别的事情
+
+synchronized是在JVM层面上实现的，不但可以通过一些监控工具监控synchronized的锁定，而且在代码执行时出现异常，JVM会自动释放锁定，但是使用Lock则不行，lock是通过代码实现的，要保证锁定一定会被释放，就必须将unLock()放到finally{}中
+
+在资源竞争不是很激烈的情况下，Synchronized的性能要优于ReetrantLock，但是在资源竞争很激烈的情况下，Synchronized的性能会下降几十倍，但是ReetrantLock的性能能维持常态；
+
+各种 Atomic 类
+*/
 public class SaleTickets implements Runnable {
 	public int total;
 	public int count;
@@ -25,17 +45,21 @@ public class SaleTickets implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		method();
+		//method();
+		method3();
 	}
 
+	/**
+	 * tryLock锁
+	 */
 	private void method() {
 		while (true) {
 			try {
-
 				// 买票前准备,休眠1毫秒模拟拿出证件
 				Thread.sleep(4);
 				// 获取当前线程名字
 				String threadName = Thread.currentThread().getName();
+				//lock.lock();
 				// tryLock()如果获取成功，则返回true，如果获取失败（即锁已被其他线程获取），则返回false，也就说这个方法无论如何都会立即返回。在拿不到锁时不会一直在那等待。
 				if (lock.tryLock()) {
 					try {
@@ -107,6 +131,9 @@ public class SaleTickets implements Runnable {
 		return true;
 	}
 
+	/**
+	 * 类似 synchronized 的 lock()锁
+	 */
 	private void method1() {
 		while (true) {
 			try {
@@ -131,6 +158,9 @@ public class SaleTickets implements Runnable {
 		}
 	}
 
+	/**
+	 * synchronized 关键字
+	 */
 	private void method2() {
 		while (true) {
 			// 获取当前线程名字
@@ -151,6 +181,39 @@ public class SaleTickets implements Runnable {
 				System.out.println(threadName + " 售出火车票No." + ++count);
 				total--;
 			}
+		}
+	}
+
+	public AtomicInteger atmicTotal = new AtomicInteger(100);
+	public AtomicInteger atmicCount = new AtomicInteger(0);
+
+	/**
+	 * Atomic原子操作
+	 */
+	private void method3() {
+		while (true) {
+			// 获取当前线程名字
+			String threadName = Thread.currentThread().getName();
+			//synchronized (SaleTickets.class) {
+				//--total
+				if (atmicTotal.decrementAndGet() < 0) {
+				//total--
+				//if (atmicTotal.getAndDecrement() <= 0) {
+					System.out.println(threadName + " 车票已售罄!");
+					break;
+				}
+				// 打印火车票,休眠20毫秒模拟打印车票时间
+				try {
+					Thread.sleep(20);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//++count
+				System.out.println(threadName + " 售出火车票No." + atmicCount.incrementAndGet());
+				//count++
+				//System.out.println(threadName + " 售出火车票No." + atmicCount.getAndIncrement());
+			//}
 		}
 	}
 

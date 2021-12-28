@@ -8,7 +8,12 @@ import com.kidd.base.common.utils.KiddStringUtils;
 import com.kidd.base.http.httpclient.KiddHttpBuilder;
 import com.kidd.base.http.httpclient.KiddHttpExecutor;
 
-
+/**
+ * @description 微信获取短链接
+ *
+ * @auth chaijd
+ * @date 2021/12/28
+ */
 public class TestShareCode {
 
     @Test

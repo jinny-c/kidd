@@ -11,9 +11,10 @@ import com.kidd.base.http.httpclient.KiddHttpBuilder;
 import com.kidd.base.http.httpclient.KiddHttpExecutor;
 
 /**
- * 测试HTTP
+ * @description 微信模板消息推送
  *
- * @history
+ * @auth chaijd
+ * @date 2021/12/28
  */
 public class TestWechatNotify {
 

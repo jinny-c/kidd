@@ -1,7 +1,7 @@
 package com.kidd.test.pattern;
 
 /**
- * @description TODO
+ * @description 设计模式
  * @auth chaijd
  * @date 2021/8/13
  */

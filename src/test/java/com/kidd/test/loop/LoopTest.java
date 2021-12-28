@@ -11,7 +11,12 @@ import java.util.Map;
 import java.util.RandomAccess;
 import java.util.Set;
 import java.util.TreeSet;
-
+/**
+ * @description 集合历遍
+ *
+ * @auth chaijd
+ * @date 2021/12/28
+ */
 public class LoopTest {
 	private static Map<String, String> loopMap = new HashMap<String, String>();
 	private static List<String> loopList = new ArrayList<String>();

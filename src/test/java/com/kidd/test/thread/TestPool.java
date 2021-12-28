@@ -7,6 +7,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import lombok.extern.slf4j.Slf4j;
+/**
+ * @description 线程池
+ *
+ * @auth chaijd
+ * @date 2021/12/28
+ */
 @Slf4j
 public class TestPool {
 	private static ExecutorService pools = Executors.newFixedThreadPool(250);

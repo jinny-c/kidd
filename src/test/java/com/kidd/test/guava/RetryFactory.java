@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description TODO
+ * @description 异步多次重试
  * guava - retrying
  * @auth chaijd
  * @date 2021/11/30

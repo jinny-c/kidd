@@ -3,7 +3,12 @@ package com.kidd.test.proxy;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
+/**
+ * @description 反射
+ *
+ * @auth chaijd
+ * @date 2021/12/28
+ */
 public class HelloPeoxy implements InvocationHandler {
 
 	// 目标对象，也就是我们主要的业务，主要目的要做什么事

@@ -11,6 +11,11 @@ import java.util.Map;
 
 /**
  * @description 不可变对象测试
+ *
+ * vo(QueryControllerVO)
+ * bo(StudentTeacherBO)、dto(ParameterDTO)       bean、pojo
+ * po(PersonInfoPO)
+ *
  * @auth chaijd
  * @date 2021/7/28
  */
@@ -47,7 +52,7 @@ public class ImmutableTest {
     //(Persistant Object)可以看成是与数据库中的表相映射的java对象
     //数据库表对应
     @Data
-    class PersongPO {
+    class PersonPO {
         private String id;
         private String name;
         private int age;
