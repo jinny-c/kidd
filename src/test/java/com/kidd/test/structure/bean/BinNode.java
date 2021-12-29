@@ -52,6 +52,7 @@ public class BinNode {
     /**
      * 对该二叉树进行后序遍历 结果存储到list中
      * DFS(深度优先搜索)
+     *
      */
     public static void postOrder(BinNode node) {
         if (node.lChild != null) {
@@ -64,6 +65,7 @@ public class BinNode {
     }
     /**
      * DFS(深度优先搜索)
+     * deep first search
      */
     public static void dfs(BinNode node) {
         if(node==null){
@@ -78,6 +80,7 @@ public class BinNode {
     }
     /**
      * BFS（广度优先搜索）
+     * breadth first search
      */
     public static void bfs(BinNode node) {
         //Queue<BinNode> queue = new LinkedList<>();
