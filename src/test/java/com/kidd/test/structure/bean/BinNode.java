@@ -72,10 +72,10 @@ public class BinNode {
             return;
         }
         if (node.lChild != null) {
-            postOrder(node.lChild);
+            dfs(node.lChild);
         }
         if (node.rChild != null) {
-            postOrder(node.rChild);
+            dfs(node.rChild);
         }
     }
     /**

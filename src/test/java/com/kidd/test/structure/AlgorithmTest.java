@@ -12,6 +12,7 @@ public class AlgorithmTest {
 
     /*
     多源 BFS 历遍
+    ArrayDeque 双端队列
      */
     public static int maxDistance(int[][] grid) {
         int N = grid.length;
