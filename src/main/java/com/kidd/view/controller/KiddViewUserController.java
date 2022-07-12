@@ -45,8 +45,10 @@ public class KiddViewUserController extends KiddBaseController{
 	private KiddCacheManager cacheManager;
 	
 	/** 异步线程 **/
-	private IAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor();
-    
+	//private IAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor();
+	@Autowired
+	private IAsyncTaskExecutor asyncTaskExecutor;
+
 
 	@RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index() throws KiddControllerException{
