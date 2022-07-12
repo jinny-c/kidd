@@ -106,5 +106,8 @@
  
  	<!-- 定时刷新  -->
  	<bean class="com.kidd.base.factory.cache.SpringContextListener"/>
- 
+
+	<!-- 异步实现  -->
+ 	<bean class="com.kidd.base.factory.asnyc.SimpleAsyncTaskExecutor"/>
+
 </beans>
