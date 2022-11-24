@@ -18,7 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class TestThreadPool {
 	public static void main(String[] args) {
 		//newPool1();
-		newPool2();
+		//newPool2();
+		newPool3_1();
 	}
 
 	/**
@@ -126,17 +127,17 @@ public class TestThreadPool {
 		scheduledThreadPool.shutdown();
 	}
 
-	private void newPool3_1() {
+	private static void newPool3_1() {
 		ScheduledExecutorService scheduledThreadPool = Executors
 				.newScheduledThreadPool(5);
 		scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
 			public void run() {
-				System.out
-						.println("delay 1 seconds, and excute every 3 seconds");
+//				System.out.println("delay 1 seconds, and excute every 3 seconds");
+				log.info("delay 1 seconds, and excute every 3 seconds");
 			}
 		}, 1, 3, TimeUnit.SECONDS);
 		// 表示延迟1秒后每3秒执行一次
-		scheduledThreadPool.shutdown();
+		//scheduledThreadPool.shutdown();
 	}
 
 	private void newPool4() {
